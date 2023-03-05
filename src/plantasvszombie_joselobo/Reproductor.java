@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class Reproductor {
 
-    private JFXPanel jfxpanel;
+    private final JFXPanel jfxpanel;
     private JPanel jpanel;
     private MediaPlayer mediaPlayer;
     private Media media;
