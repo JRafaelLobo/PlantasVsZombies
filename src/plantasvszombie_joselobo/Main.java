@@ -8,7 +8,7 @@ import javax.sound.sampled.*;
 import javax.swing.*;
 
 public class Main extends javax.swing.JFrame {
-
+    
     public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -19,7 +19,7 @@ public class Main extends javax.swing.JFrame {
         Thread CambiarMain = new Thread(CPT);
         CambiarMain.start();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,6 +43,7 @@ public class Main extends javax.swing.JFrame {
         P_TopBar4 = new javax.swing.JPanel();
         P_X4 = new javax.swing.JPanel();
         X4 = new javax.swing.JLabel();
+        P_VideoIntro = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
         P_X = new javax.swing.JPanel();
@@ -338,6 +339,19 @@ public class Main extends javax.swing.JFrame {
 
         jPanel5.add(P_TopBar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
+        javax.swing.GroupLayout P_VideoIntroLayout = new javax.swing.GroupLayout(P_VideoIntro);
+        P_VideoIntro.setLayout(P_VideoIntroLayout);
+        P_VideoIntroLayout.setHorizontalGroup(
+            P_VideoIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        P_VideoIntroLayout.setVerticalGroup(
+            P_VideoIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(P_VideoIntro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
+
         javax.swing.GroupLayout Jf_VideoIntroLayout = new javax.swing.GroupLayout(Jf_VideoIntro.getContentPane());
         Jf_VideoIntro.getContentPane().setLayout(Jf_VideoIntroLayout);
         Jf_VideoIntroLayout.setHorizontalGroup(
@@ -549,6 +563,14 @@ public class Main extends javax.swing.JFrame {
             JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
             Music.stop();
             Jf_VideoIntro.setVisible(true);
+            try {
+                video = new Reproductor();
+                this.video.setJpanel(P_VideoIntro);
+                this.video.setRuta("./GameVideo\\VideoIntro.mp4");
+                this.video.mostrarVideo();
+                this.video.reproducir();
+            } catch (Exception e) {
+            }
         } else {
             JF_PatioFrontal.pack();
             Jf_MenuPrincipal.setVisible(false);
@@ -560,22 +582,30 @@ public class Main extends javax.swing.JFrame {
 
     private void P_X4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X4MouseClicked
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_P_X4MouseClicked
 
     private void P_X4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X4MouseEntered
         // TODO add your handling code here:
+        P_X1.setBackground(Color.RED);
     }//GEN-LAST:event_P_X4MouseEntered
 
     private void P_X4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X4MouseExited
         // TODO add your handling code here:
+        P_X1.setBackground(Color.BLACK);
     }//GEN-LAST:event_P_X4MouseExited
 
     private void P_TopBar4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBar4MouseDragged
         // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        JF_PatioFrontal.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_P_TopBar4MouseDragged
 
     private void P_TopBar4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBar4MousePressed
         // TODO add your handling code here:
+        xMouse = evt.getX();
+        yMouse = evt.getY();
     }//GEN-LAST:event_P_TopBar4MousePressed
 
     /**
@@ -614,7 +644,7 @@ public class Main extends javax.swing.JFrame {
         });
         //Aqui esta el main
     }
-
+    
     public static Clip playMusic(String filepath) {
         try {
             File music = new File(filepath);
@@ -640,6 +670,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel P_TopBar1;
     private javax.swing.JPanel P_TopBar2;
     private javax.swing.JPanel P_TopBar4;
+    private javax.swing.JPanel P_VideoIntro;
     private javax.swing.JPanel P_X;
     private javax.swing.JPanel P_X1;
     private javax.swing.JPanel P_X2;
@@ -659,6 +690,7 @@ public class Main extends javax.swing.JFrame {
 //mis variables
     private int xMouse, yMouse;
     private Clip Music;
-    private Usuario usuario;
-
+    private Usuario usuario = new Usuario();
+    private Reproductor video;
+    
 }

@@ -20,6 +20,10 @@ public class Usuario {
         this.PrimeraVez = PrimeraVez;
     }
 
+    public Usuario() {
+    }
+    
+
     public String getNombre() {
         return nombre;
     }
