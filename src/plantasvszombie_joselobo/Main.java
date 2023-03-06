@@ -53,11 +53,9 @@ public class Main extends javax.swing.JFrame {
         Jf_MenuPrincipal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         Jf_MenuPrincipal.setTitle("Plantas VS Zombies");
         Jf_MenuPrincipal.setLocationByPlatform(true);
-        Jf_MenuPrincipal.setMaximumSize(new java.awt.Dimension(640, 430));
         Jf_MenuPrincipal.setMinimumSize(new java.awt.Dimension(640, 430));
         Jf_MenuPrincipal.setName("MainFrame"); // NOI18N
         Jf_MenuPrincipal.setUndecorated(true);
-        Jf_MenuPrincipal.setPreferredSize(new java.awt.Dimension(640, 430));
         Jf_MenuPrincipal.setSize(new java.awt.Dimension(640, 430));
 
         jPanel3.setMaximumSize(new java.awt.Dimension(640, 430));
@@ -162,11 +160,9 @@ public class Main extends javax.swing.JFrame {
         JF_PatioFrontal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         JF_PatioFrontal.setTitle("Plantas VS Zombies");
         JF_PatioFrontal.setLocationByPlatform(true);
-        JF_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setMinimumSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setName("MainFrame"); // NOI18N
         JF_PatioFrontal.setUndecorated(true);
-        JF_PatioFrontal.setPreferredSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setResizable(false);
         JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
 
@@ -260,11 +256,9 @@ public class Main extends javax.swing.JFrame {
         Jf_VideoIntro.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         Jf_VideoIntro.setTitle("Plantas VS Zombies");
         Jf_VideoIntro.setLocationByPlatform(true);
-        Jf_VideoIntro.setMaximumSize(new java.awt.Dimension(640, 430));
         Jf_VideoIntro.setMinimumSize(new java.awt.Dimension(640, 430));
         Jf_VideoIntro.setName("MainFrame"); // NOI18N
         Jf_VideoIntro.setUndecorated(true);
-        Jf_VideoIntro.setPreferredSize(new java.awt.Dimension(640, 430));
         Jf_VideoIntro.setResizable(false);
         Jf_VideoIntro.setSize(new java.awt.Dimension(640, 430));
 
@@ -374,7 +368,6 @@ public class Main extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(640, 430));
         setName("MainFrame"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(640, 430));
         setResizable(false);
         setSize(new java.awt.Dimension(640, 430));
 
