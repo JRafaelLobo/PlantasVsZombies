@@ -36,19 +36,14 @@ public class Main extends javax.swing.JFrame {
         X2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         B_Adventure = new javax.swing.JButton();
-        JF_PatioFrontal = new javax.swing.JFrame();
-        JP_PatioFrotal = new javax.swing.JPanel();
-        P_TopBar1 = new javax.swing.JPanel();
-        P_X1 = new javax.swing.JPanel();
-        X1 = new javax.swing.JLabel();
         Jf_VideoIntro = new javax.swing.JFrame();
         jPanel5 = new javax.swing.JPanel();
         P_VideoIntro = new javax.swing.JPanel();
         P_TopBar4 = new javax.swing.JPanel();
         P_X4 = new javax.swing.JPanel();
         X4 = new javax.swing.JLabel();
-        JF_Tutorial = new javax.swing.JFrame();
-        JP_Tutorial = new javax.swing.JPanel();
+        JF_PatioFrontal = new javax.swing.JFrame();
+        JP_PatioFrontal = new javax.swing.JPanel();
         P_TopBar3 = new javax.swing.JPanel();
         P_X3 = new javax.swing.JPanel();
         X3 = new javax.swing.JLabel();
@@ -169,97 +164,6 @@ public class Main extends javax.swing.JFrame {
             .addComponent(AbsoluteLayout_MenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        JF_PatioFrontal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        JF_PatioFrontal.setTitle("Plantas VS Zombies");
-        JF_PatioFrontal.setLocationByPlatform(true);
-        JF_PatioFrontal.setMinimumSize(new java.awt.Dimension(640, 430));
-        JF_PatioFrontal.setName("MainFrame"); // NOI18N
-        JF_PatioFrontal.setUndecorated(true);
-        JF_PatioFrontal.setResizable(false);
-        JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
-
-        JP_PatioFrotal.setMaximumSize(new java.awt.Dimension(640, 430));
-        JP_PatioFrotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        P_TopBar1.setBackground(new java.awt.Color(0, 0, 0));
-        P_TopBar1.setForeground(new java.awt.Color(153, 255, 153));
-        P_TopBar1.setPreferredSize(new java.awt.Dimension(640, 0));
-        P_TopBar1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                P_TopBar1MouseDragged(evt);
-            }
-        });
-        P_TopBar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                P_TopBar1MousePressed(evt);
-            }
-        });
-
-        P_X1.setBackground(new java.awt.Color(0, 0, 0));
-        P_X1.setName(""); // NOI18N
-        P_X1.setPreferredSize(new java.awt.Dimension(58, 30));
-        P_X1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                P_X1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                P_X1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                P_X1MouseExited(evt);
-            }
-        });
-
-        X1.setBackground(new java.awt.Color(0, 0, 0));
-        X1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        X1.setForeground(new java.awt.Color(255, 255, 255));
-        X1.setText("X");
-        X1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        X1.setMaximumSize(new java.awt.Dimension(46, 22));
-        X1.setMinimumSize(new java.awt.Dimension(46, 22));
-        X1.setName(""); // NOI18N
-        X1.setPreferredSize(new java.awt.Dimension(58, 30));
-
-        javax.swing.GroupLayout P_X1Layout = new javax.swing.GroupLayout(P_X1);
-        P_X1.setLayout(P_X1Layout);
-        P_X1Layout.setHorizontalGroup(
-            P_X1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_X1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(X1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        P_X1Layout.setVerticalGroup(
-            P_X1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(X1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        javax.swing.GroupLayout P_TopBar1Layout = new javax.swing.GroupLayout(P_TopBar1);
-        P_TopBar1.setLayout(P_TopBar1Layout);
-        P_TopBar1Layout.setHorizontalGroup(
-            P_TopBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_TopBar1Layout.createSequentialGroup()
-                .addGap(0, 582, Short.MAX_VALUE)
-                .addComponent(P_X1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        P_TopBar1Layout.setVerticalGroup(
-            P_TopBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(P_X1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        JP_PatioFrotal.add(P_TopBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
-
-        javax.swing.GroupLayout JF_PatioFrontalLayout = new javax.swing.GroupLayout(JF_PatioFrontal.getContentPane());
-        JF_PatioFrontal.getContentPane().setLayout(JF_PatioFrontalLayout);
-        JF_PatioFrontalLayout.setHorizontalGroup(
-            JF_PatioFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_PatioFrotal, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        JF_PatioFrontalLayout.setVerticalGroup(
-            JF_PatioFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_PatioFrotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
         Jf_VideoIntro.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         Jf_VideoIntro.setTitle("Plantas VS Zombies");
         Jf_VideoIntro.setLocationByPlatform(true);
@@ -368,17 +272,17 @@ public class Main extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        JF_Tutorial.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        JF_Tutorial.setTitle("Plantas VS Zombies");
-        JF_Tutorial.setLocationByPlatform(true);
-        JF_Tutorial.setMinimumSize(new java.awt.Dimension(640, 430));
-        JF_Tutorial.setName("MainFrame"); // NOI18N
-        JF_Tutorial.setUndecorated(true);
-        JF_Tutorial.setResizable(false);
-        JF_Tutorial.setSize(new java.awt.Dimension(640, 430));
+        JF_PatioFrontal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JF_PatioFrontal.setTitle("Plantas VS Zombies");
+        JF_PatioFrontal.setLocationByPlatform(true);
+        JF_PatioFrontal.setMinimumSize(new java.awt.Dimension(640, 430));
+        JF_PatioFrontal.setName("MainFrame"); // NOI18N
+        JF_PatioFrontal.setUndecorated(true);
+        JF_PatioFrontal.setResizable(false);
+        JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
 
-        JP_Tutorial.setMaximumSize(new java.awt.Dimension(640, 430));
-        JP_Tutorial.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JP_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
+        JP_PatioFrontal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         P_TopBar3.setBackground(new java.awt.Color(0, 0, 0));
         P_TopBar3.setForeground(new java.awt.Color(153, 255, 153));
@@ -446,23 +350,23 @@ public class Main extends javax.swing.JFrame {
             .addComponent(P_X3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        JP_Tutorial.add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
+        JP_PatioFrontal.add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
         PatioFondoTuto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/backlvl2.jpeg"))); // NOI18N
-        JP_Tutorial.add(PatioFondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+        JP_PatioFrontal.add(PatioFondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
         PatioFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/FondoPatio.png"))); // NOI18N
-        JP_Tutorial.add(PatioFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 30, -1, -1));
+        JP_PatioFrontal.add(PatioFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 30, -1, -1));
 
-        javax.swing.GroupLayout JF_TutorialLayout = new javax.swing.GroupLayout(JF_Tutorial.getContentPane());
-        JF_Tutorial.getContentPane().setLayout(JF_TutorialLayout);
-        JF_TutorialLayout.setHorizontalGroup(
-            JF_TutorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_Tutorial, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout JF_PatioFrontalLayout = new javax.swing.GroupLayout(JF_PatioFrontal.getContentPane());
+        JF_PatioFrontal.getContentPane().setLayout(JF_PatioFrontalLayout);
+        JF_PatioFrontalLayout.setHorizontalGroup(
+            JF_PatioFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JP_PatioFrontal, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        JF_TutorialLayout.setVerticalGroup(
-            JF_TutorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_Tutorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        JF_PatioFrontalLayout.setVerticalGroup(
+            JF_PatioFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JP_PatioFrontal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -620,35 +524,6 @@ public class Main extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_P_TopBar2MousePressed
 
-    private void P_X1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X1MouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_P_X1MouseClicked
-
-    private void P_X1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X1MouseEntered
-        // TODO add your handling code here
-        P_X1.setBackground(Color.RED);
-
-    }//GEN-LAST:event_P_X1MouseEntered
-
-    private void P_X1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X1MouseExited
-        // TODO add your handling code here:
-        P_X1.setBackground(Color.BLACK);
-    }//GEN-LAST:event_P_X1MouseExited
-
-    private void P_TopBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBar1MouseDragged
-        // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        JF_PatioFrontal.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_P_TopBar1MouseDragged
-
-    private void P_TopBar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBar1MousePressed
-        // TODO add your handling code here:
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_P_TopBar1MousePressed
-
     private void B_AdventureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_AdventureMouseClicked
         // TODO add your handling code here:
         /*
@@ -671,7 +546,7 @@ public class Main extends javax.swing.JFrame {
                 Jf_MenuPrincipal.setVisible(false);
                 Jf_VideoIntro.setLocationRelativeTo(Jf_MenuPrincipal);
                 Jf_VideoIntro.setVisible(true);
-                CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(JF_Tutorial, Jf_VideoIntro, 10000);//"./GameMusic\\Day_Stage.wav"
+                CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(JF_PatioFrontal, Jf_VideoIntro, 10000);//"./GameMusic\\Day_Stage.wav"
                 Timer T = new Timer(10000, null);
                 T.start();
                 T.addActionListener(new java.awt.event.ActionListener() {
@@ -686,9 +561,9 @@ public class Main extends javax.swing.JFrame {
                 Thread CambiarMain = new Thread(CPT);
                 CambiarMain.start();
             } catch (Exception e) {
-                JF_Tutorial.pack();
-                JF_Tutorial.setLocationRelativeTo(Jf_MenuPrincipal);
-                JF_Tutorial.setVisible(true);
+                JF_PatioFrontal.pack();
+                JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                JF_PatioFrontal.setVisible(true);
             }
 
         } else {
@@ -750,7 +625,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        JF_Tutorial.setLocation(x - xMouse, y - yMouse);
+        JF_PatioFrontal.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_P_TopBar3MouseDragged
 
     private void P_TopBar3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBar3MousePressed
@@ -816,19 +691,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton B_Adventure;
     private javax.swing.JLabel Fondo;
     private javax.swing.JFrame JF_PatioFrontal;
-    private javax.swing.JFrame JF_Tutorial;
-    public javax.swing.JPanel JP_PatioFrotal;
-    public javax.swing.JPanel JP_Tutorial;
+    public javax.swing.JPanel JP_PatioFrontal;
     private javax.swing.JFrame Jf_MenuPrincipal;
     private javax.swing.JFrame Jf_VideoIntro;
     private javax.swing.JPanel P_TopBar;
-    private javax.swing.JPanel P_TopBar1;
     private javax.swing.JPanel P_TopBar2;
     private javax.swing.JPanel P_TopBar3;
     private javax.swing.JPanel P_TopBar4;
     private javax.swing.JPanel P_VideoIntro;
     private javax.swing.JPanel P_X;
-    private javax.swing.JPanel P_X1;
     private javax.swing.JPanel P_X2;
     private javax.swing.JPanel P_X3;
     private javax.swing.JPanel P_X4;
@@ -836,7 +707,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel PatioFondoTuto;
     private javax.swing.JLabel Portada;
     private javax.swing.JLabel X;
-    private javax.swing.JLabel X1;
     private javax.swing.JLabel X2;
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
@@ -854,5 +724,6 @@ public class Main extends javax.swing.JFrame {
     public ArrayList<Zombi> ZFilas3 = new ArrayList();
     public ArrayList<Zombi> ZFilas4 = new ArrayList();
     public ArrayList<Zombi> ZFilas5 = new ArrayList();
+    public double multiplicador = 1;
 
 }

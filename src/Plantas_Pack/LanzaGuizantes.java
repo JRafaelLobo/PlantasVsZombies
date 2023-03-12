@@ -20,16 +20,20 @@ public class LanzaGuizantes extends Planta {
     int vida = 100;
     Main main;
 
+    public LanzaGuizantes(int x, int y, int fila, Main main) {
+        super(x, y, fila, main);
+    }
+
     @Override
     public void Attack() {
-        R = new Rectangle();
         File archivo = new File("./GameImage\\guisante.png");
         Image img = Toolkit.getDefaultToolkit().createImage(
                 archivo.getPath()).getScaledInstance(100, 100, 0);
         guisante = new javax.swing.JLabel();
         guisante.setIcon(new javax.swing.ImageIcon(img));
-        guisante.setLocation(x + 10, y + 10);
-        MovimientoDeGuisantes M = new MovimientoDeGuisantes(main, guisante, 100, multiplicador);
+        x = -10;
+        guisante.setLocation(x, y);
+        MovimientoDeGuisantes M = new MovimientoDeGuisantes(main, guisante, 100);
         Thread T = new Thread(M);
         T.start();
     }

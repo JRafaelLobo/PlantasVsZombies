@@ -1,5 +1,6 @@
 package Hilos;
 
+import Plantas_Pack.Zombi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -8,7 +9,6 @@ import plantasvszombie_joselobo.Main;
 
 public class Nivel_1 implements Runnable {
 
-    JPanel jPanelBase;
     Main main;
 
     public void run() {
@@ -19,13 +19,13 @@ public class Nivel_1 implements Runnable {
         for (int i = 0; i < 12; i++) {
             switch ((int) (Math.random() * 2)) {
                 case 0 -> {
-                    main.ZFilas2.add(e);
+                    main.ZFilas2.add(new Zombi(main, 660, 190));
                 }
                 case 1 -> {
-                    main.ZFilas2.add(e);
+                    main.ZFilas3.add(new Zombi(main, 660, 250));
                 }
                 case 2 -> {
-                    main.ZFilas2.add(e);
+                    main.ZFilas4.add(new Zombi(main, 660, 330));
                 }
             }
             if (i == 1) {

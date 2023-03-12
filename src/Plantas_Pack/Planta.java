@@ -4,12 +4,21 @@ import plantasvszombie_joselobo.Main;
 
 public class Planta implements Runnable {
 
-    protected int vida = 100, tiempoRecarga = 3000, dano = 20, tiempoDeAtaque = 1500, x, y, costo = 100;
+    protected int vida = 100, tiempoRecarga = 3000, dano = 20, tiempoDeAtaque = 1500, x, y, costo = 100, fila;
     protected double multiplicador = 1;
     protected Main main;
 
     public Planta() {
     }
+
+    public Planta(int x, int y, int fila, Main main) {
+        this.x = x;
+        this.y = y;
+        this.fila = fila;
+        this.main = main;
+    }
+
+    
 
     public int getVida() {
         return vida;

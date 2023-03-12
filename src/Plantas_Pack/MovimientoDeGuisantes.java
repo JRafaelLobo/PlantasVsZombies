@@ -13,15 +13,15 @@ public class MovimientoDeGuisantes implements Runnable {
 
     Main main;
     JLabel jlabel;
-    int max;
+    int fila, x, y;
     boolean isAlive;
-    double multiplicador;
 
-    public MovimientoDeGuisantes(Main main, JLabel jlabel, int max, double multiplicador) {
+    public MovimientoDeGuisantes(Main main, JLabel jlabel, int fila) {
         this.main = main;
         this.jlabel = jlabel;
-        this.max = max;
-        this.multiplicador = multiplicador;
+        this.fila = fila;
+        x = jlabel.getX();
+        y = jlabel.getY();
     }
 
     public JLabel getJlabel() {
@@ -32,12 +32,20 @@ public class MovimientoDeGuisantes implements Runnable {
         this.jlabel = jlabel;
     }
 
-    public int getMax() {
-        return max;
+    public Main getMain() {
+        return main;
     }
 
-    public void setMax(int max) {
-        this.max = max;
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
     }
 
     public boolean isIsAlive() {
@@ -50,21 +58,22 @@ public class MovimientoDeGuisantes implements Runnable {
 
     @Override
     public void run() {
-        jPanelBase.add(jlabel);
-        Rectangle R = new Rectangle();
-        main.ZFilas1.get(0);
+        main.JP_PatioFrontal.add(jlabel);
+        Rectangle Rguisante = new Rectangle(x, y, 10, 10);
+        Rectangle Rzombi = new Rectangle(main.ZFilas2.get(0).x, main.ZFilas2.get(0).y, 10, 10);
         while (isAlive) {
-            jlabel.setLocation(jlabel.getX() + 1, jlabel.getY());
-            R.setLocation(jlabel.getX(), jlabel.getY());
-            if (R.intersects(R)) {
+            x++;
+            jlabel.setLocation(x, y);
+            Rguisante.setLocation(x, y);
+            if (Rguisante.intersects(Rzombi)) {
                 isAlive = false;
             }
             try {
-                Thread.sleep((long) (5000 * multiplicador));
+                Thread.sleep((long) (5000 * main.multiplicador));
             } catch (InterruptedException ex) {
-                Logger.getLogger(MovimientoDeGuisantes.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        Rguisante = null;
         jlabel = null;
     }
 
