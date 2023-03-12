@@ -76,7 +76,7 @@ public class Reproductor {
         }
     }
 
-    public void mostrarVideo() {
+    public void mostrarVideo(int veces) {
         try {
             int x = this.jpanel.getHeight();
             int y = this.jpanel.getWidth();
@@ -85,17 +85,20 @@ public class Reproductor {
             this.media = new Media(this.file.toURI().toString());
             this.mediaPlayer = new MediaPlayer(media);
             this.mediaView = new MediaView(mediaPlayer);
-            
+
             this.mediaView.setFitHeight(x);
             this.mediaView.setFitWidth(y);
-            
+
             this.escena = new Scene(new Group(this.mediaView));
             this.jpanel.setSize(this.jpanel.getSize());
             this.jfxpanel.setScene(this.escena);
-            
-            this.getMediaPlayer().setCycleCount(MediaPlayer.INDEFINITE);
-            
-            this.jpanel.add(this.jfxpanel,BorderLayout.CENTER);
+
+            if (veces == -1) {
+                this.getMediaPlayer().setCycleCount(MediaPlayer.INDEFINITE);
+            } else {
+                this.getMediaPlayer().setCycleCount(veces);
+            }
+            this.jpanel.add(this.jfxpanel, BorderLayout.CENTER);
 
         } catch (MediaException e) {
             System.out.println("Error: ");
