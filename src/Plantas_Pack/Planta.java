@@ -18,8 +18,6 @@ public class Planta implements Runnable {
         this.main = main;
     }
 
-    
-
     public int getVida() {
         return vida;
     }

@@ -555,6 +555,9 @@ public class Main extends javax.swing.JFrame {
                         Music = playMusic("./GameMusic\\Day_Stage.wav");
                         Music.start();
                         Music.loop(Clip.LOOP_CONTINUOUSLY);
+                        Nivel_1 N1 = new Nivel_1(Main.this);
+                        Thread TN1 = new Thread(N1);
+                        TN1.start();
                         T.stop();
                     }
                 });

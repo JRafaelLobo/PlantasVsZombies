@@ -1,15 +1,19 @@
 package Hilos;
 
 import Plantas_Pack.Zombi;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import plantasvszombie_joselobo.Main;
+import plantasvszombie_joselobo.Partida;
 
-public class Nivel_1 implements Runnable {
+public class Nivel_1 extends Partida implements Runnable {
 
-    Main main;
+    public Nivel_1(Main main) {
+        super(main);
+    }
 
     public void run() {
         try {
@@ -20,12 +24,18 @@ public class Nivel_1 implements Runnable {
             switch ((int) (Math.random() * 2)) {
                 case 0 -> {
                     main.ZFilas2.add(new Zombi(main, 660, 190));
+                    hilosDeZombis2.add(new Thread(main.ZFilas2.get(main.ZFilas2.size() - 1)));
+                    hilosDeZombis2.get(hilosDeZombis2.size() - 1).start();
                 }
                 case 1 -> {
                     main.ZFilas3.add(new Zombi(main, 660, 250));
+                    hilosDeZombis3.add(new Thread(main.ZFilas3.get(main.ZFilas3.size() - 1)));
+                    hilosDeZombis3.get(hilosDeZombis3.size() - 1).start();
                 }
                 case 2 -> {
                     main.ZFilas4.add(new Zombi(main, 660, 330));
+                    hilosDeZombis4.add(new Thread(main.ZFilas4.get(main.ZFilas4.size() - 1)));
+                    hilosDeZombis4.get(hilosDeZombis4.size() - 1).start();
                 }
             }
             if (i == 1) {
