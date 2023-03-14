@@ -25,11 +25,12 @@ public class Nivel_1 extends Partida {
             Thread.sleep((long) (200 * main.multiplicador));//35000
         } catch (InterruptedException ex) {
         }
-        LanzaGuizantes LG = new LanzaGuizantes(650, 130, 2, main);
+        LanzaGuizantes LG = new LanzaGuizantes(100, 130, 2, main);
+        LG.start();
         for (int i = 0; i < 12; i++) {
             switch (((random.nextInt(3)))) {
                 case 0 -> {
-                    main.ZFilas2.add(new ZombiNormal(main, 650, 130));
+                    main.ZFilas2.add(new ZombiNormal(main, 650, 140));
                     main.ZFilas2.get(main.ZFilas2.size() - 1).start();
                 }
                 case 1 -> {

@@ -3,6 +3,7 @@ package Plantas_Pack;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import javax.swing.JLabel;
 import plantasvszombie_joselobo.Main;
 
 public class ZombiNormal extends Zombi {
@@ -42,4 +43,69 @@ public class ZombiNormal extends Zombi {
         }
 
     }
+
+    public Main getMain() {
+        return main;
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public int getDano() {
+        return dano;
+    }
+
+    public void setDano(int dano) {
+        this.dano = dano;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public int getTiempoDeAtaque() {
+        return tiempoDeAtaque;
+    }
+
+    public void setTiempoDeAtaque(int tiempoDeAtaque) {
+        this.tiempoDeAtaque = tiempoDeAtaque;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public JLabel getLabel() {
+        return label;
+    }
+
+    public void setLabel(JLabel label) {
+        this.label = label;
+    }
+    
 }

@@ -1,6 +1,7 @@
 package Plantas_Pack;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
 import java.util.logging.Level;
@@ -12,6 +13,7 @@ public class Zombi extends Thread {
     protected Main main;
     protected int vida = 200, dano = 20, velocidad = 250, tiempoDeAtaque, x, y;
     protected javax.swing.JLabel label;
+    Rectangle Rzombihitbox;
 
     public Zombi() {
     }
@@ -20,6 +22,7 @@ public class Zombi extends Thread {
         this.x = x;
         this.y = y;
         this.main = main;
+        Rzombihitbox = new Rectangle(x, y, 70, 70);
     }
 
     @Override
@@ -28,7 +31,7 @@ public class Zombi extends Thread {
             x--;
             label.setLocation(x, y);
             try {
-                Thread.sleep((long) (velocidad*main.multiplicador));
+                Thread.sleep((long) (velocidad * main.multiplicador));
             } catch (InterruptedException ex) {
             }
         }

@@ -17,7 +17,7 @@ public class Guizante extends Thread {
     Main main;
     JLabel guisante;
     int fila, x, y;
-    boolean isAlive;
+    boolean isAlive = true;
 
     public Guizante(Main main, int fila, int x, int y) {
         this.main = main;
@@ -65,12 +65,11 @@ public class Guizante extends Thread {
     @Override
     public void run() {
         Rectangle Rguisante = new Rectangle(x, y, 10, 10);
-        Rectangle Rzombi = new Rectangle(main.ZFilas2.get(0).x, main.ZFilas2.get(0).y, 10, 10);
         while (isAlive) {
             x++;
             guisante.setLocation(x, y);
             Rguisante.setLocation(x, y);
-            if (Rguisante.intersects(Rzombi)) {
+            if (Rguisante.intersects(main.ZFilas2.get(0).Rzombihitbox)) {
                 isAlive = false;
             }
             try {

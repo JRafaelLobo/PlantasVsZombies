@@ -46,13 +46,13 @@ public class Main extends javax.swing.JFrame {
         P_X4 = new javax.swing.JPanel();
         X4 = new javax.swing.JLabel();
         JF_PatioFrontal = new javax.swing.JFrame();
-        jPanel2 = new javax.swing.JPanel();
+        JP_Soles = new javax.swing.JPanel();
         JP_PatioFrontal = new javax.swing.JPanel();
         P_TopBar3 = new javax.swing.JPanel();
         P_X3 = new javax.swing.JPanel();
         X3 = new javax.swing.JLabel();
-        FondoNormal = new Fondo("/Fondos/FondoPatio.png");
-        FondoTuto = new Fondo("/Fondos/backlvl2.jpeg");
+        FondoNormal = new Fondo("/.GameImage\\FondoPatioRecortadapng.png");
+        FondoTuto = new Fondo("./GameImage\\backlvl2reajustada.jpeg");
         jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
@@ -289,9 +289,9 @@ public class Main extends javax.swing.JFrame {
         JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        JF_PatioFrontal.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+        JP_Soles.setOpaque(false);
+        JP_Soles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JF_PatioFrontal.getContentPane().add(JP_Soles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
 
         JP_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
         JP_PatioFrontal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -374,14 +374,14 @@ public class Main extends javax.swing.JFrame {
         FondoNormal.setLayout(FondoNormalLayout);
         FondoNormalLayout.setHorizontalGroup(
             FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         FondoNormalLayout.setVerticalGroup(
             FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
-        JF_PatioFrontal.getContentPane().add(FondoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 450));
+        JF_PatioFrontal.getContentPane().add(FondoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
 
         FondoTuto.setMaximumSize(new java.awt.Dimension(640, 400));
         FondoTuto.setMinimumSize(new java.awt.Dimension(640, 400));
@@ -391,14 +391,14 @@ public class Main extends javax.swing.JFrame {
         FondoTuto.setLayout(FondoTutoLayout);
         FondoTutoLayout.setHorizontalGroup(
             FondoTutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
         FondoTutoLayout.setVerticalGroup(
             FondoTutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
-        JF_PatioFrontal.getContentPane().add(FondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 450));
+        JF_PatioFrontal.getContentPane().add(FondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -754,6 +754,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel FondoTuto;
     private javax.swing.JFrame JF_PatioFrontal;
     public javax.swing.JPanel JP_PatioFrontal;
+    private javax.swing.JPanel JP_Soles;
     private javax.swing.JFrame Jf_MenuPrincipal;
     private javax.swing.JFrame Jf_VideoIntro;
     private javax.swing.JPanel P_TopBar;
@@ -772,7 +773,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel X4;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
@@ -799,7 +799,7 @@ public class Main extends javax.swing.JFrame {
         private Image imagen;
 
         public void paint(Graphics g) {
-            imagen = new ImageIcon(getClass().getResource(direccion)).getImage();
+            imagen = new ImageIcon(direccion).getImage();
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
             super.paint(g);
