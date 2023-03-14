@@ -1,6 +1,9 @@
 package Plantas_Pack;
 
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.io.File;
 import static java.nio.file.Files.delete;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,27 +12,30 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import plantasvszombie_joselobo.Main;
 
-public class MovimientoDeGuisantes implements Runnable {
+public class Guizante extends Thread {
 
     Main main;
-    JLabel jlabel;
+    JLabel guisante;
     int fila, x, y;
     boolean isAlive;
 
-    public MovimientoDeGuisantes(Main main, JLabel jlabel, int fila) {
+    public Guizante(Main main, int fila, int x, int y) {
         this.main = main;
-        this.jlabel = jlabel;
         this.fila = fila;
-        x = jlabel.getX();
-        y = jlabel.getY();
-    }
+        guisante = new javax.swing.JLabel();
+        try {
+            File archivo = new File("./GameImage\\guisante.png");
+            Image img = Toolkit.getDefaultToolkit().createImage(
+                    archivo.getPath()).getScaledInstance(10, 10, 0);
+            guisante.setIcon(new javax.swing.ImageIcon(img));
+        } catch (Exception e) {
+        }
+        x += 10;
+        guisante.setLocation(x, y);
+        main.JP_PatioFrontal.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));//aqui el error
+        guisante.setText(" ");
+        guisante.setOpaque(false);
 
-    public JLabel getJlabel() {
-        return jlabel;
-    }
-
-    public void setJlabel(JLabel jlabel) {
-        this.jlabel = jlabel;
     }
 
     public Main getMain() {
@@ -58,23 +64,22 @@ public class MovimientoDeGuisantes implements Runnable {
 
     @Override
     public void run() {
-        main.JP_PatioFrontal.add(jlabel);
         Rectangle Rguisante = new Rectangle(x, y, 10, 10);
         Rectangle Rzombi = new Rectangle(main.ZFilas2.get(0).x, main.ZFilas2.get(0).y, 10, 10);
         while (isAlive) {
             x++;
-            jlabel.setLocation(x, y);
+            guisante.setLocation(x, y);
             Rguisante.setLocation(x, y);
             if (Rguisante.intersects(Rzombi)) {
                 isAlive = false;
             }
             try {
-                Thread.sleep((long) (5000 * main.multiplicador));
+                Thread.sleep((long) (100 * main.multiplicador));
             } catch (InterruptedException ex) {
             }
         }
         Rguisante = null;
-        jlabel = null;
+        guisante = null;
     }
 
 }

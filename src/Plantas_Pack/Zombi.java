@@ -7,39 +7,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import plantasvszombie_joselobo.Main;
 
-public class Zombi implements Runnable {
-    
+public class Zombi extends Thread {
+
     protected Main main;
-    protected int vida = 200, dano = 20, tiempoDeAtaque, x, y;
-    javax.swing.JLabel label;
-    
+    protected int vida = 200, dano = 20, velocidad = 250, tiempoDeAtaque, x, y;
+    protected javax.swing.JLabel label;
+
     public Zombi() {
     }
-    
+
     public Zombi(Main main, int x, int y) {
         this.x = x;
         this.y = y;
-        File archivo = new File("./GameImage\\ZombiNormal.gif");
-        Image img = Toolkit.getDefaultToolkit().createImage(
-                archivo.getPath()).getScaledInstance(100, 100, 0);
-        label = new javax.swing.JLabel();
-        label.setIcon(new javax.swing.ImageIcon(img));
-        main.JP_PatioFrontal.add(label);
         this.main = main;
-        this.x = x;
-        this.y = y;
     }
-    
+
     @Override
     public void run() {
         while (true) {
             x--;
             label.setLocation(x, y);
             try {
-                Thread.sleep(1000);
+                Thread.sleep((long) (velocidad*main.multiplicador));
             } catch (InterruptedException ex) {
             }
         }
-        
+
     }
 }

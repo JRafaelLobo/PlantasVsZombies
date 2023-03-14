@@ -2,10 +2,9 @@ package Plantas_Pack;
 
 import plantasvszombie_joselobo.Main;
 
-public class Planta implements Runnable {
+public class Planta extends Thread {
 
     protected int vida = 100, tiempoRecarga = 3000, dano = 20, tiempoDeAtaque = 1500, x, y, costo = 100, fila;
-    protected double multiplicador = 1;
     protected Main main;
 
     public Planta() {
@@ -72,14 +71,6 @@ public class Planta implements Runnable {
 
     public void setCosto(int costo) {
         this.costo = costo;
-    }
-
-    public double getMultiplicador() {
-        return multiplicador;
-    }
-
-    public void setMultiplicador(double multiplicador) {
-        this.multiplicador = multiplicador;
     }
 
     public Main getMain() {

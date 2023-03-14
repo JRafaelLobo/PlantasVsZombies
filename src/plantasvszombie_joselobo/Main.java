@@ -3,6 +3,9 @@ package plantasvszombie_joselobo;
 import Hilos.*;
 import Plantas_Pack.*;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.ArrayList;
@@ -43,12 +46,14 @@ public class Main extends javax.swing.JFrame {
         P_X4 = new javax.swing.JPanel();
         X4 = new javax.swing.JLabel();
         JF_PatioFrontal = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
         JP_PatioFrontal = new javax.swing.JPanel();
         P_TopBar3 = new javax.swing.JPanel();
         P_X3 = new javax.swing.JPanel();
         X3 = new javax.swing.JLabel();
-        PatioFondoTuto = new javax.swing.JLabel();
-        PatioFondo = new javax.swing.JLabel();
+        FondoNormal = new Fondo("/Fondos/FondoPatio.png");
+        FondoTuto = new Fondo("/Fondos/backlvl2.jpeg");
+        jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
         P_X = new javax.swing.JPanel();
@@ -275,11 +280,18 @@ public class Main extends javax.swing.JFrame {
         JF_PatioFrontal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         JF_PatioFrontal.setTitle("Plantas VS Zombies");
         JF_PatioFrontal.setLocationByPlatform(true);
+        JF_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setMinimumSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setName("MainFrame"); // NOI18N
         JF_PatioFrontal.setUndecorated(true);
+        JF_PatioFrontal.setPreferredSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setResizable(false);
         JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
+        JF_PatioFrontal.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JF_PatioFrontal.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
 
         JP_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
         JP_PatioFrontal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -352,21 +364,51 @@ public class Main extends javax.swing.JFrame {
 
         JP_PatioFrontal.add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
-        PatioFondoTuto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/backlvl2.jpeg"))); // NOI18N
-        JP_PatioFrontal.add(PatioFondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+        JF_PatioFrontal.getContentPane().add(JP_PatioFrontal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
 
-        PatioFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/FondoPatio.png"))); // NOI18N
-        JP_PatioFrontal.add(PatioFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 30, -1, -1));
+        FondoNormal.setMaximumSize(new java.awt.Dimension(640, 400));
+        FondoNormal.setMinimumSize(new java.awt.Dimension(640, 400));
+        FondoNormal.setPreferredSize(new java.awt.Dimension(640, 400));
 
-        javax.swing.GroupLayout JF_PatioFrontalLayout = new javax.swing.GroupLayout(JF_PatioFrontal.getContentPane());
-        JF_PatioFrontal.getContentPane().setLayout(JF_PatioFrontalLayout);
-        JF_PatioFrontalLayout.setHorizontalGroup(
-            JF_PatioFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_PatioFrontal, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout FondoNormalLayout = new javax.swing.GroupLayout(FondoNormal);
+        FondoNormal.setLayout(FondoNormalLayout);
+        FondoNormalLayout.setHorizontalGroup(
+            FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
-        JF_PatioFrontalLayout.setVerticalGroup(
-            JF_PatioFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_PatioFrontal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        FondoNormalLayout.setVerticalGroup(
+            FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        JF_PatioFrontal.getContentPane().add(FondoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 450));
+
+        FondoTuto.setMaximumSize(new java.awt.Dimension(640, 400));
+        FondoTuto.setMinimumSize(new java.awt.Dimension(640, 400));
+        FondoTuto.setPreferredSize(new java.awt.Dimension(640, 400));
+
+        javax.swing.GroupLayout FondoTutoLayout = new javax.swing.GroupLayout(FondoTuto);
+        FondoTuto.setLayout(FondoTutoLayout);
+        FondoTutoLayout.setHorizontalGroup(
+            FondoTutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        FondoTutoLayout.setVerticalGroup(
+            FondoTutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        JF_PatioFrontal.getContentPane().add(FondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 450));
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -470,6 +512,7 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void P_TopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBarMousePressed
         // TODO add your handling code here:
         xMouse = evt.getX();
@@ -532,11 +575,13 @@ public class Main extends javax.swing.JFrame {
          */
         usuario.setPrimeraVez(true);
         if (usuario.isPrimeraVez()) {
-            PatioFondoTuto.setVisible(true);
-            PatioFondo.setVisible(false);
+            //PatioFondoTuto.setVisible(true);
+            //PatioFondo.setVisible(false);
             Music.stop();
+            //prueba
 
             try {
+                Integer.parseInt("a");/*
                 video = new Reproductor();
                 this.video.setJpanel(P_VideoIntro);
                 this.video.setRuta("GameVideo\\VideoIntro.mp4");
@@ -544,8 +589,11 @@ public class Main extends javax.swing.JFrame {
                 this.video.reproducir();
                 Jf_VideoIntro.pack();
                 Jf_MenuPrincipal.setVisible(false);
+                 */ //fin
+                /*
                 Jf_VideoIntro.setLocationRelativeTo(Jf_MenuPrincipal);
                 Jf_VideoIntro.setVisible(true);
+                
                 CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(JF_PatioFrontal, Jf_VideoIntro, 10000);//"./GameMusic\\Day_Stage.wav"
                 Timer T = new Timer(10000, null);
                 T.start();
@@ -563,15 +611,25 @@ public class Main extends javax.swing.JFrame {
                 });
                 Thread CambiarMain = new Thread(CPT);
                 CambiarMain.start();
+                 */
             } catch (Exception e) {
+                Music = playMusic("./GameMusic\\Day_Stage.wav");
+                Music.start();
+                Music.loop(Clip.LOOP_CONTINUOUSLY);
                 JF_PatioFrontal.pack();
                 JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                Jf_MenuPrincipal.setVisible(false);
                 JF_PatioFrontal.setVisible(true);
+                JP_PatioFrontal.setOpaque(false);
+                FondoNormal.hide();
+                Nivel_1 N1 = new Nivel_1(Main.this);
+                N1.start();
+                //JF_PatioFrontal.setVisible(true);
             }
 
         } else {
-            PatioFondoTuto.setVisible(true);
-            PatioFondo.setVisible(false);
+            //PatioFondoTuto.setVisible(true);
+            //PatioFondo.setVisible(false);
             Music.stop();
             JF_PatioFrontal.pack();
             Jf_MenuPrincipal.setVisible(false);
@@ -688,11 +746,12 @@ public class Main extends javax.swing.JFrame {
         return null;
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AbsoluteLayout_MenuPrincipal;
     private javax.swing.JButton B_Adventure;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JPanel FondoNormal;
+    private javax.swing.JPanel FondoTuto;
     private javax.swing.JFrame JF_PatioFrontal;
     public javax.swing.JPanel JP_PatioFrontal;
     private javax.swing.JFrame Jf_MenuPrincipal;
@@ -706,14 +765,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel P_X2;
     private javax.swing.JPanel P_X3;
     private javax.swing.JPanel P_X4;
-    private javax.swing.JLabel PatioFondo;
-    private javax.swing.JLabel PatioFondoTuto;
     private javax.swing.JLabel Portada;
     private javax.swing.JLabel X;
     private javax.swing.JLabel X2;
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
@@ -727,6 +786,23 @@ public class Main extends javax.swing.JFrame {
     public ArrayList<Zombi> ZFilas3 = new ArrayList();
     public ArrayList<Zombi> ZFilas4 = new ArrayList();
     public ArrayList<Zombi> ZFilas5 = new ArrayList();
-    public double multiplicador = 1;
+    public double multiplicador = .6;
 
+    //clase dentro de otra clase, nunca pense que lo iba a utilizar pero ya pos
+    class Fondo extends JPanel {
+
+        public Fondo(String direccion) {
+            this.direccion = direccion;
+        }
+
+        private String direccion;
+        private Image imagen;
+
+        public void paint(Graphics g) {
+            imagen = new ImageIcon(getClass().getResource(direccion)).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+    }
 }

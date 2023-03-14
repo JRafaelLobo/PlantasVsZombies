@@ -2,7 +2,7 @@ package plantasvszombie_joselobo;
 
 import java.util.ArrayList;
 
-public class Partida {
+public class Partida extends Thread {
 
     protected Main main;
     protected ArrayList<Thread> hilosDeZombis1 = new ArrayList();
