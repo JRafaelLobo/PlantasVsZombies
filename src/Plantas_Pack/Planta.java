@@ -2,22 +2,23 @@ package Plantas_Pack;
 
 import java.awt.Rectangle;
 import plantasvszombie_joselobo.Main;
+import plantasvszombie_joselobo.Partida;
 
 public class Planta extends Thread {
 
     protected int vida = 100, tiempoRecarga = 3000, dano = 20, tiempoDeAtaque = 1500, x, y, costo = 100, fila;
     protected Main main;
-    Rectangle RLanzaguisantesHitbox;
+    Rectangle RPlantaHitbox;
+    Partida partida;
 
-    public Planta() {
-    }
-
-    public Planta(int x, int y, int fila, Main main) {
+    public Planta(int x, int y, int fila, Main main, Partida partida) {
         this.x = x;
         this.y = y;
         this.fila = fila;
         this.main = main;
-        RLanzaguisantesHitbox = new Rectangle(x, y, 70, 70);
+        this.partida = partida;
+        this.RPlantaHitbox = new Rectangle(x, y, 70, 70);
+
     }
 
     public int getVida() {
@@ -96,17 +97,20 @@ public class Planta extends Thread {
         this.fila = fila;
     }
 
-    public Rectangle getRLanzaguisantesHitbox() {
-        return RLanzaguisantesHitbox;
+    public Rectangle getRPlantaHitbox() {
+        return RPlantaHitbox;
     }
 
-    public void setRLanzaguisantesHitbox(Rectangle RLanzaguisantesHitbox) {
-        this.RLanzaguisantesHitbox = RLanzaguisantesHitbox;
+    public void setRPlantaHitbox(Rectangle RPlantaHitbox) {
+        this.RPlantaHitbox = RPlantaHitbox;
     }
 
     @Override
     public void run() {
 
+    }
+
+    public void build() {
     }
 
 }

@@ -4,15 +4,12 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.JLabel;
-import plantasvszombie_joselobo.Main;
+import plantasvszombie_joselobo.*;
 
 public class ZombiNormal extends Zombi {
 
-    public ZombiNormal() {
-    }
-
-    public ZombiNormal(Main main, int x, int y) {
-        super(main, x, y);
+    public ZombiNormal(Main main, Partida partida, int x, int y, int fila) {
+        super(main, partida, x, y, fila);
         File archivo = null;
         Image img = null;
         label = new javax.swing.JLabel();
@@ -24,22 +21,33 @@ public class ZombiNormal extends Zombi {
         } catch (Exception e) {
             System.out.println("No se Encuentra Imagen de Zombi");
         }
-        label.setLocation(x, y);
-        main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));//aqui el error
-        label.setText(" ");
         label.setOpaque(false);
+        label.setLocation(x, y);
+        main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        label.setText(" ");
 
     }
 
     @Override
     public void run() {
-        while (true) {
+        System.out.println(partida.getfilaZombis(fila));
+        while (vida > 0) {
             x--;
             label.setLocation(x, y);
+            Rzombihitbox.setLocation(x, y);
+            while (Rzombihitbox.intersects) {
+
+            }
             try {
                 Thread.sleep((long) (velocidad * main.multiplicador));
             } catch (InterruptedException ex) {
             }
+        }
+        try {
+            partida.getfilaZombis(fila).set(0, null);
+            partida.getfilaZombis(fila).remove(0);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Ya no hay mas zombies en la fila: " + fila);
         }
 
     }
@@ -107,5 +115,12 @@ public class ZombiNormal extends Zombi {
     public void setLabel(JLabel label) {
         this.label = label;
     }
-    
+
+    private boolean TestNear() {
+        boolean temp = false;
+        for (int i = 0; i < 10; i++) {
+            if(partida.getfilaPlanta(fila)[i].)
+        }
+    }
+
 }

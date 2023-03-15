@@ -1,5 +1,6 @@
 package plantasvszombie_joselobo;
 
+import Niveles.Nivel_1;
 import Hilos.*;
 import Plantas_Pack.*;
 import java.awt.Color;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.TimerTask;
 import javax.sound.sampled.*;
 import javax.swing.*;
+import javafx.event.*;
 
 public class Main extends javax.swing.JFrame {
 
@@ -37,8 +39,9 @@ public class Main extends javax.swing.JFrame {
         P_TopBar2 = new javax.swing.JPanel();
         P_X2 = new javax.swing.JPanel();
         X2 = new javax.swing.JLabel();
-        Fondo = new javax.swing.JLabel();
+        FondoMenuPrincipal = new javax.swing.JLabel();
         B_Adventure = new javax.swing.JButton();
+        B_QUIT = new javax.swing.JButton();
         Jf_VideoIntro = new javax.swing.JFrame();
         jPanel5 = new javax.swing.JPanel();
         P_VideoIntro = new javax.swing.JPanel();
@@ -46,14 +49,26 @@ public class Main extends javax.swing.JFrame {
         P_X4 = new javax.swing.JPanel();
         X4 = new javax.swing.JLabel();
         JF_PatioFrontal = new javax.swing.JFrame();
-        JP_Soles = new javax.swing.JPanel();
-        JP_PatioFrontal = new javax.swing.JPanel();
+        JP_PanelPlantas = new javax.swing.JPanel();
+        P_Carta5 = new javax.swing.JPanel();
+        P_Carta6 = new javax.swing.JPanel();
+        P_Carta7 = new javax.swing.JPanel();
+        P_Carta8 = new javax.swing.JPanel();
+        JP_ImagenCartas = new Fondo("./GameImage\\PanelPlantas.png");
+        lb_CantSoles = new javax.swing.JLabel();
         P_TopBar3 = new javax.swing.JPanel();
         P_X3 = new javax.swing.JPanel();
         X3 = new javax.swing.JLabel();
+        JP_Soles = new javax.swing.JPanel();
+        JP_PatioFrontal = new javax.swing.JPanel();
         FondoNormal = new Fondo("/.GameImage\\FondoPatioRecortadapng.png");
         FondoTuto = new Fondo("./GameImage\\backlvl2reajustada.jpeg");
         jFrame1 = new javax.swing.JFrame();
+        JP_PanelPlantastest = new Fondo("/.GameImage\\PanelPlantas.png");
+        P_Carta2 = new javax.swing.JPanel();
+        P_Carta3 = new javax.swing.JPanel();
+        P_Carta4 = new javax.swing.JPanel();
+        P_Carta1 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
         P_X = new javax.swing.JPanel();
@@ -145,8 +160,8 @@ public class Main extends javax.swing.JFrame {
 
         AbsoluteLayout_MenuPrincipal.add(P_TopBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Menu.jpg"))); // NOI18N
-        AbsoluteLayout_MenuPrincipal.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+        FondoMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Menu.jpg"))); // NOI18N
+        AbsoluteLayout_MenuPrincipal.add(FondoMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
         B_Adventure.setText("Adventure");
         B_Adventure.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,6 +170,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         AbsoluteLayout_MenuPrincipal.add(B_Adventure, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 260, 80));
+
+        B_QUIT.setText("QUIT");
+        B_QUIT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_QUITMouseClicked(evt);
+            }
+        });
+        AbsoluteLayout_MenuPrincipal.add(B_QUIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 363, 70, 80));
 
         javax.swing.GroupLayout Jf_MenuPrincipalLayout = new javax.swing.GroupLayout(Jf_MenuPrincipal.getContentPane());
         Jf_MenuPrincipal.getContentPane().setLayout(Jf_MenuPrincipalLayout);
@@ -280,21 +303,101 @@ public class Main extends javax.swing.JFrame {
         JF_PatioFrontal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         JF_PatioFrontal.setTitle("Plantas VS Zombies");
         JF_PatioFrontal.setLocationByPlatform(true);
-        JF_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setMinimumSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setName("MainFrame"); // NOI18N
         JF_PatioFrontal.setUndecorated(true);
-        JF_PatioFrontal.setPreferredSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.setResizable(false);
         JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JP_Soles.setOpaque(false);
-        JP_Soles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        JF_PatioFrontal.getContentPane().add(JP_Soles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+        JP_PanelPlantas.setMaximumSize(new java.awt.Dimension(380, 70));
+        JP_PanelPlantas.setMinimumSize(new java.awt.Dimension(380, 70));
+        JP_PanelPlantas.setName(""); // NOI18N
+        JP_PanelPlantas.setPreferredSize(new java.awt.Dimension(380, 70));
+        JP_PanelPlantas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JP_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
-        JP_PatioFrontal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        P_Carta5.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta5Layout = new javax.swing.GroupLayout(P_Carta5);
+        P_Carta5.setLayout(P_Carta5Layout);
+        P_Carta5Layout.setHorizontalGroup(
+            P_Carta5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta5Layout.setVerticalGroup(
+            P_Carta5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_Carta5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 40, 50));
+
+        P_Carta6.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta6Layout = new javax.swing.GroupLayout(P_Carta6);
+        P_Carta6.setLayout(P_Carta6Layout);
+        P_Carta6Layout.setHorizontalGroup(
+            P_Carta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta6Layout.setVerticalGroup(
+            P_Carta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_Carta6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, 50));
+
+        P_Carta7.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta7Layout = new javax.swing.GroupLayout(P_Carta7);
+        P_Carta7.setLayout(P_Carta7Layout);
+        P_Carta7Layout.setHorizontalGroup(
+            P_Carta7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta7Layout.setVerticalGroup(
+            P_Carta7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_Carta7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 40, 50));
+
+        P_Carta8.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta8Layout = new javax.swing.GroupLayout(P_Carta8);
+        P_Carta8.setLayout(P_Carta8Layout);
+        P_Carta8Layout.setHorizontalGroup(
+            P_Carta8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta8Layout.setVerticalGroup(
+            P_Carta8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_Carta8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, 50));
+
+        lb_CantSoles.setText("Soles");
+
+        javax.swing.GroupLayout JP_ImagenCartasLayout = new javax.swing.GroupLayout(JP_ImagenCartas);
+        JP_ImagenCartas.setLayout(JP_ImagenCartasLayout);
+        JP_ImagenCartasLayout.setHorizontalGroup(
+            JP_ImagenCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_ImagenCartasLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lb_CantSoles)
+                .addContainerGap(337, Short.MAX_VALUE))
+        );
+        JP_ImagenCartasLayout.setVerticalGroup(
+            JP_ImagenCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_ImagenCartasLayout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addComponent(lb_CantSoles)
+                .addContainerGap())
+        );
+
+        JP_PanelPlantas.add(JP_ImagenCartas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 70));
+
+        JF_PatioFrontal.getContentPane().add(JP_PanelPlantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 380, 70));
 
         P_TopBar3.setBackground(new java.awt.Color(0, 0, 0));
         P_TopBar3.setForeground(new java.awt.Color(153, 255, 153));
@@ -362,8 +465,14 @@ public class Main extends javax.swing.JFrame {
             .addComponent(P_X3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        JP_PatioFrontal.add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
+        JF_PatioFrontal.getContentPane().add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
+        JP_Soles.setOpaque(false);
+        JP_Soles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JF_PatioFrontal.getContentPane().add(JP_Soles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+
+        JP_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
+        JP_PatioFrontal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JF_PatioFrontal.getContentPane().add(JP_PatioFrontal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
 
         FondoNormal.setMaximumSize(new java.awt.Dimension(640, 400));
@@ -400,15 +509,81 @@ public class Main extends javax.swing.JFrame {
 
         JF_PatioFrontal.getContentPane().add(FondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
 
+        JP_PanelPlantastest.setMaximumSize(new java.awt.Dimension(544, 100));
+        JP_PanelPlantastest.setMinimumSize(new java.awt.Dimension(544, 100));
+        JP_PanelPlantastest.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        P_Carta2.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta2Layout = new javax.swing.GroupLayout(P_Carta2);
+        P_Carta2.setLayout(P_Carta2Layout);
+        P_Carta2Layout.setHorizontalGroup(
+            P_Carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta2Layout.setVerticalGroup(
+            P_Carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantastest.add(P_Carta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 40, 50));
+
+        P_Carta3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta3Layout = new javax.swing.GroupLayout(P_Carta3);
+        P_Carta3.setLayout(P_Carta3Layout);
+        P_Carta3Layout.setHorizontalGroup(
+            P_Carta3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta3Layout.setVerticalGroup(
+            P_Carta3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantastest.add(P_Carta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, 50));
+
+        P_Carta4.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta4Layout = new javax.swing.GroupLayout(P_Carta4);
+        P_Carta4.setLayout(P_Carta4Layout);
+        P_Carta4Layout.setHorizontalGroup(
+            P_Carta4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta4Layout.setVerticalGroup(
+            P_Carta4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantastest.add(P_Carta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 40, 50));
+
+        P_Carta1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout P_Carta1Layout = new javax.swing.GroupLayout(P_Carta1);
+        P_Carta1.setLayout(P_Carta1Layout);
+        P_Carta1Layout.setHorizontalGroup(
+            P_Carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        P_Carta1Layout.setVerticalGroup(
+            P_Carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantastest.add(P_Carta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, 50));
+
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(JP_PanelPlantastest, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addComponent(JP_PanelPlantastest, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 204, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -621,7 +796,8 @@ public class Main extends javax.swing.JFrame {
                 Jf_MenuPrincipal.setVisible(false);
                 JF_PatioFrontal.setVisible(true);
                 JP_PatioFrontal.setOpaque(false);
-                FondoNormal.hide();
+                FondoNormal.setVisible(false);
+                FondoTuto.setVisible(true);
                 Nivel_1 N1 = new Nivel_1(Main.this);
                 N1.start();
                 //JF_PatioFrontal.setVisible(true);
@@ -636,6 +812,7 @@ public class Main extends javax.swing.JFrame {
             JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
             Music.stop();
             JF_PatioFrontal.setVisible(true);
+
         }
     }//GEN-LAST:event_B_AdventureMouseClicked
 
@@ -695,6 +872,11 @@ public class Main extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_P_TopBar3MousePressed
 
+    private void B_QUITMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_QUITMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_B_QUITMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -749,14 +931,26 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AbsoluteLayout_MenuPrincipal;
     private javax.swing.JButton B_Adventure;
-    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton B_QUIT;
+    private javax.swing.JLabel FondoMenuPrincipal;
     private javax.swing.JPanel FondoNormal;
     private javax.swing.JPanel FondoTuto;
     private javax.swing.JFrame JF_PatioFrontal;
+    private javax.swing.JPanel JP_ImagenCartas;
+    public javax.swing.JPanel JP_PanelPlantas;
+    private javax.swing.JPanel JP_PanelPlantastest;
     public javax.swing.JPanel JP_PatioFrontal;
-    private javax.swing.JPanel JP_Soles;
+    public javax.swing.JPanel JP_Soles;
     private javax.swing.JFrame Jf_MenuPrincipal;
     private javax.swing.JFrame Jf_VideoIntro;
+    private javax.swing.JPanel P_Carta1;
+    private javax.swing.JPanel P_Carta2;
+    private javax.swing.JPanel P_Carta3;
+    private javax.swing.JPanel P_Carta4;
+    private javax.swing.JPanel P_Carta5;
+    private javax.swing.JPanel P_Carta6;
+    private javax.swing.JPanel P_Carta7;
+    private javax.swing.JPanel P_Carta8;
     private javax.swing.JPanel P_TopBar;
     private javax.swing.JPanel P_TopBar2;
     private javax.swing.JPanel P_TopBar3;
@@ -774,6 +968,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
+    public javax.swing.JLabel lb_CantSoles;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
 //mis variables
@@ -781,12 +976,16 @@ public class Main extends javax.swing.JFrame {
     private Clip Music;
     private Usuario usuario = new Usuario();
     private Reproductor video = new Reproductor();
-    public ArrayList<Zombi> ZFilas1 = new ArrayList();
-    public ArrayList<Zombi> ZFilas2 = new ArrayList();
-    public ArrayList<Zombi> ZFilas3 = new ArrayList();
-    public ArrayList<Zombi> ZFilas4 = new ArrayList();
-    public ArrayList<Zombi> ZFilas5 = new ArrayList();
-    public double multiplicador = .6;
+
+    public double multiplicador = .5;
+
+    public javax.swing.JLabel getCantSoles() {
+        return lb_CantSoles;
+    }
+
+    public void SetTextCantSoles(String text) {
+        lb_CantSoles.setText(text);
+    }
 
     //clase dentro de otra clase, nunca pense que lo iba a utilizar pero ya pos
     class Fondo extends JPanel {

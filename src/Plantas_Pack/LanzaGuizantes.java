@@ -4,11 +4,13 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import plantasvszombie_joselobo.Main;
+import plantasvszombie_joselobo.Partida;
 
 /**
  *
@@ -18,102 +20,57 @@ public class LanzaGuizantes extends Planta {
 
     javax.swing.JLabel lanzaguisante;
 
+    ArrayList<Guizante> guisantes = new ArrayList();
     boolean test = true;
+    ArrayList<Zombi> refFilaZombi;
 
-    public LanzaGuizantes(int x, int y, int fila, Main main) {
-        super(x, y, fila, main);
+    public LanzaGuizantes(int x, int y, int fila, Main main, Partida partida) {
+        super(x, y, fila, main, partida);
+        build();
+    }
 
+    @Override
+    public void build() {
         lanzaguisante = new javax.swing.JLabel();
         try {
             File archivo = new File("./GameImage\\lanzaguisantes.gif");
             Image img = Toolkit.getDefaultToolkit().createImage(
-                    archivo.getPath()).getScaledInstance(70, 70, 0);
+                    archivo.getPath()).getScaledInstance(55, 55, 0);
             lanzaguisante.setIcon(new javax.swing.ImageIcon(img));
         } catch (Exception e) {
             System.out.println("No encontro Imagen Lanzaguisantes");
         }
-        lanzaguisante.setLocation(x, y);
-        main.JP_PatioFrontal.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));//aqui el error
-        lanzaguisante.setText(" ");
         lanzaguisante.setOpaque(false);
-
+        lanzaguisante.setLocation(x, y);
+        main.JP_PatioFrontal.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        lanzaguisante.setText(" ");
+        refFilaZombi = partida.getfilaZombis(fila);
     }
 
     @Override
     public void Attack() {
-        System.out.println("Ataque");
-        Guizante M = new Guizante(main, fila, x + 10, y);
-        M.start();
+        guisantes.add(new Guizante(x + 35, y + 15, fila, main, partida));
+        guisantes.get(guisantes.size() - 1).start();
     }
 
     @Override
     public void run() {
-
-        switch (fila) {
-            case 1 -> {
-                while (test) {
-                    if (!main.ZFilas1.isEmpty()) {
-                        try {
-                            Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
-                        } catch (InterruptedException ex) {
-                        }
-                        Attack();
-
-                    }
+        //aqui ultima modificacion haciendo una referencia
+        while (vida > 0) {
+            if (!refFilaZombi.isEmpty()) {
+                try {
+                    Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
+                } catch (InterruptedException ex) {
                 }
-            }//case 1
-            case 2 -> {
-                while (test) {
-                    if (!main.ZFilas2.isEmpty()) {
-                        try {
-                            Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
-                        } catch (InterruptedException ex) {
-                        }
-                        Attack();
-
-                    }
-                }
-            }//case 2
-            case 3 -> {
-                while (test) {
-                    if (!main.ZFilas3.isEmpty()) {
-                        try {
-                            Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
-                        } catch (InterruptedException ex) {
-                        }
-                        Attack();
-
-                    }
-                }
-            }//case 3
-            case 4 -> {
-                while (test) {
-                    if (!main.ZFilas4.isEmpty()) {
-                        try {
-                            Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
-                        } catch (InterruptedException ex) {
-                        }
-                        Attack();
-
-                    }
-                }
-            }//case 4
-            case 5 -> {
-                while (test) {
-                    if (!main.ZFilas5.isEmpty()) {
-                        try {
-                            Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
-                        } catch (InterruptedException ex) {
-                        }
-                        Attack();
-
-                    }
-                }
-            }//case 5
-            }//switch
-        try {
-            Thread.sleep(0);
-        } catch (InterruptedException ex) {
+                Attack();
+            }
+            try {
+                Thread.sleep(0);
+            } catch (InterruptedException ex) {
+            }
         }
+        lanzaguisante.setVisible(false);
+        lanzaguisante = null;
+
     }//run
 }

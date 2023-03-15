@@ -5,37 +5,47 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
 import static java.nio.file.Files.delete;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import plantasvszombie_joselobo.Main;
+import plantasvszombie_joselobo.Partida;
 
 public class Guizante extends Thread {
 
     Main main;
     JLabel guisante;
-    int fila, x, y;
+    int fila, x, y, dano = 20;
     boolean isAlive = true;
+    Rectangle RguisanteHitbox;
+    Partida partida;
+    ArrayList<Zombi> refFilaZombi;
+    boolean boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = true;
 
-    public Guizante(Main main, int fila, int x, int y) {
+    public Guizante(int x, int y, int fila, Main main, Partida partida) {
         this.main = main;
         this.fila = fila;
+        this.x = x;
+        this.y = y;
+        this.partida = partida;
+        refFilaZombi = partida.getfilaZombis(fila);
+
         guisante = new javax.swing.JLabel();
         try {
             File archivo = new File("./GameImage\\guisante.png");
             Image img = Toolkit.getDefaultToolkit().createImage(
-                    archivo.getPath()).getScaledInstance(10, 10, 0);
+                    archivo.getPath()).getScaledInstance(35, 35, 0);
             guisante.setIcon(new javax.swing.ImageIcon(img));
         } catch (Exception e) {
+            System.out.println("No se encuentra la imagen del guisante");
         }
-        x += 10;
-        guisante.setLocation(x, y);
-        main.JP_PatioFrontal.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));//aqui el error
-        guisante.setText(" ");
         guisante.setOpaque(false);
-
+        guisante.setLocation(x, y);
+        main.JP_PatioFrontal.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        guisante.setText(" ");
     }
 
     public Main getMain() {
@@ -64,21 +74,64 @@ public class Guizante extends Thread {
 
     @Override
     public void run() {
-        Rectangle Rguisante = new Rectangle(x, y, 10, 10);
+        RguisanteHitbox = new Rectangle(x, y, 35, 35);
         while (isAlive) {
+            try {
+                Thread.sleep((long) (5 * main.multiplicador));
+            } catch (InterruptedException ex) {
+                System.out.println("Error guisante");
+            }
             x++;
             guisante.setLocation(x, y);
-            Rguisante.setLocation(x, y);
-            if (Rguisante.intersects(main.ZFilas2.get(0).Rzombihitbox)) {
-                isAlive = false;
-            }
+            RguisanteHitbox.setLocation(x, y);
             try {
-                Thread.sleep((long) (100 * main.multiplicador));
-            } catch (InterruptedException ex) {
+
+                if (RguisanteHitbox.intersects(refFilaZombi.get(0).Rzombihitbox)) {
+                    this.guisante.setVisible(false);
+                    if (!refFilaZombi.isEmpty()) {
+                        refFilaZombi.get(0).recucirVida(dano);
+                    }
+                    isAlive = false;
+                    try {
+                        Thread.sleep(0);
+                    } catch (InterruptedException ex) {
+                        System.out.println("c mamo");
+                    }
+
+                }
+            } catch (IndexOutOfBoundsException e) {
+                if (boleaninutilquesirveparaquenoaparezcavariasvecesumensaje) {
+                    System.out.println("Eso hace que el lanzaguisantes continue avanzando = Guisantes linea 100");
+                    boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = false;
+                }
             }
+            if (x > 800) {
+                isAlive = false;
+                try {
+                    Thread.sleep(0);
+                } catch (InterruptedException ex) {
+                }
+            }/*
+            if (x > 800) {
+                isAlive = false;
+                try {
+                    Thread.sleep(0);
+                } catch (InterruptedException ex) {
+                }
+            }*/
         }
-        Rguisante = null;
-        guisante = null;
+        guisante.setVisible(false);
+        try {
+            Thread.sleep(0);
+        } catch (InterruptedException ex) {
+        }
+        try {
+            RguisanteHitbox = null;
+            guisante = null;
+            Thread.sleep(0);
+        } catch (Exception e) {
+            System.out.println("No se puede setear en null");
+        }
     }
 
 }
