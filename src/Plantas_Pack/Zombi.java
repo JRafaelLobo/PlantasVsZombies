@@ -48,14 +48,6 @@ public class Zombi extends Thread {
 
     @Override
     public void run() {
-        while (true) {
-            x--;
-            label.setLocation(x, y);
-            try {
-                Thread.sleep((long) (velocidad * main.multiplicador));
-            } catch (InterruptedException ex) {
-            }
-        }
-
+        System.out.println("NO");
     }
 }

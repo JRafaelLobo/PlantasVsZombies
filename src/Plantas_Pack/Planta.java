@@ -97,6 +97,10 @@ public class Planta extends Thread {
         this.fila = fila;
     }
 
+    public void recucirVida(int vida) {
+        this.vida = this.vida - vida;
+    }
+
     public Rectangle getRPlantaHitbox() {
         return RPlantaHitbox;
     }

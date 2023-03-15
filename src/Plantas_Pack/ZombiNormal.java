@@ -25,19 +25,21 @@ public class ZombiNormal extends Zombi {
         label.setLocation(x, y);
         main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         label.setText(" ");
-
     }
 
     @Override
     public void run() {
         System.out.println(partida.getfilaZombis(fila));
         while (vida > 0) {
-            x--;
-            label.setLocation(x, y);
-            Rzombihitbox.setLocation(x, y);
-            while (Rzombihitbox.intersects) {
-
+            int test = TestNear();
+            if (test != -1) {
+                partida.getfilaPlanta(fila)[test].getPlanta().recucirVida(dano);
+            } else {
+                x--;
+                label.setLocation(x, y);
+                Rzombihitbox.setLocation(x, y);
             }
+
             try {
                 Thread.sleep((long) (velocidad * main.multiplicador));
             } catch (InterruptedException ex) {
@@ -116,11 +118,18 @@ public class ZombiNormal extends Zombi {
         this.label = label;
     }
 
-    private boolean TestNear() {
-        boolean temp = false;
-        for (int i = 0; i < 10; i++) {
-            if(partida.getfilaPlanta(fila)[i].)
+    private int TestNear() {
+        int temp = -1;
+        for (int i = 0; i < 9; i++) {
+            System.out.println(partida.getfilaPlanta(fila)[i].getPlanta());
+            try {
+                if (partida.getfilaPlanta(fila)[i].getPlanta().getRPlantaHitbox().intersects(Rzombihitbox)) {
+                    temp = i;
+                }
+                System.out.println("Pasa");
+            } catch (NullPointerException e) {
+            }
         }
+        return temp;
     }
-
 }
