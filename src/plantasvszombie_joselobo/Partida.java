@@ -51,13 +51,13 @@ public class Partida extends Thread {
             case 1:
                 return PFila1;
             case 2:
-                return PFila1;
+                return PFila2;
             case 3:
-                return PFila1;
+                return PFila3;
             case 4:
-                return PFila1;
+                return PFila4;
             case 5:
-                return PFila1;
+                return PFila5;
             default:
                 return null;
         }
@@ -73,22 +73,6 @@ public class Partida extends Thread {
         PFila2[6] = new CoordenadasPlanta(main, 415, 145, 2, this);
         PFila2[7] = new CoordenadasPlanta(main, 480, 145, 2, this);
         PFila2[8] = new CoordenadasPlanta(main, 545, 145, 2, this);
-        /* PFila2[2] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[2].start();
-        PFila2[3] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[3].start();
-        PFila2[4] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[4].start();
-        PFila2[5] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[5].start();
-        PFila2[6] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[6].start();
-        PFila2[7] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[7].start();
-        PFila2[8] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[8].start();
-        PFila2[9] = new Girasol(25, 140, 2, main, Nivel_1.this);
-        PFila2[9].start();*/
     }
-    
+
 }

@@ -39,18 +39,25 @@ public class ParpadeoDeLabels extends Thread {
             CambiarVisible(true, Tiempoprendido);
         }
         if (Ocultar) {
-            label.setVisible(false);
+            if (label != null) {
+                label.setVisible(false);
+            }
         }
         if (SetNull) {
-            label = null;
+            if (label != null) {
+                label = null;
+            }
         }
     }
 
     private void CambiarVisible(boolean visible, int tiempo) {
-        this.label.setVisible(visible);
+        if (label != null) {
+            this.label.setVisible(visible);
+        }
         try {
             Thread.sleep(tiempo);
         } catch (InterruptedException ex) {
+            ex.printStackTrace();
         }
     }
 }

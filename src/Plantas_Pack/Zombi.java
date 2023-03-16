@@ -1,5 +1,6 @@
 package Plantas_Pack;
 
+import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -13,7 +14,7 @@ public class Zombi extends Thread {
 
     protected Main main;
     protected Partida partida;
-    protected int vida = 200, dano = 20, velocidad = 220, tiempoDeAtaque, x, y, fila;
+    protected int vida = 200, dano = 20, velocidad = 220, tiempoDeAtaque = 1000, x, y, fila;
     protected javax.swing.JLabel label;
     protected Rectangle Rzombihitbox;
 
@@ -39,6 +40,7 @@ public class Zombi extends Thread {
 
     public void recucirVida(int vida) {
         this.vida = this.vida - vida;
+        Parpadear();
     }
 
     @Override
@@ -49,5 +51,9 @@ public class Zombi extends Thread {
     @Override
     public void run() {
         System.out.println("NO");
+    }
+
+    public void Parpadear() {
+
     }
 }

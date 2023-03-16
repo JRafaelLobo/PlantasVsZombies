@@ -1,5 +1,7 @@
 package Plantas_Pack;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
@@ -59,13 +61,13 @@ public class CoordenadasPlanta {
     }
 
     public void CreateGirasol() {
-        planta = new Girasol(x, y, fila, main, partida);
-        planta.start();
+        this.planta = new Girasol(x, y, fila, main, partida);
+        this.planta.start();
     }
 
     public void CreateLanzaguisante() {
-        planta = new LanzaGuizantes(x, y, fila, main, partida);
-        planta.start();
+        this.planta = new LanzaGuizantes(x, y, fila, main, partida);
+        this.planta.start();
     }
 
 }

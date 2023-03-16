@@ -65,14 +65,10 @@ public class Sol extends Thread {
         if (esdeGirasol) {
             for (int i = 0; i < 45; i++) {
                 y++;
-                try {
-                    Thread.sleep(0);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Sol.class.getName()).log(Level.SEVERE, null, ex);
-                }
                 //el error de aqui es cuando se agarra antes el sol, se solucionaria 
                 if (sol != null) {
-                    this.sol.setLocation(x, y);
+                    sol.setLocation(x, y);
+                    main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                     try {
                         Thread.sleep(1);
                     } catch (InterruptedException ex) {
@@ -88,10 +84,11 @@ public class Sol extends Thread {
                 }
             }
         } else {
-            while (y < 400) {
+            while (y < 250) {
                 y++;
                 if (sol != null) {
-                    this.sol.setLocation(x, y);
+                    sol.setLocation(x, y);
+                    main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 }
                 try {
                     Thread.sleep((long) (50 * main.multiplicador));

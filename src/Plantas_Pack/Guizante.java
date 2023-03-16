@@ -37,7 +37,7 @@ public class Guizante extends Thread {
         try {
             File archivo = new File("./GameImage\\guisante.png");
             Image img = Toolkit.getDefaultToolkit().createImage(
-                    archivo.getPath()).getScaledInstance(35, 35, 0);
+                    archivo.getPath()).getScaledInstance(45, 45, 0);
             guisante.setIcon(new javax.swing.ImageIcon(img));
         } catch (Exception e) {
             System.out.println("No se encuentra la imagen del guisante");
@@ -111,14 +111,7 @@ public class Guizante extends Thread {
                     Thread.sleep(0);
                 } catch (InterruptedException ex) {
                 }
-            }/*
-            if (x > 800) {
-                isAlive = false;
-                try {
-                    Thread.sleep(0);
-                } catch (InterruptedException ex) {
-                }
-            }*/
+            }
         }
         guisante.setVisible(false);
         try {

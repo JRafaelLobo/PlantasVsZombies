@@ -64,20 +64,20 @@ public class Nivel_1 extends Partida {
             Thread.sleep((long) (200 * main.multiplicador));//35000
         } catch (InterruptedException ex) {
         }
-        GeneraSoles GeneSol = new GeneraSoles(1000, main, Nivel_1.this);
+        GeneraSoles GeneSol = new GeneraSoles(10000, main, Nivel_1.this);
         GeneSol.start();
-        PFila2[0].CreateGirasol();
-        PFila2[1].CreateGirasol();
+        PFila2[0].CreateLanzaguisante();
+        /*PFila2[1].CreateGirasol();
         PFila2[2].CreateGirasol();
         PFila2[3].CreateGirasol();
         PFila2[4].CreateGirasol();
         PFila2[5].CreateGirasol();
         PFila2[6].CreateGirasol();
         PFila2[7].CreateGirasol();
-        PFila2[8].CreateGirasol();
+        PFila2[8].CreateGirasol();*/
 
-        PFila3[0].CreateGirasol();
-        PFila3[1].CreateGirasol();
+        PFila3[0].CreateLanzaguisante();
+        /*  PFila3[1].CreateGirasol();
         PFila3[2].CreateGirasol();
         PFila3[3].CreateGirasol();
         PFila3[4].CreateGirasol();
@@ -85,16 +85,21 @@ public class Nivel_1 extends Partida {
         PFila3[6].CreateGirasol();
         PFila3[7].CreateGirasol();
         PFila3[8].CreateGirasol();
-
-        PFila4[0].CreateGirasol();
-        PFila4[1].CreateGirasol();
+         */
+        PFila4[0].CreateLanzaguisante();
+        /* PFila4[1].CreateGirasol();
         PFila4[2].CreateGirasol();
         PFila4[3].CreateGirasol();
         PFila4[4].CreateGirasol();
         PFila4[5].CreateGirasol();
         PFila4[6].CreateGirasol();
         PFila4[7].CreateGirasol();
-        PFila4[8].CreateGirasol();
+        PFila4[8].CreateGirasol();*/
+        try {
+            Thread.sleep(0);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
+        }
         for (int i = 0; i < 12; i++) {
             switch (((random.nextInt(3)))) {
                 case 0 -> {

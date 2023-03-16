@@ -33,7 +33,7 @@ public class GeneraSoles extends Thread {
         Random random = new Random();
         while (resume) {
             x = random.nextInt(301) + 100;
-            partida.soles.add(new Sol(x, y, main, partida, true));
+            partida.soles.add(new Sol(x, y, main, partida));
             partida.soles.get(partida.soles.size() - 1).start();
             try {
                 Thread.sleep((long) (TiempoPorCaida * main.multiplicador));

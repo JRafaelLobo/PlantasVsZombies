@@ -1,8 +1,12 @@
 package Plantas_Pack;
 
+import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import plantasvszombie_joselobo.*;
 
@@ -29,14 +33,25 @@ public class ZombiNormal extends Zombi {
 
     @Override
     public void run() {
-        System.out.println(partida.getfilaZombis(fila));
+        // System.out.println(partida.getfilaZombis(fila));
         while (vida > 0) {
+            try {
+                Thread.sleep(0);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ZombiNormal.class.getName()).log(Level.SEVERE, null, ex);
+            }
             int test = TestNear();
             if (test != -1) {
-                partida.getfilaPlanta(fila)[test].getPlanta().recucirVida(dano);
+                partida.getfilaPlanta(fila)[test].getPlanta().reducirVida(dano);
+                try {
+                    Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
             } else {
                 x--;
                 label.setLocation(x, y);
+                main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 Rzombihitbox.setLocation(x, y);
             }
 
@@ -49,7 +64,6 @@ public class ZombiNormal extends Zombi {
             partida.getfilaZombis(fila).set(0, null);
             partida.getfilaZombis(fila).remove(0);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Ya no hay mas zombies en la fila: " + fila);
         }
 
     }
@@ -121,15 +135,20 @@ public class ZombiNormal extends Zombi {
     private int TestNear() {
         int temp = -1;
         for (int i = 0; i < 9; i++) {
-            System.out.println(partida.getfilaPlanta(fila)[i].getPlanta());
+            // System.out.println(partida.getfilaPlanta(fila)[i].getPlanta());
             try {
                 if (partida.getfilaPlanta(fila)[i].getPlanta().getRPlantaHitbox().intersects(Rzombihitbox)) {
                     temp = i;
                 }
-                System.out.println("Pasa");
             } catch (NullPointerException e) {
+                System.out.println("Hitbox ya no existe");
             }
         }
         return temp;
+    }
+
+    public void Parpadear() {
+        ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
+        a.start();
     }
 }

@@ -1,5 +1,6 @@
 package Plantas_Pack;
 
+import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -49,7 +50,7 @@ public class LanzaGuizantes extends Planta {
 
     @Override
     public void Attack() {
-        guisantes.add(new Guizante(x + 35, y + 15, fila, main, partida));
+        guisantes.add(new Guizante(x + 35, y + 3, fila, main, partida));
         guisantes.get(guisantes.size() - 1).start();
     }
 
@@ -71,6 +72,12 @@ public class LanzaGuizantes extends Planta {
         }
         lanzaguisante.setVisible(false);
         lanzaguisante = null;
+        RPlantaHitbox = null;
 
     }//run
+
+    public void Parpadear() {
+        ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 4000, 50);
+        a.start();
+    }
 }

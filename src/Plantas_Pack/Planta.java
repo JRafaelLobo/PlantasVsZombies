@@ -1,5 +1,6 @@
 package Plantas_Pack;
 
+import Hilos.ParpadeoDeLabels;
 import java.awt.Rectangle;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
@@ -17,7 +18,7 @@ public class Planta extends Thread {
         this.fila = fila;
         this.main = main;
         this.partida = partida;
-        this.RPlantaHitbox = new Rectangle(x, y, 70, 70);
+        this.RPlantaHitbox = new Rectangle(x, y, 30, 70);
 
     }
 
@@ -97,8 +98,9 @@ public class Planta extends Thread {
         this.fila = fila;
     }
 
-    public void recucirVida(int vida) {
+    public void reducirVida(int vida) {
         this.vida = this.vida - vida;
+        Parpadear();
     }
 
     public Rectangle getRPlantaHitbox() {
@@ -117,4 +119,7 @@ public class Planta extends Thread {
     public void build() {
     }
 
+    public void Parpadear() {
+
+    }
 }

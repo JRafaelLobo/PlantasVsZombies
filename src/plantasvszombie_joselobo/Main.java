@@ -977,7 +977,7 @@ public class Main extends javax.swing.JFrame {
     private Usuario usuario = new Usuario();
     private Reproductor video = new Reproductor();
 
-    public double multiplicador = .5;
+    public double multiplicador = 1;
 
     public javax.swing.JLabel getCantSoles() {
         return lb_CantSoles;

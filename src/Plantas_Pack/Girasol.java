@@ -1,5 +1,6 @@
 package Plantas_Pack;
 
+import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
@@ -42,18 +43,24 @@ public class Girasol extends Planta {
         partida.soles.get(partida.soles.size() - 1).start();
     }
 
+    public void Parpadear() {
+        ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 4000, 50);
+        a.start();
+    }
+
     @Override
     public void run() {
         //aqui ultima modificacion haciendo una referencia
         while (vida > 0) {
             try {
-                Thread.sleep((long) (15000 * main.multiplicador));
+                Thread.sleep((long) (20000 * main.multiplicador));
             } catch (InterruptedException ex) {
             }
             Producir();
 
         }
         girasol.setVisible(false);
+        RPlantaHitbox = null;
         girasol = null;
     }//run
 
