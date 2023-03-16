@@ -97,18 +97,18 @@ public class Sol extends Thread {
                 }
             }
         }
-        Timer T = new Timer((int) (15000 * main.multiplicador), null);//25
-
+        Timer T = new Timer((int) (18000 * main.multiplicador), null);//25
         T.start();
-
         T.addActionListener(
                 new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e
             ) {
                 if (sol != null) {
-                    P = new ParpadeoDeLabels(sol, 4, 500, 500, true, true);
-                    P.start();
+                    //P = new ParpadeoDeLabels(sol, 4, 500, 500, true, true);
+                    //P.start();
+                    sol.setVisible(false);
+                    sol = null;
                 }
             }
         }

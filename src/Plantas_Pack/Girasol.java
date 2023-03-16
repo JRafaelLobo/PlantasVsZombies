@@ -44,8 +44,13 @@ public class Girasol extends Planta {
     }
 
     public void Parpadear() {
-        ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 4000, 50);
-        a.start();
+        if (vida > 0) {
+            ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 4000, 50);
+            a.start();
+        } else {
+            ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 0, 50, true, true);
+            a.start();
+        }
     }
 
     @Override

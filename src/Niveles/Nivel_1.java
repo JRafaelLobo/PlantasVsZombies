@@ -64,6 +64,7 @@ public class Nivel_1 extends Partida {
             Thread.sleep((long) (200 * main.multiplicador));//35000
         } catch (InterruptedException ex) {
         }
+        main.lb_CantSoles.setText(Integer.toString(Cantsoles));
         GeneraSoles GeneSol = new GeneraSoles(10000, main, Nivel_1.this);
         GeneSol.start();
         PFila2[0].CreateLanzaguisante();
@@ -73,8 +74,8 @@ public class Nivel_1 extends Partida {
         PFila2[4].CreateGirasol();
         PFila2[5].CreateGirasol();
         PFila2[6].CreateGirasol();
-        PFila2[7].CreateGirasol();
-        PFila2[8].CreateGirasol();*/
+        PFila2[7].CreateGirasol();*/
+        PFila2[8].CreateNuez();
 
         PFila3[0].CreateLanzaguisante();
         /*  PFila3[1].CreateGirasol();

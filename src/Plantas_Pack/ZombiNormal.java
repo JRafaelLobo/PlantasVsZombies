@@ -58,12 +58,14 @@ public class ZombiNormal extends Zombi {
             try {
                 Thread.sleep((long) (velocidad * main.multiplicador));
             } catch (InterruptedException ex) {
+                ex.printStackTrace();
             }
         }
-        try {
+        label.setVisible(false);
+        Rzombihitbox = null;
+        if (partida.getfilaZombis(fila).get(0) != null) {
             partida.getfilaZombis(fila).set(0, null);
             partida.getfilaZombis(fila).remove(0);
-        } catch (IndexOutOfBoundsException e) {
         }
 
     }
@@ -135,20 +137,24 @@ public class ZombiNormal extends Zombi {
     private int TestNear() {
         int temp = -1;
         for (int i = 0; i < 9; i++) {
-            // System.out.println(partida.getfilaPlanta(fila)[i].getPlanta());
             try {
                 if (partida.getfilaPlanta(fila)[i].getPlanta().getRPlantaHitbox().intersects(Rzombihitbox)) {
                     temp = i;
                 }
             } catch (NullPointerException e) {
-                System.out.println("Hitbox ya no existe");
             }
         }
         return temp;
     }
 
     public void Parpadear() {
-        ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
-        a.start();
+        if (vida > 0) {
+            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
+            a.start();
+        } else {
+            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 0, 50, true, true);
+            a.start();
+        }
+
     }
 }

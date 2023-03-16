@@ -89,7 +89,9 @@ public class Guizante extends Thread {
                 if (RguisanteHitbox.intersects(refFilaZombi.get(0).Rzombihitbox)) {
                     this.guisante.setVisible(false);
                     if (!refFilaZombi.isEmpty()) {
-                        refFilaZombi.get(0).recucirVida(dano);
+                        if (refFilaZombi.get(0) != null) {
+                            refFilaZombi.get(0).recucirVida(dano);
+                        }
                     }
                     isAlive = false;
                     try {
@@ -102,6 +104,7 @@ public class Guizante extends Thread {
             } catch (IndexOutOfBoundsException e) {
                 if (boleaninutilquesirveparaquenoaparezcavariasvecesumensaje) {
                     System.out.println("Eso hace que el lanzaguisantes continue avanzando = Guisantes linea 100");
+                    //e.printStackTrace();
                     boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = false;
                 }
             }

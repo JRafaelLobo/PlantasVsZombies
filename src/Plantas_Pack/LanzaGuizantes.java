@@ -22,7 +22,6 @@ public class LanzaGuizantes extends Planta {
     javax.swing.JLabel lanzaguisante;
 
     ArrayList<Guizante> guisantes = new ArrayList();
-    boolean test = true;
     ArrayList<Zombi> refFilaZombi;
 
     public LanzaGuizantes(int x, int y, int fila, Main main, Partida partida) {
@@ -50,7 +49,7 @@ public class LanzaGuizantes extends Planta {
 
     @Override
     public void Attack() {
-        guisantes.add(new Guizante(x + 35, y + 3, fila, main, partida));
+        guisantes.add(new Guizante(x + 20, y - 10, fila, main, partida));
         guisantes.get(guisantes.size() - 1).start();
     }
 
@@ -77,7 +76,12 @@ public class LanzaGuizantes extends Planta {
     }//run
 
     public void Parpadear() {
-        ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 4000, 50);
-        a.start();
+        if (vida > 0) {
+            ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 4000, 50);
+            a.start();
+        } else {
+            ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 0, 50, true, true);
+            a.start();
+        }
     }
 }

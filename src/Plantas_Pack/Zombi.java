@@ -14,7 +14,7 @@ public class Zombi extends Thread {
 
     protected Main main;
     protected Partida partida;
-    protected int vida = 200, dano = 20, velocidad = 220, tiempoDeAtaque = 1000, x, y, fila;
+    protected int vida = 200, dano = 20, velocidad = 150, tiempoDeAtaque = 1000, x, y, fila;
     protected javax.swing.JLabel label;
     protected Rectangle Rzombihitbox;
 

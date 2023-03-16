@@ -376,6 +376,8 @@ public class Main extends javax.swing.JFrame {
 
         JP_PanelPlantas.add(P_Carta8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, 50));
 
+        lb_CantSoles.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lb_CantSoles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_CantSoles.setText("Soles");
 
         javax.swing.GroupLayout JP_ImagenCartasLayout = new javax.swing.GroupLayout(JP_ImagenCartas);
@@ -383,16 +385,15 @@ public class Main extends javax.swing.JFrame {
         JP_ImagenCartasLayout.setHorizontalGroup(
             JP_ImagenCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JP_ImagenCartasLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(21, 21, 21)
                 .addComponent(lb_CantSoles)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         JP_ImagenCartasLayout.setVerticalGroup(
             JP_ImagenCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_ImagenCartasLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(lb_CantSoles)
-                .addContainerGap())
+                .addGap(0, 50, Short.MAX_VALUE)
+                .addComponent(lb_CantSoles))
         );
 
         JP_PanelPlantas.add(JP_ImagenCartas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 70));

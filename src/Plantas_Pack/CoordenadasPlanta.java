@@ -70,4 +70,9 @@ public class CoordenadasPlanta {
         this.planta.start();
     }
 
+    public void CreateNuez() {
+        this.planta = new Nuez(x, y, fila, main, partida);
+        this.planta.start();
+    }
+
 }
