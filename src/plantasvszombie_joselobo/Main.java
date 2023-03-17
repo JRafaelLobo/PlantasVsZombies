@@ -26,6 +26,7 @@ public class Main extends javax.swing.JFrame {
         CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(Jf_MenuPrincipal, this, 4000);
         Thread CambiarMain = new Thread(CPT);
         CambiarMain.start();
+        JP_DetectorMouse.setVisible(true);
 
     }
 
@@ -50,19 +51,21 @@ public class Main extends javax.swing.JFrame {
         X4 = new javax.swing.JLabel();
         JF_PatioFrontal = new javax.swing.JFrame();
         JP_PanelPlantas = new javax.swing.JPanel();
-        P_Carta5 = new javax.swing.JPanel();
-        P_Carta6 = new javax.swing.JPanel();
-        P_Carta7 = new javax.swing.JPanel();
-        P_Carta8 = new javax.swing.JPanel();
-        JP_ImagenCartas = new Fondo("./GameImage\\PanelPlantas.png");
         lb_CantSoles = new javax.swing.JLabel();
+        P_CartaLanzaguisantes = new Fondo("./GameImage\\card_peashooter.png");
+        P_CartaNuez = new Fondo("./GameImage\\card_wallnut.png");
+        P_CartaGirasol = new Fondo("./GameImage\\card_sunflower.png");
+        P_CartaPetacereza = new javax.swing.JPanel();
+        JP_ImagenCartas = new Fondo("./GameImage\\PanelPlantas.png");
         P_TopBar3 = new javax.swing.JPanel();
         P_X3 = new javax.swing.JPanel();
         X3 = new javax.swing.JLabel();
+        JP_Proyectiles = new javax.swing.JPanel();
         JP_Soles = new javax.swing.JPanel();
         JP_PatioFrontal = new javax.swing.JPanel();
         FondoNormal = new Fondo("/.GameImage\\FondoPatioRecortadapng.png");
         FondoTuto = new Fondo("./GameImage\\backlvl2reajustada.jpeg");
+        JP_DetectorMouse = new javax.swing.JPanel();
         jFrame1 = new javax.swing.JFrame();
         JP_PanelPlantastest = new Fondo("/.GameImage\\PanelPlantas.png");
         P_Carta2 = new javax.swing.JPanel();
@@ -316,84 +319,100 @@ public class Main extends javax.swing.JFrame {
         JP_PanelPlantas.setPreferredSize(new java.awt.Dimension(380, 70));
         JP_PanelPlantas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        P_Carta5.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta5Layout = new javax.swing.GroupLayout(P_Carta5);
-        P_Carta5.setLayout(P_Carta5Layout);
-        P_Carta5Layout.setHorizontalGroup(
-            P_Carta5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta5Layout.setVerticalGroup(
-            P_Carta5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        JP_PanelPlantas.add(P_Carta5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 40, 50));
-
-        P_Carta6.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta6Layout = new javax.swing.GroupLayout(P_Carta6);
-        P_Carta6.setLayout(P_Carta6Layout);
-        P_Carta6Layout.setHorizontalGroup(
-            P_Carta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta6Layout.setVerticalGroup(
-            P_Carta6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        JP_PanelPlantas.add(P_Carta6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, 50));
-
-        P_Carta7.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta7Layout = new javax.swing.GroupLayout(P_Carta7);
-        P_Carta7.setLayout(P_Carta7Layout);
-        P_Carta7Layout.setHorizontalGroup(
-            P_Carta7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta7Layout.setVerticalGroup(
-            P_Carta7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        JP_PanelPlantas.add(P_Carta7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 40, 50));
-
-        P_Carta8.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta8Layout = new javax.swing.GroupLayout(P_Carta8);
-        P_Carta8.setLayout(P_Carta8Layout);
-        P_Carta8Layout.setHorizontalGroup(
-            P_Carta8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta8Layout.setVerticalGroup(
-            P_Carta8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        JP_PanelPlantas.add(P_Carta8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, 50));
-
         lb_CantSoles.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_CantSoles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_CantSoles.setText("Soles");
+        JP_PanelPlantas.add(lb_CantSoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 60, 20));
+
+        P_CartaLanzaguisantes.setBackground(new java.awt.Color(255, 255, 255));
+        P_CartaLanzaguisantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                P_CartaLanzaguisantesMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout P_CartaLanzaguisantesLayout = new javax.swing.GroupLayout(P_CartaLanzaguisantes);
+        P_CartaLanzaguisantes.setLayout(P_CartaLanzaguisantesLayout);
+        P_CartaLanzaguisantesLayout.setHorizontalGroup(
+            P_CartaLanzaguisantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        P_CartaLanzaguisantesLayout.setVerticalGroup(
+            P_CartaLanzaguisantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_CartaLanzaguisantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 60, 70));
+
+        P_CartaNuez.setBackground(new java.awt.Color(255, 255, 255));
+        P_CartaNuez.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                P_CartaNuezMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout P_CartaNuezLayout = new javax.swing.GroupLayout(P_CartaNuez);
+        P_CartaNuez.setLayout(P_CartaNuezLayout);
+        P_CartaNuezLayout.setHorizontalGroup(
+            P_CartaNuezLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        P_CartaNuezLayout.setVerticalGroup(
+            P_CartaNuezLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_CartaNuez, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 60, 70));
+
+        P_CartaGirasol.setBackground(new java.awt.Color(255, 255, 255));
+        P_CartaGirasol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                P_CartaGirasolMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout P_CartaGirasolLayout = new javax.swing.GroupLayout(P_CartaGirasol);
+        P_CartaGirasol.setLayout(P_CartaGirasolLayout);
+        P_CartaGirasolLayout.setHorizontalGroup(
+            P_CartaGirasolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        P_CartaGirasolLayout.setVerticalGroup(
+            P_CartaGirasolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_CartaGirasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 60, 70));
+
+        P_CartaPetacereza.setBackground(new java.awt.Color(255, 255, 255));
+        P_CartaPetacereza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                P_CartaPetacerezaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout P_CartaPetacerezaLayout = new javax.swing.GroupLayout(P_CartaPetacereza);
+        P_CartaPetacereza.setLayout(P_CartaPetacerezaLayout);
+        P_CartaPetacerezaLayout.setHorizontalGroup(
+            P_CartaPetacerezaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        P_CartaPetacerezaLayout.setVerticalGroup(
+            P_CartaPetacerezaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        JP_PanelPlantas.add(P_CartaPetacereza, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 60, 70));
 
         javax.swing.GroupLayout JP_ImagenCartasLayout = new javax.swing.GroupLayout(JP_ImagenCartas);
         JP_ImagenCartas.setLayout(JP_ImagenCartasLayout);
         JP_ImagenCartasLayout.setHorizontalGroup(
             JP_ImagenCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JP_ImagenCartasLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lb_CantSoles)
-                .addContainerGap(324, Short.MAX_VALUE))
+            .addGap(0, 380, Short.MAX_VALUE)
         );
         JP_ImagenCartasLayout.setVerticalGroup(
             JP_ImagenCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_ImagenCartasLayout.createSequentialGroup()
-                .addGap(0, 50, Short.MAX_VALUE)
-                .addComponent(lb_CantSoles))
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
         JP_PanelPlantas.add(JP_ImagenCartas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 70));
@@ -468,6 +487,10 @@ public class Main extends javax.swing.JFrame {
 
         JF_PatioFrontal.getContentPane().add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
+        JP_Proyectiles.setOpaque(false);
+        JP_Proyectiles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JF_PatioFrontal.getContentPane().add(JP_Proyectiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+
         JP_Soles.setOpaque(false);
         JP_Soles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JF_PatioFrontal.getContentPane().add(JP_Soles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
@@ -509,6 +532,15 @@ public class Main extends javax.swing.JFrame {
         );
 
         JF_PatioFrontal.getContentPane().add(FondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
+
+        JP_DetectorMouse.setOpaque(false);
+        JP_DetectorMouse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JP_DetectorMouseMouseClicked(evt);
+            }
+        });
+        JP_DetectorMouse.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JF_PatioFrontal.getContentPane().add(JP_DetectorMouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
 
         JP_PanelPlantastest.setMaximumSize(new java.awt.Dimension(544, 100));
         JP_PanelPlantastest.setMinimumSize(new java.awt.Dimension(544, 100));
@@ -799,8 +831,8 @@ public class Main extends javax.swing.JFrame {
                 JP_PatioFrontal.setOpaque(false);
                 FondoNormal.setVisible(false);
                 FondoTuto.setVisible(true);
-                Nivel_1 N1 = new Nivel_1(Main.this);
-                N1.start();
+                partida = new Nivel_1(Main.this);
+                partida.start();
                 //JF_PatioFrontal.setVisible(true);
             }
 
@@ -878,6 +910,38 @@ public class Main extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_B_QUITMouseClicked
 
+    private void P_CartaGirasolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaGirasolMouseClicked
+        // TODO add your handling code here:
+        plantaSelecionada = 0;
+    }//GEN-LAST:event_P_CartaGirasolMouseClicked
+
+    private void P_CartaLanzaguisantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaLanzaguisantesMouseClicked
+        // TODO add your handling code here:
+        plantaSelecionada = 1;
+    }//GEN-LAST:event_P_CartaLanzaguisantesMouseClicked
+
+    private void P_CartaNuezMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaNuezMouseClicked
+        // TODO add your handling code here:
+        plantaSelecionada = 2;
+    }//GEN-LAST:event_P_CartaNuezMouseClicked
+
+    private void P_CartaPetacerezaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaPetacerezaMouseClicked
+        // TODO add your handling code here:
+        plantaSelecionada = 3;
+    }//GEN-LAST:event_P_CartaPetacerezaMouseClicked
+
+    private void JP_DetectorMouseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JP_DetectorMouseMouseClicked
+        // TODO add your handling code here:
+        if (plantaSelecionada != -1) {
+            int x = evt.getX();
+            int y = evt.getY() - 30;
+            //System.out.println("x:" + x + " y:" + y);
+            int fila = partida.GetFilasAnalisis(y);
+            int columna = partida.GetColumnaAnalisis(x);
+            partida.Plantar(fila, columna, plantaSelecionada);
+        }
+    }//GEN-LAST:event_JP_DetectorMouseMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -937,10 +1001,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel FondoNormal;
     private javax.swing.JPanel FondoTuto;
     private javax.swing.JFrame JF_PatioFrontal;
+    public javax.swing.JPanel JP_DetectorMouse;
     private javax.swing.JPanel JP_ImagenCartas;
     public javax.swing.JPanel JP_PanelPlantas;
     private javax.swing.JPanel JP_PanelPlantastest;
     public javax.swing.JPanel JP_PatioFrontal;
+    public javax.swing.JPanel JP_Proyectiles;
     public javax.swing.JPanel JP_Soles;
     private javax.swing.JFrame Jf_MenuPrincipal;
     private javax.swing.JFrame Jf_VideoIntro;
@@ -948,10 +1014,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel P_Carta2;
     private javax.swing.JPanel P_Carta3;
     private javax.swing.JPanel P_Carta4;
-    private javax.swing.JPanel P_Carta5;
-    private javax.swing.JPanel P_Carta6;
-    private javax.swing.JPanel P_Carta7;
-    private javax.swing.JPanel P_Carta8;
+    private javax.swing.JPanel P_CartaGirasol;
+    private javax.swing.JPanel P_CartaLanzaguisantes;
+    private javax.swing.JPanel P_CartaNuez;
+    private javax.swing.JPanel P_CartaPetacereza;
     private javax.swing.JPanel P_TopBar;
     private javax.swing.JPanel P_TopBar2;
     private javax.swing.JPanel P_TopBar3;
@@ -977,6 +1043,16 @@ public class Main extends javax.swing.JFrame {
     private Clip Music;
     private Usuario usuario = new Usuario();
     private Reproductor video = new Reproductor();
+    int plantaSelecionada = -1;
+    Partida partida;
+    /*
+    plantaSelecionada
+    -1: null
+    0: Girasol
+    1: Lanzaguisante
+    2: Nuez
+    3: Petacereza
+     */
 
     public double multiplicador = 1;
 

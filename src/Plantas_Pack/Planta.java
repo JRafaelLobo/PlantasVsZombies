@@ -18,7 +18,7 @@ public class Planta extends Thread {
         this.fila = fila;
         this.main = main;
         this.partida = partida;
-        this.RPlantaHitbox = new Rectangle(x, y, 30, 70);
+        this.RPlantaHitbox = new Rectangle(x, y, 35, 70);
 
     }
 

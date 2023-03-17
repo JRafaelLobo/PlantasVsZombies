@@ -44,7 +44,7 @@ public class Guizante extends Thread {
         }
         guisante.setOpaque(false);
         guisante.setLocation(x, y);
-        main.JP_PatioFrontal.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         guisante.setText(" ");
     }
 
@@ -83,6 +83,7 @@ public class Guizante extends Thread {
             }
             x++;
             guisante.setLocation(x, y);
+            main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
             RguisanteHitbox.setLocation(x, y);
             try {
 

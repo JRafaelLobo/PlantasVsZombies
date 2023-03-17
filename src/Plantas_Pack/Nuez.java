@@ -43,8 +43,10 @@ public class Nuez extends Planta {
             ParpadeoDeLabels a = new ParpadeoDeLabels(nuez, 1, 4000, 50);
             a.start();
         } else {
+            RPlantaHitbox = null;
             ParpadeoDeLabels a = new ParpadeoDeLabels(nuez, 1, 0, 50, true, true);
             a.start();
+
         }
     }
 

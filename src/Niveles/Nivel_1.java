@@ -67,35 +67,6 @@ public class Nivel_1 extends Partida {
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
         GeneraSoles GeneSol = new GeneraSoles(10000, main, Nivel_1.this);
         GeneSol.start();
-        PFila2[0].CreateLanzaguisante();
-        /*PFila2[1].CreateGirasol();
-        PFila2[2].CreateGirasol();
-        PFila2[3].CreateGirasol();
-        PFila2[4].CreateGirasol();
-        PFila2[5].CreateGirasol();
-        PFila2[6].CreateGirasol();
-        PFila2[7].CreateGirasol();*/
-        PFila2[8].CreateNuez();
-
-        PFila3[0].CreateLanzaguisante();
-        /*  PFila3[1].CreateGirasol();
-        PFila3[2].CreateGirasol();
-        PFila3[3].CreateGirasol();
-        PFila3[4].CreateGirasol();
-        PFila3[5].CreateGirasol();
-        PFila3[6].CreateGirasol();
-        PFila3[7].CreateGirasol();
-        PFila3[8].CreateGirasol();
-         */
-        PFila4[0].CreateLanzaguisante();
-        /* PFila4[1].CreateGirasol();
-        PFila4[2].CreateGirasol();
-        PFila4[3].CreateGirasol();
-        PFila4[4].CreateGirasol();
-        PFila4[5].CreateGirasol();
-        PFila4[6].CreateGirasol();
-        PFila4[7].CreateGirasol();
-        PFila4[8].CreateGirasol();*/
         try {
             Thread.sleep(0);
         } catch (InterruptedException ex) {
@@ -180,6 +151,62 @@ public class Nivel_1 extends Partida {
             }
 
         }//fin for i
+        while (ganada == false) {
+            if (ZFilas1.isEmpty()
+                    || ZFilas2.isEmpty()
+                    || ZFilas3.isEmpty()
+                    || ZFilas4.isEmpty()
+                    || ZFilas5.isEmpty()) {
+                Ganaste();
+                ganada = true;
+
+            }
+        }
+    }
+
+    public int GetFilasAnalisis(int y) {
+        if (y > 115 && y < 178) {
+            return 2;
+        }
+        if (y > 180 && y < 248) {
+            return 3;
+
+        }
+        if (y > 250 && y < 324) {
+            return 4;
+        }
+        return -1;
+    }
+
+    public int GetColumnaAnalisis(int x) {
+        if (x > 23 && x < 90) {
+            return 0;
+        }
+        if (x > 90 && x < 151) {
+            return 1;
+        }
+        if (x > 153 && x < 215) {
+            return 2;
+        }
+        if (x > 216 && x < 282) {
+            return 3;
+        }
+        if (x > 282 && x < 345) {
+            return 4;
+        }
+        if (x > 347 && x < 415) {
+            return 5;
+        }
+        if (x > 415 && x < 469) {
+            return 6;
+        }
+        if (x > 469 && x < 537) {
+            return 7;
+        }
+        if (x > 541 && x < 615) {
+            return 8;
+        }
+        return -1;
     }
 
 }

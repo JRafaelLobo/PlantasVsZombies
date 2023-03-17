@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import plantasvszombie_joselobo.*;
 
 public class ZombiNormal extends Zombi {
@@ -53,6 +54,9 @@ public class ZombiNormal extends Zombi {
                 label.setLocation(x, y);
                 main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 Rzombihitbox.setLocation(x, y);
+                if (x < -10) {
+                    partida.Perdiste();
+                }
             }
 
             try {

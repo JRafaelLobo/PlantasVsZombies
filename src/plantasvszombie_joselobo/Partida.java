@@ -7,6 +7,7 @@ import Plantas_Pack.Planta;
 import Plantas_Pack.Sol;
 import Plantas_Pack.Zombi;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Partida extends Thread {
 
@@ -23,6 +24,7 @@ public class Partida extends Thread {
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
     public int Cantsoles = 50;
     public ArrayList<Sol> soles = new ArrayList();
+    public boolean ganada = false;
 
     public Partida(Main main) {
         this.main = main;
@@ -75,4 +77,54 @@ public class Partida extends Thread {
         PFila2[8] = new CoordenadasPlanta(main, 545, 145, 2, this);
     }
 
+    public int GetFilasAnalisis(int y) {
+        return 0;
+    }
+
+    public int GetColumnaAnalisis(int x) {
+        return 0;
+    }
+
+    public void Plantar(int filas, int columnas, int tipoDePlanta) {
+        if (getfilaPlanta(filas)[columnas].getPlanta() == null && tipoDePlanta != -1) {
+            switch (tipoDePlanta) {
+                case 0 -> {
+                    if (Cantsoles >= 50) {
+                        getfilaPlanta(filas)[columnas].CreateGirasol();
+                        Cantsoles -= 50;
+                    }
+                }
+                case 1 -> {
+                    if (Cantsoles >= 100) {
+                        getfilaPlanta(filas)[columnas].CreateLanzaguisante();
+                        Cantsoles -= 100;
+                    }
+                }
+                case 2 -> {
+                    if (Cantsoles >= 50) {
+                    }
+                    getfilaPlanta(filas)[columnas].CreateNuez();
+                    Cantsoles -= 50;
+                }
+                case 3 -> {
+                    //falta la petacereza
+                    if (Cantsoles >= 150) {
+                        getfilaPlanta(filas)[columnas].CreateGirasol();
+                        Cantsoles -= 150;
+
+                    }
+                }
+            }
+            main.lb_CantSoles.setText(Integer.toString(Cantsoles));
+            main.plantaSelecionada = -1;
+        }
+    }
+
+    public void Perdiste() {
+        JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Perdiste");
+    }
+    public void Ganaste(){
+                JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Ganaste");
+
+    }
 }
