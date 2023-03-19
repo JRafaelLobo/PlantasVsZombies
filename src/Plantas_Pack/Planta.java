@@ -9,8 +9,8 @@ public class Planta extends Thread {
 
     protected int vida = 100, tiempoRecarga = 3000, dano = 20, tiempoDeAtaque = 1500, x, y, costo = 100, fila;
     protected Main main;
-    Rectangle RPlantaHitbox;
-    Partida partida;
+    protected Rectangle RPlantaHitbox;
+    protected Partida partida;
 
     public Planta(int x, int y, int fila, Main main, Partida partida) {
         this.x = x;
@@ -100,7 +100,13 @@ public class Planta extends Thread {
 
     public void reducirVida(int vida) {
         this.vida = this.vida - vida;
-        Parpadear();
+        if (this.vida > 0) {
+            Parpadear();
+        } else {
+            int columna = partida.GetColumnaAnalisis(this.x);
+            deletPlantita();
+            partida.EliminarPlanta(fila, columna);
+        }
     }
 
     public Rectangle getRPlantaHitbox() {
@@ -120,6 +126,14 @@ public class Planta extends Thread {
     }
 
     public void Parpadear() {
+
+    }
+
+    public void setInvisible() {
+
+    }
+
+    public void deletPlantita() {
 
     }
 }

@@ -69,19 +69,33 @@ public class LanzaGuizantes extends Planta {
             } catch (InterruptedException ex) {
             }
         }
+        partida.EliminarPlanta(fila, partida.GetColumnaAnalisis(x));
+        deletPlantita();
+    }//run
+
+    @Override
+    public void Parpadear() {
+        if (vida > 0) {
+            ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 1, 50);
+            //a.start();
+        } else {
+            /* ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 4001, 0, true, true);
+            a.start();
+            RPlantaHitbox = null;
+             */
+        }
+    }
+
+    @Override
+    public void setInvisible() {
+        lanzaguisante.setVisible(false);
+    }
+
+    @Override
+    public void deletPlantita() {
         lanzaguisante.setVisible(false);
         lanzaguisante = null;
         RPlantaHitbox = null;
-
-    }//run
-
-    public void Parpadear() {
-        if (vida > 0) {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 4000, 50);
-            a.start();
-        } else {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(lanzaguisante, 1, 0, 50, true, true);
-            a.start();
-        }
+        vida = 0;
     }
 }

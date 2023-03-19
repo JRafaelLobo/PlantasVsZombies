@@ -44,7 +44,7 @@ public class Guizante extends Thread {
         }
         guisante.setOpaque(false);
         guisante.setLocation(x, y);
-        main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        partida.main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         guisante.setText(" ");
     }
 
@@ -83,30 +83,31 @@ public class Guizante extends Thread {
             }
             x++;
             guisante.setLocation(x, y);
-            main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            partida.main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
             RguisanteHitbox.setLocation(x, y);
-            try {
+            for (int i = 0; i < refFilaZombi.size(); i++) {
 
-                if (RguisanteHitbox.intersects(refFilaZombi.get(0).Rzombihitbox)) {
-                    this.guisante.setVisible(false);
-                    if (!refFilaZombi.isEmpty()) {
-                        if (refFilaZombi.get(0) != null) {
-                            refFilaZombi.get(0).recucirVida(dano);
+                try {
+                    if (RguisanteHitbox.intersects(refFilaZombi.get(i).Rzombihitbox)) {
+                        this.guisante.setVisible(false);
+                        if (!refFilaZombi.isEmpty()) {
+                            if (refFilaZombi.get(i) != null) {
+                                refFilaZombi.get(i).recucirVida(dano);
+                            }
+                        }
+                        isAlive = false;
+                        try {
+                            Thread.sleep(0);
+                        } catch (InterruptedException ex) {
+                            System.out.println("c mamo");
                         }
                     }
-                    isAlive = false;
-                    try {
-                        Thread.sleep(0);
-                    } catch (InterruptedException ex) {
-                        System.out.println("c mamo");
+                } catch (Exception e) {
+                    if (boleaninutilquesirveparaquenoaparezcavariasvecesumensaje) {
+                        //System.out.println("Eso hace que el lanzaguisantes continue avanzando = Guisantes linea 100");
+                        //e.printStackTrace();
+                        // boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = false;
                     }
-
-                }
-            } catch (IndexOutOfBoundsException e) {
-                if (boleaninutilquesirveparaquenoaparezcavariasvecesumensaje) {
-                    System.out.println("Eso hace que el lanzaguisantes continue avanzando = Guisantes linea 100");
-                    //e.printStackTrace();
-                    boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = false;
                 }
             }
             if (x > 800) {

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class Partida extends Thread {
 
-    protected Main main;
+    public Main main;
     public ArrayList<Zombi> ZFilas1 = new ArrayList();
     public ArrayList<Zombi> ZFilas2 = new ArrayList();
     public ArrayList<Zombi> ZFilas3 = new ArrayList();
@@ -22,9 +22,10 @@ public class Partida extends Thread {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 50;
+    public int Cantsoles = 9999;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
+    public boolean perdida = false;
 
     public Partida(Main main) {
         this.main = main;
@@ -78,53 +79,75 @@ public class Partida extends Thread {
     }
 
     public int GetFilasAnalisis(int y) {
-        return 0;
+        return -1;
     }
 
     public int GetColumnaAnalisis(int x) {
-        return 0;
+        return -1;
     }
 
     public void Plantar(int filas, int columnas, int tipoDePlanta) {
-        if (getfilaPlanta(filas)[columnas].getPlanta() == null && tipoDePlanta != -1) {
-            switch (tipoDePlanta) {
-                case 0 -> {
-                    if (Cantsoles >= 50) {
-                        getfilaPlanta(filas)[columnas].CreateGirasol();
-                        Cantsoles -= 50;
+        try {
+            if (getfilaPlanta(filas)[columnas].getPlanta() == null && tipoDePlanta != -1) {
+                switch (tipoDePlanta) {
+                    case 0 -> {
+                        if (Cantsoles >= 50) {
+                            getfilaPlanta(filas)[columnas].CreateGirasol();
+                            Cantsoles -= 50;
+                        }
                     }
-                }
-                case 1 -> {
-                    if (Cantsoles >= 100) {
-                        getfilaPlanta(filas)[columnas].CreateLanzaguisante();
-                        Cantsoles -= 100;
+                    case 1 -> {
+                        if (Cantsoles >= 100) {
+                            getfilaPlanta(filas)[columnas].CreateLanzaguisante();
+                            Cantsoles -= 100;
+                        }
                     }
-                }
-                case 2 -> {
-                    if (Cantsoles >= 50) {
-                    }
-                    getfilaPlanta(filas)[columnas].CreateNuez();
-                    Cantsoles -= 50;
-                }
-                case 3 -> {
-                    //falta la petacereza
-                    if (Cantsoles >= 150) {
-                        getfilaPlanta(filas)[columnas].CreateGirasol();
-                        Cantsoles -= 150;
+                    case 2 -> {
+                        if (Cantsoles >= 50) {
+                            getfilaPlanta(filas)[columnas].CreateNuez();
+                            Cantsoles -= 50;
+                        }
 
                     }
+                    case 3 -> {
+                        //falta la petacereza
+                        if (Cantsoles >= 150) {
+                            getfilaPlanta(filas)[columnas].CreateGirasol();
+                            Cantsoles -= 150;
+
+                        }
+                    }
                 }
+
             }
-            main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-            main.plantaSelecionada = -1;
+        } catch (Exception e) {
+        }
+        main.lb_CantSoles.setText(Integer.toString(Cantsoles));
+        main.plantaSelecionada = -1;
+        main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
+    }
+
+    public void EliminarPlanta(int filas, int columnas) {
+        try {
+            getfilaPlanta(filas)[columnas].DeletePlant();
+        } catch (Exception e) {
+        }
+        //main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
+        //main.eliminarPlanta = false;
+    }
+
+    public void pala(int filas, int columnas) {
+        try {
+            getfilaPlanta(filas)[columnas].remover();
+        } catch (Exception e) {
         }
     }
 
     public void Perdiste() {
         JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Perdiste");
     }
-    public void Ganaste(){
-                JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Ganaste");
 
+    public void Ganaste() {
+        JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Ganaste");
     }
 }

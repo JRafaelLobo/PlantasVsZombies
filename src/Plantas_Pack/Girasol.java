@@ -14,7 +14,7 @@ import plantasvszombie_joselobo.Partida;
  */
 public class Girasol extends Planta {
 
-    javax.swing.JLabel girasol;
+    protected javax.swing.JLabel girasol;
 
     public Girasol(int x, int y, int fila, Main main, Partida partida) {
         super(x, y, fila, main, partida);
@@ -38,17 +38,13 @@ public class Girasol extends Planta {
         girasol.setText(" ");
     }
 
-    public void Producir() {
-        partida.soles.add(new Sol(x, y, main, partida, true));
-        partida.soles.get(partida.soles.size() - 1).start();
-    }
-
+    @Override
     public void Parpadear() {
         if (vida > 0) {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 4000, 50);
+            ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 1, 50);
             a.start();
         } else {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 0, 50, true, true);
+            ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 1, 0, true, true);
             a.start();
         }
     }
@@ -60,13 +56,33 @@ public class Girasol extends Planta {
             try {
                 Thread.sleep((long) (20000 * main.multiplicador));
             } catch (InterruptedException ex) {
+                girasol.setVisible(false);
+                RPlantaHitbox = null;
+                girasol = null;
             }
             Producir();
-
+            System.out.println("Si");
         }
         girasol.setVisible(false);
         RPlantaHitbox = null;
         girasol = null;
+        partida.EliminarPlanta(fila, partida.GetColumnaAnalisis(x));
     }//run
 
+    public void Producir() {
+        partida.soles.add(new Sol(x, y, main, partida, true));
+        partida.soles.get(partida.soles.size() - 1).start();
+    }
+
+    @Override
+    public void setInvisible() {
+        girasol.setVisible(false);
+    }
+
+    @Override
+    public void deletPlantita() {
+        girasol.setVisible(false);
+        girasol = null;
+        RPlantaHitbox = null;
+    }
 }

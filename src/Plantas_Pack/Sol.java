@@ -15,11 +15,11 @@ import plantasvszombie_joselobo.Partida;
 
 public class Sol extends Thread {
 
-    private javax.swing.JLabel sol;
-    private int x, y;
-    private Main main;
-    private Partida partida;
-    private boolean esdeGirasol = false;
+    protected javax.swing.JLabel sol;
+    protected int x, y;
+    protected Main main;
+    protected Partida partida;
+    protected boolean esdeGirasol = false;
     ParpadeoDeLabels P;
 
     public Sol(int x, int y, Main main, Partida partida) {
@@ -49,14 +49,14 @@ public class Sol extends Thread {
         try {
             File archivo = new File("./GameImage\\sun.png");
             Image img = Toolkit.getDefaultToolkit().createImage(
-                    archivo.getPath()).getScaledInstance(50, 50, 0);
+                    archivo.getPath()).getScaledInstance(55, 55, 0);
             sol.setIcon(new javax.swing.ImageIcon(img));
         } catch (Exception e) {
             System.out.println("No encontro Imagen girasol");
         }
         sol.setOpaque(false);
         sol.setLocation(x, y);
-        main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        partida.main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         sol.setText(" ");
     }
 
@@ -78,7 +78,7 @@ public class Sol extends Thread {
                     break;
                 }
                 try {
-                    Thread.sleep((long) (50 * main.multiplicador));
+                    Thread.sleep((long) (50 * partida.main.multiplicador));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Sol.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -91,13 +91,13 @@ public class Sol extends Thread {
                     main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 }
                 try {
-                    Thread.sleep((long) (50 * main.multiplicador));
+                    Thread.sleep((long) (50 * partida.main.multiplicador));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Sol.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        Timer T = new Timer((int) (18000 * main.multiplicador), null);//25
+        Timer T = new Timer((int) (18000 * partida.main.multiplicador), null);//25
         T.start();
         T.addActionListener(
                 new java.awt.event.ActionListener() {

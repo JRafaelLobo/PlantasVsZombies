@@ -45,7 +45,7 @@ public class ZombiNormal extends Zombi {
             if (test != -1) {
                 partida.getfilaPlanta(fila)[test].getPlanta().reducirVida(dano);
                 try {
-                    Thread.sleep((long) (tiempoDeAtaque * main.multiplicador));
+                    Thread.sleep((long) (tiempoDeAtaque * partida.main.multiplicador));
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
@@ -55,22 +55,23 @@ public class ZombiNormal extends Zombi {
                 main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 Rzombihitbox.setLocation(x, y);
                 if (x < -10) {
-                    partida.Perdiste();
+                    partida.perdida = true;
                 }
             }
 
             try {
-                Thread.sleep((long) (velocidad * main.multiplicador));
+                Thread.sleep((long) (velocidad * partida.main.multiplicador));
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
         }
         label.setVisible(false);
         Rzombihitbox = null;
-        if (partida.getfilaZombis(fila).get(0) != null) {
-            partida.getfilaZombis(fila).set(0, null);
-            partida.getfilaZombis(fila).remove(0);
-        }
+        // if (partida.getfilaZombis(fila).get(0) != null) {
+        int numeliminar = partida.getfilaZombis(fila).indexOf(this);
+        partida.getfilaZombis(fila).set(numeliminar, null);
+        partida.getfilaZombis(fila).remove(numeliminar);
+        //}
 
     }
 
@@ -156,7 +157,7 @@ public class ZombiNormal extends Zombi {
             ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
             a.start();
         } else {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 0, 50, true, true);
+            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
             a.start();
         }
 

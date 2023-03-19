@@ -72,7 +72,7 @@ public class Nivel_1 extends Partida {
         } catch (InterruptedException ex) {
             Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 100; i++) {
             switch (((random.nextInt(3)))) {
                 case 0 -> {
                     ZFilas2.add(new ZombiNormal(main, Nivel_1.this, 640, 140, 2));
@@ -153,17 +153,21 @@ public class Nivel_1 extends Partida {
         }//fin for i
         while (ganada == false) {
             if (ZFilas1.isEmpty()
-                    || ZFilas2.isEmpty()
-                    || ZFilas3.isEmpty()
-                    || ZFilas4.isEmpty()
-                    || ZFilas5.isEmpty()) {
+                    && ZFilas2.isEmpty()
+                    && ZFilas3.isEmpty()
+                    && ZFilas4.isEmpty()
+                    && ZFilas5.isEmpty()) {
                 Ganaste();
                 ganada = true;
-
+            }
+            try {
+                Thread.sleep((long) (5000 * main.multiplicador));
+            } catch (InterruptedException ex) {
             }
         }
     }
 
+    @Override
     public int GetFilasAnalisis(int y) {
         if (y > 115 && y < 178) {
             return 2;
@@ -178,6 +182,7 @@ public class Nivel_1 extends Partida {
         return -1;
     }
 
+    @Override
     public int GetColumnaAnalisis(int x) {
         if (x > 23 && x < 90) {
             return 0;

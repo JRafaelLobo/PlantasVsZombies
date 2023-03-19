@@ -72,7 +72,15 @@ public class CoordenadasPlanta {
 
     public void CreateNuez() {
         this.planta = new Nuez(x, y, fila, main, partida);
-        this.planta.start();
+    }
+
+    public void DeletePlant() {
+        //;
+        this.planta = null;
+    }
+
+    public void remover() {
+        this.planta.reducirVida(99999);
     }
 
 }

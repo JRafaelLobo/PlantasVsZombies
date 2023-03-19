@@ -26,8 +26,10 @@ public class Main extends javax.swing.JFrame {
         CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(Jf_MenuPrincipal, this, 4000);
         Thread CambiarMain = new Thread(CPT);
         CambiarMain.start();
-        JP_DetectorMouse.setVisible(true);
-
+        JP_DetectorMouse.setVisible(false);
+        JP_DetectorMouse.setEnabled(false);
+        JP_PanelBlancoSeleccionPlantas.setBackground(new Color(0, 0, 0, 110));
+        JP_PanelBlancoSeleccionPlantas.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -57,11 +59,13 @@ public class Main extends javax.swing.JFrame {
         P_CartaGirasol = new Fondo("./GameImage\\card_sunflower.png");
         P_CartaPetacereza = new javax.swing.JPanel();
         JP_ImagenCartas = new Fondo("./GameImage\\PanelPlantas.png");
+        JP_PanelBlancoSeleccionPlantas = new javax.swing.JPanel();
+        lb_Palita = new javax.swing.JLabel();
         P_TopBar3 = new javax.swing.JPanel();
         P_X3 = new javax.swing.JPanel();
         X3 = new javax.swing.JLabel();
-        JP_Proyectiles = new javax.swing.JPanel();
         JP_Soles = new javax.swing.JPanel();
+        JP_Proyectiles = new javax.swing.JPanel();
         JP_PatioFrontal = new javax.swing.JPanel();
         FondoNormal = new Fondo("/.GameImage\\FondoPatioRecortadapng.png");
         FondoTuto = new Fondo("./GameImage\\backlvl2reajustada.jpeg");
@@ -419,6 +423,31 @@ public class Main extends javax.swing.JFrame {
 
         JF_PatioFrontal.getContentPane().add(JP_PanelPlantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 380, 70));
 
+        JP_PanelBlancoSeleccionPlantas.setBackground(new java.awt.Color(255, 255, 255));
+        JP_PanelBlancoSeleccionPlantas.setForeground(new java.awt.Color(102, 102, 102));
+        JP_PanelBlancoSeleccionPlantas.setMaximumSize(new java.awt.Dimension(640, 430));
+
+        javax.swing.GroupLayout JP_PanelBlancoSeleccionPlantasLayout = new javax.swing.GroupLayout(JP_PanelBlancoSeleccionPlantas);
+        JP_PanelBlancoSeleccionPlantas.setLayout(JP_PanelBlancoSeleccionPlantasLayout);
+        JP_PanelBlancoSeleccionPlantasLayout.setHorizontalGroup(
+            JP_PanelBlancoSeleccionPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        JP_PanelBlancoSeleccionPlantasLayout.setVerticalGroup(
+            JP_PanelBlancoSeleccionPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        JF_PatioFrontal.getContentPane().add(JP_PanelBlancoSeleccionPlantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
+
+        lb_Palita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Pala.png"))); // NOI18N
+        lb_Palita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lb_PalitaMouseClicked(evt);
+            }
+        });
+        JF_PatioFrontal.getContentPane().add(lb_Palita, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 35, -1, -1));
+
         P_TopBar3.setBackground(new java.awt.Color(0, 0, 0));
         P_TopBar3.setForeground(new java.awt.Color(153, 255, 153));
         P_TopBar3.setPreferredSize(new java.awt.Dimension(640, 0));
@@ -487,13 +516,13 @@ public class Main extends javax.swing.JFrame {
 
         JF_PatioFrontal.getContentPane().add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
-        JP_Proyectiles.setOpaque(false);
-        JP_Proyectiles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        JF_PatioFrontal.getContentPane().add(JP_Proyectiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
-
         JP_Soles.setOpaque(false);
         JP_Soles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JF_PatioFrontal.getContentPane().add(JP_Soles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+
+        JP_Proyectiles.setOpaque(false);
+        JP_Proyectiles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JF_PatioFrontal.getContentPane().add(JP_Proyectiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
 
         JP_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
         JP_PatioFrontal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -913,26 +942,39 @@ public class Main extends javax.swing.JFrame {
     private void P_CartaGirasolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaGirasolMouseClicked
         // TODO add your handling code here:
         plantaSelecionada = 0;
+        JP_PanelBlancoSeleccionPlantas.setVisible(true);
+        JP_DetectorMouse.setVisible(true);
+        JP_DetectorMouse.setEnabled(true);
     }//GEN-LAST:event_P_CartaGirasolMouseClicked
 
     private void P_CartaLanzaguisantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaLanzaguisantesMouseClicked
         // TODO add your handling code here:
         plantaSelecionada = 1;
+        JP_PanelBlancoSeleccionPlantas.setVisible(true);
+        JP_DetectorMouse.setVisible(true);
+        JP_DetectorMouse.setEnabled(true);
     }//GEN-LAST:event_P_CartaLanzaguisantesMouseClicked
 
     private void P_CartaNuezMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaNuezMouseClicked
         // TODO add your handling code here:
         plantaSelecionada = 2;
+        JP_PanelBlancoSeleccionPlantas.setVisible(true);
+        JP_DetectorMouse.setVisible(true);
+        JP_DetectorMouse.setEnabled(true);
     }//GEN-LAST:event_P_CartaNuezMouseClicked
 
     private void P_CartaPetacerezaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_CartaPetacerezaMouseClicked
         // TODO add your handling code here:
         plantaSelecionada = 3;
+        JP_PanelBlancoSeleccionPlantas.setVisible(true);
+        JP_DetectorMouse.setVisible(true);
+        JP_DetectorMouse.setEnabled(true);
     }//GEN-LAST:event_P_CartaPetacerezaMouseClicked
 
     private void JP_DetectorMouseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JP_DetectorMouseMouseClicked
         // TODO add your handling code here:
         if (plantaSelecionada != -1) {
+            eliminarPlanta = false;
             int x = evt.getX();
             int y = evt.getY() - 30;
             //System.out.println("x:" + x + " y:" + y);
@@ -940,7 +982,27 @@ public class Main extends javax.swing.JFrame {
             int columna = partida.GetColumnaAnalisis(x);
             partida.Plantar(fila, columna, plantaSelecionada);
         }
+        if (eliminarPlanta) {
+            int x = evt.getX();
+            int y = evt.getY() - 30;
+            //System.out.println("x:" + x + " y:" + y);
+            int fila = partida.GetFilasAnalisis(y);
+            int columna = partida.GetColumnaAnalisis(x);
+            partida.pala(fila, columna);
+            JP_PanelBlancoSeleccionPlantas.setVisible(false);
+        }
+        JP_DetectorMouse.setVisible(false);
+        JP_DetectorMouse.setEnabled(false);
     }//GEN-LAST:event_JP_DetectorMouseMouseClicked
+
+    private void lb_PalitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_PalitaMouseClicked
+        // TODO add your handling code here:
+        JP_DetectorMouse.setVisible(true);
+        JP_DetectorMouse.setEnabled(true);
+        eliminarPlanta = true;
+        JP_PanelBlancoSeleccionPlantas.setVisible(true);
+
+    }//GEN-LAST:event_lb_PalitaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1003,6 +1065,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFrame JF_PatioFrontal;
     public javax.swing.JPanel JP_DetectorMouse;
     private javax.swing.JPanel JP_ImagenCartas;
+    public javax.swing.JPanel JP_PanelBlancoSeleccionPlantas;
     public javax.swing.JPanel JP_PanelPlantas;
     private javax.swing.JPanel JP_PanelPlantastest;
     public javax.swing.JPanel JP_PatioFrontal;
@@ -1036,15 +1099,21 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lb_CantSoles;
+    private javax.swing.JLabel lb_Palita;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
 //mis variables
     private int xMouse, yMouse;
+
     private Clip Music;
+    public boolean eliminarPlanta;
     private Usuario usuario = new Usuario();
     private Reproductor video = new Reproductor();
     int plantaSelecionada = -1;
-    Partida partida;
+    public Partida partida;
+    public double VolumenMusica;
+    public double VolumenEffectos;
+
     /*
     plantaSelecionada
     -1: null
@@ -1053,8 +1122,7 @@ public class Main extends javax.swing.JFrame {
     2: Nuez
     3: Petacereza
      */
-
-    public double multiplicador = 1;
+    public double multiplicador = .5;
 
     public javax.swing.JLabel getCantSoles() {
         return lb_CantSoles;
