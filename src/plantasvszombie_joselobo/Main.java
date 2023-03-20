@@ -977,7 +977,7 @@ public class Main extends javax.swing.JFrame {
             eliminarPlanta = false;
             int x = evt.getX();
             int y = evt.getY() - 30;
-            //System.out.println("x:" + x + " y:" + y);
+            System.out.println("x:" + x + " y:" + y);
             int fila = partida.GetFilasAnalisis(y);
             int columna = partida.GetColumnaAnalisis(x);
             partida.Plantar(fila, columna, plantaSelecionada);
@@ -985,7 +985,7 @@ public class Main extends javax.swing.JFrame {
         if (eliminarPlanta) {
             int x = evt.getX();
             int y = evt.getY() - 30;
-            //System.out.println("x:" + x + " y:" + y);
+            System.out.println("x:" + x + " y:" + y);
             int fila = partida.GetFilasAnalisis(y);
             int columna = partida.GetColumnaAnalisis(x);
             partida.pala(fila, columna);
@@ -1122,7 +1122,6 @@ public class Main extends javax.swing.JFrame {
     2: Nuez
     3: Petacereza
      */
-    public double multiplicador = .5;
 
     public javax.swing.JLabel getCantSoles() {
         return lb_CantSoles;

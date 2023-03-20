@@ -1,6 +1,7 @@
 package Plantas_Pack;
 
 import Hilos.ParpadeoDeLabels;
+import static Plantas_Pack.LanzaGuizantes.playMusic;
 import com.sun.source.tree.CatchTree;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -8,6 +9,9 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 import plantasvszombie_joselobo.Main;
@@ -78,7 +82,7 @@ public class Sol extends Thread {
                     break;
                 }
                 try {
-                    Thread.sleep((long) (50 * partida.main.multiplicador));
+                    Thread.sleep((long) (50 * partida.multiplicador));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Sol.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -91,13 +95,13 @@ public class Sol extends Thread {
                     main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 }
                 try {
-                    Thread.sleep((long) (50 * partida.main.multiplicador));
+                    Thread.sleep((long) (50 * partida.multiplicador));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Sol.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        Timer T = new Timer((int) (18000 * partida.main.multiplicador), null);//25
+        Timer T = new Timer((int) (18000 * partida.multiplicador), null);//25
         T.start();
         T.addActionListener(
                 new java.awt.event.ActionListener() {
@@ -123,18 +127,32 @@ public class Sol extends Thread {
     private void solMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         if (sol != null) {
+            Clip effect = playMusic("./GameMusic\\SoundEffects\\SunCollected1.wav");
+            effect.start();
             partida.Cantsoles += 25;
             main.SetTextCantSoles(Integer.toString(partida.Cantsoles));
             sol.setVisible(false);
             sol = null;
             try {
                 Thread.sleep(0);
-
             } catch (InterruptedException ex) {
-                Logger.getLogger(Sol.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Sol.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    public static Clip playMusic(String filepath) {
+        try {
+            File music = new File(filepath);
+            AudioInputStream AudioImput = AudioSystem.getAudioInputStream(music);
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioImput);
+            return clip;
+        } catch (Exception e) {
+            System.out.println("El Archivo no Existe");
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

@@ -17,7 +17,7 @@ public class Nuez extends Planta {
 
     public Nuez(int x, int y, int fila, Main main, Partida partida) {
         super(x, y, fila, main, partida);
-        vida = 100;
+        vida = 4000;
         build();
     }
 
@@ -44,10 +44,9 @@ public class Nuez extends Planta {
             ParpadeoDeLabels a = new ParpadeoDeLabels(nuez, 1, 1, 50);
             a.start();
         } else {
-            RPlantaHitbox = null;
-            //ParpadeoDeLabels a = new ParpadeoDeLabels(nuez, 1, 4001, 0, true, true);
-            //a.start();
-            partida.EliminarPlanta(fila, partida.GetColumnaAnalisis(x));
+            /*RPlantaHitbox = null;
+            nuez.setVisible(false);
+            partida.EliminarPlanta(fila, partida.GetColumnaAnalisis(x));*/
         }
     }
 

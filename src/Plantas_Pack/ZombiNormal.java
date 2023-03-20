@@ -1,12 +1,16 @@
 package Plantas_Pack;
 
 import Hilos.ParpadeoDeLabels;
+import static Plantas_Pack.Sol.playMusic;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import plantasvszombie_joselobo.*;
@@ -28,7 +32,7 @@ public class ZombiNormal extends Zombi {
         }
         label.setOpaque(false);
         label.setLocation(x, y);
-        main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        this.main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         label.setText(" ");
     }
 
@@ -43,35 +47,47 @@ public class ZombiNormal extends Zombi {
             }
             int test = TestNear();
             if (test != -1) {
+                Clip effect = playMusic("./GameMusic\\SoundEffects\\ZombieEat2.wav");
+                effect.start();
                 partida.getfilaPlanta(fila)[test].getPlanta().reducirVida(dano);
+
                 try {
-                    Thread.sleep((long) (tiempoDeAtaque * partida.main.multiplicador));
+                    Thread.sleep((long) (tiempoDeAtaque * partida.multiplicador));
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
             } else {
-                x--;
-                label.setLocation(x, y);
-                main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-                Rzombihitbox.setLocation(x, y);
-                if (x < -10) {
-                    partida.perdida = true;
+                try {
+                    x--;
+                    label.setLocation(x, y);
+                    main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                    try {
+                        Rzombihitbox.setLocation(x, y);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    if (x < -10) {
+                        partida.perdida = true;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
             try {
-                Thread.sleep((long) (velocidad * partida.main.multiplicador));
+                Thread.sleep((long) (velocidad * partida.multiplicador));
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-        }
+        }/*
         label.setVisible(false);
         Rzombihitbox = null;
         // if (partida.getfilaZombis(fila).get(0) != null) {
         int numeliminar = partida.getfilaZombis(fila).indexOf(this);
         partida.getfilaZombis(fila).set(numeliminar, null);
         partida.getfilaZombis(fila).remove(numeliminar);
-        //}
+        //}*/
 
     }
 
@@ -161,5 +177,19 @@ public class ZombiNormal extends Zombi {
             a.start();
         }
 
+    }
+
+    public static Clip playMusic(String filepath) {
+        try {
+            File music = new File(filepath);
+            AudioInputStream AudioImput = AudioSystem.getAudioInputStream(music);
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioImput);
+            return clip;
+        } catch (Exception e) {
+            System.out.println("El Archivo no Existe");
+            e.printStackTrace();
+        }
+        return null;
     }
 }

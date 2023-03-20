@@ -5,6 +5,9 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.util.ArrayList;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
@@ -44,8 +47,8 @@ public class Girasol extends Planta {
             ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 1, 50);
             a.start();
         } else {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 1, 0, true, true);
-            a.start();
+            /*ParpadeoDeLabels a = new ParpadeoDeLabels(girasol, 1, 1, 0, true, true);
+            a.start();*/
         }
     }
 
@@ -54,19 +57,18 @@ public class Girasol extends Planta {
         //aqui ultima modificacion haciendo una referencia
         while (vida > 0) {
             try {
-                Thread.sleep((long) (20000 * main.multiplicador));
+                Thread.sleep((long) (20000 * partida.multiplicador));
             } catch (InterruptedException ex) {
                 girasol.setVisible(false);
                 RPlantaHitbox = null;
                 girasol = null;
             }
             Producir();
-            System.out.println("Si");
         }
-        girasol.setVisible(false);
+        /*girasol.setVisible(false);
         RPlantaHitbox = null;
         girasol = null;
-        partida.EliminarPlanta(fila, partida.GetColumnaAnalisis(x));
+        partida.EliminarPlanta(fila, partida.GetColumnaAnalisis(x));*/
     }//run
 
     public void Producir() {
@@ -85,4 +87,5 @@ public class Girasol extends Planta {
         girasol = null;
         RPlantaHitbox = null;
     }
+
 }

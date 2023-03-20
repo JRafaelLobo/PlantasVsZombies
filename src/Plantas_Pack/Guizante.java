@@ -77,13 +77,13 @@ public class Guizante extends Thread {
         RguisanteHitbox = new Rectangle(x, y, 35, 35);
         while (isAlive) {
             try {
-                Thread.sleep((long) (5 * main.multiplicador));
+                Thread.sleep((long) (5 * partida.multiplicador));
             } catch (InterruptedException ex) {
                 System.out.println("Error guisante");
             }
             x++;
             guisante.setLocation(x, y);
-            partida.main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            //main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
             RguisanteHitbox.setLocation(x, y);
             for (int i = 0; i < refFilaZombi.size(); i++) {
 

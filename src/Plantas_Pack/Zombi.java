@@ -39,8 +39,19 @@ public class Zombi extends Thread {
     }
 
     public void recucirVida(int vida) {
-        this.vida = this.vida - vida;
-        Parpadear();
+        if (this.vida > 0) {
+            this.vida = this.vida - vida;
+            Parpadear();
+        } else {
+            label.setVisible(false);
+            Rzombihitbox = null;
+            partida.getfilaZombis(fila).remove(this);
+        }
+        // if (partida.getfilaZombis(fila).get(0) != null) {
+        // int numeliminar = partida.getfilaZombis(fila).indexOf(this);
+
+        //partida.getfilaZombis(fila).set(numeliminar, null);
+        //partida.getfilaZombis(fila).remove(numeliminar);
     }
 
     @Override

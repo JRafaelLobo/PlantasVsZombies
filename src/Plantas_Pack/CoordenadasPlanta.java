@@ -76,11 +76,27 @@ public class CoordenadasPlanta {
 
     public void DeletePlant() {
         //;
+        try {
+            this.planta.deletPlantita();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            this.planta.setInvisible();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            this.planta.stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.planta = null;
     }
 
     public void remover() {
         this.planta.reducirVida(99999);
+        this.planta = null;
     }
 
 }

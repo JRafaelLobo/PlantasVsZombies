@@ -36,7 +36,7 @@ public class GeneraSoles extends Thread {
             partida.soles.add(new Sol(x, y, main, partida));
             partida.soles.get(partida.soles.size() - 1).start();
             try {
-                Thread.sleep((long) (TiempoPorCaida * main.multiplicador));
+                Thread.sleep((long) (TiempoPorCaida * partida.multiplicador));
             } catch (InterruptedException ex) {
                 Logger.getLogger(GeneraSoles.class.getName()).log(Level.SEVERE, null, ex);
             }

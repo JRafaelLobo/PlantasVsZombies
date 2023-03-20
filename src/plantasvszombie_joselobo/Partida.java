@@ -1,12 +1,13 @@
 package plantasvszombie_joselobo;
 
-import Niveles.Nivel_1;
 import Plantas_Pack.CoordenadasPlanta;
-import Plantas_Pack.Girasol;
-import Plantas_Pack.Planta;
 import Plantas_Pack.Sol;
 import Plantas_Pack.Zombi;
+import java.io.File;
 import java.util.ArrayList;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 public class Partida extends Thread {
@@ -26,6 +27,7 @@ public class Partida extends Thread {
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
+    public double multiplicador = .2;
 
     public Partida(Main main) {
         this.main = main;
@@ -118,6 +120,8 @@ public class Partida extends Thread {
                         }
                     }
                 }
+                Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
+                effect.start();
 
             }
         } catch (Exception e) {
@@ -149,5 +153,19 @@ public class Partida extends Thread {
 
     public void Ganaste() {
         JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Ganaste");
+    }
+
+    public static Clip playMusic(String filepath) {
+        try {
+            File music = new File(filepath);
+            AudioInputStream AudioImput = AudioSystem.getAudioInputStream(music);
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioImput);
+            return clip;
+        } catch (Exception e) {
+            System.out.println("El Archivo no Existe");
+            e.printStackTrace();
+        }
+        return null;
     }
 }

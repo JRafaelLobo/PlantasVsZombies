@@ -18,7 +18,6 @@ import plantasvszombie_joselobo.Partida;
 public class Nivel_1 extends Partida {
 
     protected Random random = new Random();
-
     public Nivel_1(Main main) {
         super(main);
 
@@ -61,7 +60,7 @@ public class Nivel_1 extends Partida {
     //fila 2=130,3=210,3=280/lanzaguisantes
     public void run() {
         try {
-            Thread.sleep((long) (200 * main.multiplicador));//35000
+            Thread.sleep((long) (200 * multiplicador));//35000
         } catch (InterruptedException ex) {
         }
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
@@ -91,61 +90,61 @@ public class Nivel_1 extends Partida {
             }
             if (i == 0) {
                 try {
-                    Thread.sleep((long) (12000 * main.multiplicador));
+                    Thread.sleep((long) (12000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 1) {
                 try {
-                    Thread.sleep((long) (12000 * main.multiplicador));
+                    Thread.sleep((long) (12000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 2) {
                 try {
-                    Thread.sleep((long) (10000 * main.multiplicador));
+                    Thread.sleep((long) (10000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 3) {
                 try {
-                    Thread.sleep((long) (2000 * main.multiplicador));
+                    Thread.sleep((long) (2000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 4) {
                 try {
-                    Thread.sleep((long) (5000 * main.multiplicador));
+                    Thread.sleep((long) (5000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 5) {
                 try {
-                    Thread.sleep((long) (10000 * main.multiplicador));
+                    Thread.sleep((long) (10000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 6) {
                 try {
-                    Thread.sleep((long) (10000 * main.multiplicador));
+                    Thread.sleep((long) (10000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 7) {
                 try {
-                    Thread.sleep((long) (5000 * main.multiplicador));
+                    Thread.sleep((long) (5000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i == 8) {
                 try {
-                    Thread.sleep((long) (10000 * main.multiplicador));
+                    Thread.sleep((long) (10000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
             if (i > 8) {
                 try {
-                    Thread.sleep((long) (3000 * main.multiplicador));
+                    Thread.sleep((long) (3000 * multiplicador));
                 } catch (InterruptedException ex) {
                 }
             }
@@ -161,7 +160,7 @@ public class Nivel_1 extends Partida {
                 ganada = true;
             }
             try {
-                Thread.sleep((long) (5000 * main.multiplicador));
+                Thread.sleep((long) (5000 * multiplicador));
             } catch (InterruptedException ex) {
             }
         }
