@@ -26,35 +26,35 @@ public class Nivel_1 extends Partida {
 
     public void Generar() {
         //fila 2
-        PFila2[0] = new CoordenadasPlanta(main, 25, 150, 2, this);
-        PFila2[1] = new CoordenadasPlanta(main, 90, 150, 2, this);
-        PFila2[2] = new CoordenadasPlanta(main, 155, 150, 2, this);
-        PFila2[3] = new CoordenadasPlanta(main, 220, 150, 2, this);
-        PFila2[4] = new CoordenadasPlanta(main, 285, 150, 2, this);
-        PFila2[5] = new CoordenadasPlanta(main, 350, 150, 2, this);
-        PFila2[6] = new CoordenadasPlanta(main, 415, 150, 2, this);
-        PFila2[7] = new CoordenadasPlanta(main, 480, 150, 2, this);
-        PFila2[8] = new CoordenadasPlanta(main, 545, 150, 2, this);
+        PFila2[0] = new CoordenadasPlanta(A, 25, 150, 2, this);
+        PFila2[1] = new CoordenadasPlanta(A, 90, 150, 2, this);
+        PFila2[2] = new CoordenadasPlanta(A, 155, 150, 2, this);
+        PFila2[3] = new CoordenadasPlanta(A, 220, 150, 2, this);
+        PFila2[4] = new CoordenadasPlanta(A, 285, 150, 2, this);
+        PFila2[5] = new CoordenadasPlanta(A, 350, 150, 2, this);
+        PFila2[6] = new CoordenadasPlanta(A, 415, 150, 2, this);
+        PFila2[7] = new CoordenadasPlanta(A, 480, 150, 2, this);
+        PFila2[8] = new CoordenadasPlanta(A, 545, 150, 2, this);
         //fila 3
-        PFila3[0] = new CoordenadasPlanta(main, 25, 220, 3, this);
-        PFila3[1] = new CoordenadasPlanta(main, 90, 220, 3, this);
-        PFila3[2] = new CoordenadasPlanta(main, 155, 220, 3, this);
-        PFila3[3] = new CoordenadasPlanta(main, 220, 220, 3, this);
-        PFila3[4] = new CoordenadasPlanta(main, 285, 220, 3, this);
-        PFila3[5] = new CoordenadasPlanta(main, 350, 220, 3, this);
-        PFila3[6] = new CoordenadasPlanta(main, 415, 220, 3, this);
-        PFila3[7] = new CoordenadasPlanta(main, 480, 220, 3, this);
-        PFila3[8] = new CoordenadasPlanta(main, 545, 220, 3, this);
+        PFila3[0] = new CoordenadasPlanta(A, 25, 220, 3, this);
+        PFila3[1] = new CoordenadasPlanta(A, 90, 220, 3, this);
+        PFila3[2] = new CoordenadasPlanta(A, 155, 220, 3, this);
+        PFila3[3] = new CoordenadasPlanta(A, 220, 220, 3, this);
+        PFila3[4] = new CoordenadasPlanta(A, 285, 220, 3, this);
+        PFila3[5] = new CoordenadasPlanta(A, 350, 220, 3, this);
+        PFila3[6] = new CoordenadasPlanta(A, 415, 220, 3, this);
+        PFila3[7] = new CoordenadasPlanta(A, 480, 220, 3, this);
+        PFila3[8] = new CoordenadasPlanta(A, 545, 220, 3, this);
 
-        PFila4[0] = new CoordenadasPlanta(main, 25, 290, 4, this);
-        PFila4[1] = new CoordenadasPlanta(main, 90, 290, 4, this);
-        PFila4[2] = new CoordenadasPlanta(main, 155, 290, 4, this);
-        PFila4[3] = new CoordenadasPlanta(main, 220, 290, 4, this);
-        PFila4[4] = new CoordenadasPlanta(main, 285, 290, 4, this);
-        PFila4[5] = new CoordenadasPlanta(main, 350, 290, 4, this);
-        PFila4[6] = new CoordenadasPlanta(main, 415, 290, 4, this);
-        PFila4[7] = new CoordenadasPlanta(main, 480, 290, 4, this);
-        PFila4[8] = new CoordenadasPlanta(main, 545, 290, 4, this);
+        PFila4[0] = new CoordenadasPlanta(A, 25, 290, 4, this);
+        PFila4[1] = new CoordenadasPlanta(A, 90, 290, 4, this);
+        PFila4[2] = new CoordenadasPlanta(A, 155, 290, 4, this);
+        PFila4[3] = new CoordenadasPlanta(A, 220, 290, 4, this);
+        PFila4[4] = new CoordenadasPlanta(A, 285, 290, 4, this);
+        PFila4[5] = new CoordenadasPlanta(A, 350, 290, 4, this);
+        PFila4[6] = new CoordenadasPlanta(A, 415, 290, 4, this);
+        PFila4[7] = new CoordenadasPlanta(A, 480, 290, 4, this);
+        PFila4[8] = new CoordenadasPlanta(A, 545, 290, 4, this);
     }
 
     //filas 70
@@ -65,7 +65,7 @@ public class Nivel_1 extends Partida {
         } catch (InterruptedException ex) {
         }
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-        GeneraSoles GeneSol = new GeneraSoles(10000, main, Nivel_1.this);
+        GeneraSoles GeneSol = new GeneraSoles(10000, A, Nivel_1.this);
         GeneSol.start();
         try {
             Thread.sleep((long) (15000 * multiplicador));
@@ -75,16 +75,16 @@ public class Nivel_1 extends Partida {
         for (int i = 0; i < 13; i++) {
             switch (((random.nextInt(3)))) {
                 case 0 -> {
-                    ZFilas2.add(new ZombiNormal(main, Nivel_1.this, 640, 140, 2));
+                    ZFilas2.add(new ZombiNormal(A, Nivel_1.this, 640, 140, 2));
                     ZFilas2.get(ZFilas2.size() - 1).start();
                 }
                 case 1 -> {
-                    ZFilas3.add(new ZombiNormal(main, Nivel_1.this, 640, 210, 3));
+                    ZFilas3.add(new ZombiNormal(A, Nivel_1.this, 640, 210, 3));
                     ZFilas3.get(ZFilas3.size() - 1).start();
 
                 }
                 case 2 -> {
-                    ZFilas4.add(new ZombiNormal(main, Nivel_1.this, 640, 280, 4));
+                    ZFilas4.add(new ZombiNormal(A, Nivel_1.this, 640, 280, 4));
                     ZFilas4.get(ZFilas4.size() - 1).start();
 
                 }

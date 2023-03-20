@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public class Partida extends Thread {
 
     public Main main;
+    public AdministracionDeRecursos A;
     public ArrayList<Zombi> ZFilas1 = new ArrayList();
     public ArrayList<Zombi> ZFilas2 = new ArrayList();
     public ArrayList<Zombi> ZFilas3 = new ArrayList();
@@ -31,6 +32,7 @@ public class Partida extends Thread {
 
     public Partida(Main main) {
         this.main = main;
+        A = new AdministracionDeRecursos(main);
         Generar();
     }
 
@@ -69,15 +71,15 @@ public class Partida extends Thread {
     }
 
     public void Generar() {
-        PFila2[0] = new CoordenadasPlanta(main, 25, 145, 2, this);
-        PFila2[1] = new CoordenadasPlanta(main, 90, 145, 2, this);
-        PFila2[2] = new CoordenadasPlanta(main, 155, 145, 2, this);
-        PFila2[3] = new CoordenadasPlanta(main, 220, 145, 2, this);
-        PFila2[4] = new CoordenadasPlanta(main, 285, 145, 2, this);
-        PFila2[5] = new CoordenadasPlanta(main, 350, 145, 2, this);
-        PFila2[6] = new CoordenadasPlanta(main, 415, 145, 2, this);
-        PFila2[7] = new CoordenadasPlanta(main, 480, 145, 2, this);
-        PFila2[8] = new CoordenadasPlanta(main, 545, 145, 2, this);
+        PFila2[0] = new CoordenadasPlanta(A, 25, 145, 2, this);
+        PFila2[1] = new CoordenadasPlanta(A, 90, 145, 2, this);
+        PFila2[2] = new CoordenadasPlanta(A, 155, 145, 2, this);
+        PFila2[3] = new CoordenadasPlanta(A, 220, 145, 2, this);
+        PFila2[4] = new CoordenadasPlanta(A, 285, 145, 2, this);
+        PFila2[5] = new CoordenadasPlanta(A, 350, 145, 2, this);
+        PFila2[6] = new CoordenadasPlanta(A, 415, 145, 2, this);
+        PFila2[7] = new CoordenadasPlanta(A, 480, 145, 2, this);
+        PFila2[8] = new CoordenadasPlanta(A, 545, 145, 2, this);
     }
 
     public int GetFilasAnalisis(int y) {

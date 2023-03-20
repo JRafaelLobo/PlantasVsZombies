@@ -2,17 +2,18 @@ package Plantas_Pack;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
 public class CoordenadasPlanta {
 
-    private Main main;
+    private AdministracionDeRecursos main;
     private int x, y, fila;
     private Partida partida;
     private Planta planta;
 
-    public CoordenadasPlanta(Main main, int x, int y, int fila, Partida partida) {
+    public CoordenadasPlanta(AdministracionDeRecursos main, int x, int y, int fila, Partida partida) {
         this.main = main;
         this.x = x;
         this.y = y;
@@ -20,13 +21,6 @@ public class CoordenadasPlanta {
         this.fila = fila;
     }
 
-    public Main getMain() {
-        return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
-    }
 
     public int getX() {
         return x;

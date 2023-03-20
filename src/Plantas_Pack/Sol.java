@@ -14,6 +14,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
@@ -21,12 +22,12 @@ public class Sol extends Thread {
 
     protected javax.swing.JLabel sol;
     protected int x, y;
-    protected Main main;
+    protected AdministracionDeRecursos main;
     protected Partida partida;
     protected boolean esdeGirasol = false;
     ParpadeoDeLabels P;
 
-    public Sol(int x, int y, Main main, Partida partida) {
+    public Sol(int x, int y, AdministracionDeRecursos main, Partida partida) {
         this.x = x;
         this.y = y;
         this.main = main;
@@ -34,7 +35,7 @@ public class Sol extends Thread {
         constructor();
     }
 
-    public Sol(int x, int y, Main main, Partida partida, boolean esdeGirasol) {
+    public Sol(int x, int y, AdministracionDeRecursos main, Partida partida, boolean esdeGirasol) {
         this.x = x;
         this.y = y;
         this.main = main;
@@ -72,7 +73,7 @@ public class Sol extends Thread {
                 //el error de aqui es cuando se agarra antes el sol, se solucionaria 
                 if (sol != null) {
                     sol.setLocation(x, y);
-                    main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                    main.PanelControl_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                     try {
                         Thread.sleep(1);
                     } catch (InterruptedException ex) {
@@ -92,7 +93,7 @@ public class Sol extends Thread {
                 y++;
                 if (sol != null) {
                     sol.setLocation(x, y);
-                    main.JP_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                    main.PanelControl_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 }
                 try {
                     Thread.sleep((long) (50 * partida.multiplicador));
@@ -130,7 +131,7 @@ public class Sol extends Thread {
             Clip effect = playMusic("./GameMusic\\SoundEffects\\SunCollected1.wav");
             effect.start();
             partida.Cantsoles += 25;
-            main.SetTextCantSoles(Integer.toString(partida.Cantsoles));
+            main.getMain().SetTextCantSoles(Integer.toString(partida.Cantsoles));
             sol.setVisible(false);
             sol = null;
             try {

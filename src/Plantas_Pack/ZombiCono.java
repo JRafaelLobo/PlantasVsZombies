@@ -14,6 +14,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
@@ -23,7 +24,7 @@ import plantasvszombie_joselobo.Partida;
  */
 public class ZombiCono extends Zombi {
 
-    public ZombiCono(Main main, Partida partida, int x, int y, int fila) {
+    public ZombiCono(AdministracionDeRecursos main, Partida partida, int x, int y, int fila) {
         super(main, partida, x, y, fila);
         File archivo = null;
         Image img = null;
@@ -39,7 +40,7 @@ public class ZombiCono extends Zombi {
         }
         label.setOpaque(false);
         label.setLocation(x, y);
-        this.main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        this.main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         label.setText(" ");
     }
 
@@ -67,7 +68,7 @@ public class ZombiCono extends Zombi {
                 try {
                     x--;
                     label.setLocation(x, y);
-                    main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                    main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                     try {
                         Rzombihitbox.setLocation(x, y);
 
@@ -98,13 +99,7 @@ public class ZombiCono extends Zombi {
 
     }
 
-    public Main getMain() {
-        return main;
-    }
 
-    public void setMain(Main main) {
-        this.main = main;
-    }
 
     public int getVida() {
         return vida;

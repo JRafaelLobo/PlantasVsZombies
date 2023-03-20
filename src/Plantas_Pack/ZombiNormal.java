@@ -17,7 +17,7 @@ import plantasvszombie_joselobo.*;
 
 public class ZombiNormal extends Zombi {
 
-    public ZombiNormal(Main main, Partida partida, int x, int y, int fila) {
+    public ZombiNormal(AdministracionDeRecursos main, Partida partida, int x, int y, int fila) {
         super(main, partida, x, y, fila);
         File archivo = null;
         Image img = null;
@@ -32,7 +32,7 @@ public class ZombiNormal extends Zombi {
         }
         label.setOpaque(false);
         label.setLocation(x, y);
-        this.main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        this.main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         label.setText(" ");
     }
 
@@ -60,7 +60,7 @@ public class ZombiNormal extends Zombi {
                 try {
                     x--;
                     label.setLocation(x, y);
-                    main.JP_PatioFrontal.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                    main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                     try {
                         Rzombihitbox.setLocation(x, y);
 
@@ -91,13 +91,6 @@ public class ZombiNormal extends Zombi {
 
     }
 
-    public Main getMain() {
-        return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
-    }
 
     public int getVida() {
         return vida;

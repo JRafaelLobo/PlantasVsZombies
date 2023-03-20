@@ -11,12 +11,13 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
 public class Guizante extends Thread {
 
-    Main main;
+    AdministracionDeRecursos main;
     JLabel guisante;
     int fila, x, y, dano = 20;
     boolean isAlive = true;
@@ -25,7 +26,7 @@ public class Guizante extends Thread {
     ArrayList<Zombi> refFilaZombi;
     boolean boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = true;
 
-    public Guizante(int x, int y, int fila, Main main, Partida partida) {
+    public Guizante(int x, int y, int fila, AdministracionDeRecursos main, Partida partida) {
         this.main = main;
         this.fila = fila;
         this.x = x;
@@ -44,16 +45,8 @@ public class Guizante extends Thread {
         }
         guisante.setOpaque(false);
         guisante.setLocation(x, y);
-        partida.main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        this.main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         guisante.setText(" ");
-    }
-
-    public Main getMain() {
-        return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
     }
 
     public int getFila() {
@@ -83,7 +76,7 @@ public class Guizante extends Thread {
             }
             x++;
             guisante.setLocation(x, y);
-            //main.JP_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
             RguisanteHitbox.setLocation(x, y);
             for (int i = 0; i < refFilaZombi.size(); i++) {
 

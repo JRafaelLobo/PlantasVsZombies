@@ -13,6 +13,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import static plantasvszombie_joselobo.Main.playMusic;
 import plantasvszombie_joselobo.Partida;
@@ -28,7 +29,7 @@ public class LanzaGuizantes extends Planta {
     ArrayList<Guizante> guisantes = new ArrayList();
     ArrayList<Zombi> refFilaZombi;
 
-    public LanzaGuizantes(int x, int y, int fila, Main main, Partida partida) {
+    public LanzaGuizantes(int x, int y, int fila, AdministracionDeRecursos main, Partida partida) {
         super(x, y, fila, main, partida);
         build();
     }
@@ -46,7 +47,7 @@ public class LanzaGuizantes extends Planta {
         }
         lanzaguisante.setOpaque(false);
         lanzaguisante.setLocation(x, y);
-        main.JP_PatioFrontal.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        main.PanelControl_Proyectiles.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         lanzaguisante.setText(" ");
         refFilaZombi = partida.getfilaZombis(fila);
     }

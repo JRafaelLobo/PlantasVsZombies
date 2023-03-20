@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
@@ -19,7 +20,7 @@ public class Girasol extends Planta {
 
     protected javax.swing.JLabel girasol;
 
-    public Girasol(int x, int y, int fila, Main main, Partida partida) {
+    public Girasol(int x, int y, int fila, AdministracionDeRecursos main, Partida partida) {
         super(x, y, fila, main, partida);
         build();
     }
@@ -37,7 +38,7 @@ public class Girasol extends Planta {
         }
         girasol.setOpaque(false);
         girasol.setLocation(x, y);
-        main.JP_PatioFrontal.add(girasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        main.PanelControl_Plantas.add(girasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         girasol.setText(" ");
     }
 

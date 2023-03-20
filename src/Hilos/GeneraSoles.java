@@ -4,6 +4,7 @@ import Plantas_Pack.Sol;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
@@ -11,11 +12,11 @@ public class GeneraSoles extends Thread {
 
     private int x, y = -10;
     private int TiempoPorCaida;
-    private Main main;
+    private AdministracionDeRecursos main;
     private Partida partida;
     private boolean resume = true;
 
-    public GeneraSoles(int TiempoPorCaida, Main main, Partida partida) {
+    public GeneraSoles(int TiempoPorCaida, AdministracionDeRecursos main, Partida partida) {
         this.TiempoPorCaida = TiempoPorCaida;
         this.main = main;
         this.partida = partida;

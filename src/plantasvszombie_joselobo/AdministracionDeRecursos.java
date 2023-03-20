@@ -3,11 +3,12 @@ package plantasvszombie_joselobo;
 public class AdministracionDeRecursos {
     // javax.swing.JPanel() PanelControl_Soles;
 
-    javax.swing.JPanel PanelControl_Soles;
-    javax.swing.JPanel PanelControl_Proyectiles;
-    javax.swing.JPanel PanelControl_Zombi;
+    public javax.swing.JPanel PanelControl_Soles;
+    public javax.swing.JPanel PanelControl_Proyectiles;
+    public javax.swing.JPanel PanelControl_Zombi;
+    public javax.swing.JPanel PanelControl_Plantas;
 
-    Main main;
+    private Main main;
 
     public AdministracionDeRecursos(Main main) {
         this.main = main;
@@ -23,6 +24,18 @@ public class AdministracionDeRecursos {
         PanelControl_Zombi.setOpaque(false);
         PanelControl_Zombi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         this.main.JP_PatioFrontal.add(PanelControl_Zombi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+        PanelControl_Plantas = new javax.swing.JPanel();
+        PanelControl_Plantas.setOpaque(false);
+        PanelControl_Plantas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        this.main.JP_PanelPlantas.add(PanelControl_Plantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+    }
+
+    public Main getMain() {
+        return main;
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 
 }

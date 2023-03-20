@@ -4,6 +4,7 @@ import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
@@ -15,7 +16,7 @@ public class Nuez extends Planta {
 
     javax.swing.JLabel nuez;
 
-    public Nuez(int x, int y, int fila, Main main, Partida partida) {
+    public Nuez(int x, int y, int fila, AdministracionDeRecursos main, Partida partida) {
         super(x, y, fila, main, partida);
         vida = 4000;
         build();
@@ -34,7 +35,7 @@ public class Nuez extends Planta {
         }
         nuez.setOpaque(false);
         nuez.setLocation(x, y);
-        main.JP_PatioFrontal.add(nuez, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        main.PanelControl_Plantas.add(nuez, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         nuez.setText(" ");
     }
 

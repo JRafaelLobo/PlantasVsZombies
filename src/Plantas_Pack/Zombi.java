@@ -7,12 +7,13 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
 public class Zombi extends Thread {
 
-    protected Main main;
+    protected AdministracionDeRecursos main;
     protected Partida partida;
     protected int vida = 200, dano = 20, velocidad = 150, tiempoDeAtaque = 1000, x, y, fila;
     protected javax.swing.JLabel label;
@@ -21,7 +22,7 @@ public class Zombi extends Thread {
     public Zombi() {
     }
 
-    public Zombi(Main main, Partida partida, int x, int y, int fila) {
+    public Zombi(AdministracionDeRecursos main, Partida partida, int x, int y, int fila) {
         this.partida = partida;
         this.x = x;
         this.y = y;
