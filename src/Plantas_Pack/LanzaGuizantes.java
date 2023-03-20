@@ -47,7 +47,7 @@ public class LanzaGuizantes extends Planta {
         }
         lanzaguisante.setOpaque(false);
         lanzaguisante.setLocation(x, y);
-        main.PanelControl_Proyectiles.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        main.PanelControl_Plantas.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         lanzaguisante.setText(" ");
         refFilaZombi = partida.getfilaZombis(fila);
     }

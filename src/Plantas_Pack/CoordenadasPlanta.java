@@ -21,7 +21,6 @@ public class CoordenadasPlanta {
         this.fila = fila;
     }
 
-
     public int getX() {
         return x;
     }

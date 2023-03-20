@@ -27,7 +27,7 @@ public class AdministracionDeRecursos {
         PanelControl_Plantas = new javax.swing.JPanel();
         PanelControl_Plantas.setOpaque(false);
         PanelControl_Plantas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        this.main.JP_PanelPlantas.add(PanelControl_Plantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+        this.main.JP_PatioFrontal.add(PanelControl_Plantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
     }
 
     public Main getMain() {

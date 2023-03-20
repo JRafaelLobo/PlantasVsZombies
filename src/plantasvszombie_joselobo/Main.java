@@ -798,9 +798,9 @@ public class Main extends javax.swing.JFrame {
                 Jf_MenuPrincipal.setVisible(false);
                 JF_PatioFrontal.setVisible(true);
                 JP_PatioFrontal.setOpaque(false);
-                FondoNormal.setVisible(false);
-                FondoTuto.setVisible(true);
-                partida = new Nivel_1(Main.this);
+                FondoNormal.setVisible(true);
+                FondoTuto.setVisible(false);
+                partida = new Nivel_2(Main.this);
                 partida.start();
                 JF_PatioFrontal.setVisible(true);
                 //JP_DetectorMouse.setVisible(true);
@@ -919,7 +919,7 @@ public class Main extends javax.swing.JFrame {
             eliminarPlanta = false;
             int x = evt.getX();
             int y = evt.getY() - 30;
-            //System.out.println("x:" + x + " y:" + y);
+            System.out.println("x:" + x + " y:" + y);
             int fila = partida.GetFilasAnalisis(y);
             int columna = partida.GetColumnaAnalisis(x);
             partida.Plantar(fila, columna, plantaSelecionada);

@@ -22,55 +22,55 @@ public class Nivel_2 extends Partida {
     @Override
     public void Generar() {
         //fila 1
-        PFila1[0] = new CoordenadasPlanta(A, 25, 42, 1, this);
-        PFila1[1] = new CoordenadasPlanta(A, 90, 42, 1, this);
-        PFila1[2] = new CoordenadasPlanta(A, 155, 42, 1, this);
-        PFila1[3] = new CoordenadasPlanta(A, 220, 42, 1, this);
-        PFila1[4] = new CoordenadasPlanta(A, 285, 42, 1, this);
-        PFila1[5] = new CoordenadasPlanta(A, 350, 42, 1, this);
-        PFila1[6] = new CoordenadasPlanta(A, 415, 42, 1, this);
-        PFila1[7] = new CoordenadasPlanta(A, 480, 42, 1, this);
-        PFila1[8] = new CoordenadasPlanta(A, 545, 42, 1, this);
+        PFila1[0] = new CoordenadasPlanta(A, 81, 81, 1, this);//81
+        PFila1[1] = new CoordenadasPlanta(A, 139, 81, 1, this);
+        PFila1[2] = new CoordenadasPlanta(A, 197, 81, 1, this);
+        PFila1[3] = new CoordenadasPlanta(A, 258, 81, 1, this);
+        PFila1[4] = new CoordenadasPlanta(A, 315, 81, 1, this);
+        PFila1[5] = new CoordenadasPlanta(A, 374, 81, 1, this);
+        PFila1[6] = new CoordenadasPlanta(A, 437, 81, 1, this);
+        PFila1[7] = new CoordenadasPlanta(A, 496, 81, 1, this);
+        PFila1[8] = new CoordenadasPlanta(A, 559, 81, 1, this);
         //fila 2
-        PFila2[0] = new CoordenadasPlanta(A, 25, 150, 2, this);
-        PFila2[1] = new CoordenadasPlanta(A, 90, 150, 2, this);
-        PFila2[2] = new CoordenadasPlanta(A, 155, 150, 2, this);
-        PFila2[3] = new CoordenadasPlanta(A, 220, 150, 2, this);
-        PFila2[4] = new CoordenadasPlanta(A, 285, 150, 2, this);
-        PFila2[5] = new CoordenadasPlanta(A, 350, 150, 2, this);
-        PFila2[6] = new CoordenadasPlanta(A, 415, 150, 2, this);
-        PFila2[7] = new CoordenadasPlanta(A, 480, 150, 2, this);
-        PFila2[8] = new CoordenadasPlanta(A, 545, 150, 2, this);
+        PFila2[0] = new CoordenadasPlanta(A, 81, 152, 2, this);
+        PFila2[1] = new CoordenadasPlanta(A, 139, 152, 2, this);
+        PFila2[2] = new CoordenadasPlanta(A, 197, 152, 2, this);
+        PFila2[3] = new CoordenadasPlanta(A, 258, 152, 2, this);
+        PFila2[4] = new CoordenadasPlanta(A, 315, 152, 2, this);
+        PFila2[5] = new CoordenadasPlanta(A, 374, 152, 2, this);
+        PFila2[6] = new CoordenadasPlanta(A, 437, 152, 2, this);
+        PFila2[7] = new CoordenadasPlanta(A, 496, 152, 2, this);
+        PFila2[8] = new CoordenadasPlanta(A, 559, 152, 2, this);
         //fila 3
-        PFila3[0] = new CoordenadasPlanta(A, 25, 220, 3, this);
-        PFila3[1] = new CoordenadasPlanta(A, 90, 220, 3, this);
-        PFila3[2] = new CoordenadasPlanta(A, 155, 220, 3, this);
-        PFila3[3] = new CoordenadasPlanta(A, 220, 220, 3, this);
-        PFila3[4] = new CoordenadasPlanta(A, 285, 220, 3, this);
-        PFila3[5] = new CoordenadasPlanta(A, 350, 220, 3, this);
-        PFila3[6] = new CoordenadasPlanta(A, 415, 220, 3, this);
-        PFila3[7] = new CoordenadasPlanta(A, 480, 220, 3, this);
-        PFila3[8] = new CoordenadasPlanta(A, 545, 220, 3, this);
+        PFila3[0] = new CoordenadasPlanta(A, 81, 216, 3, this);
+        PFila3[1] = new CoordenadasPlanta(A, 139, 216, 3, this);
+        PFila3[2] = new CoordenadasPlanta(A, 197, 216, 3, this);
+        PFila3[3] = new CoordenadasPlanta(A, 258, 216, 3, this);
+        PFila3[4] = new CoordenadasPlanta(A, 315, 216, 3, this);
+        PFila3[5] = new CoordenadasPlanta(A, 374, 216, 3, this);
+        PFila3[6] = new CoordenadasPlanta(A, 437, 216, 3, this);
+        PFila3[7] = new CoordenadasPlanta(A, 496, 216, 3, this);
+        PFila3[8] = new CoordenadasPlanta(A, 559, 216, 3, this);
         //fila 4
-        PFila4[0] = new CoordenadasPlanta(A, 25, 290, 4, this);
-        PFila4[1] = new CoordenadasPlanta(A, 90, 290, 4, this);
-        PFila4[2] = new CoordenadasPlanta(A, 155, 290, 4, this);
-        PFila4[3] = new CoordenadasPlanta(A, 220, 290, 4, this);
-        PFila4[4] = new CoordenadasPlanta(A, 285, 290, 4, this);
-        PFila4[5] = new CoordenadasPlanta(A, 350, 290, 4, this);
-        PFila4[6] = new CoordenadasPlanta(A, 415, 290, 4, this);
-        PFila4[7] = new CoordenadasPlanta(A, 480, 290, 4, this);
-        PFila4[8] = new CoordenadasPlanta(A, 545, 290, 4, this);
+        PFila4[0] = new CoordenadasPlanta(A, 81, 282, 4, this);
+        PFila4[1] = new CoordenadasPlanta(A, 139, 282, 4, this);
+        PFila4[2] = new CoordenadasPlanta(A, 197, 282, 4, this);
+        PFila4[3] = new CoordenadasPlanta(A, 258, 282, 4, this);
+        PFila4[4] = new CoordenadasPlanta(A, 315, 282, 4, this);
+        PFila4[5] = new CoordenadasPlanta(A, 374, 282, 4, this);
+        PFila4[6] = new CoordenadasPlanta(A, 437, 282, 4, this);
+        PFila4[7] = new CoordenadasPlanta(A, 496, 282, 4, this);
+        PFila4[8] = new CoordenadasPlanta(A, 559, 282, 4, this);
         //fila 5
-        PFila5[0] = new CoordenadasPlanta(A, 25, 150, 5, this);
-        PFila5[1] = new CoordenadasPlanta(A, 90, 150, 5, this);
-        PFila5[2] = new CoordenadasPlanta(A, 155, 150, 5, this);
-        PFila5[3] = new CoordenadasPlanta(A, 220, 150, 5, this);
-        PFila5[4] = new CoordenadasPlanta(A, 285, 150, 5, this);
-        PFila5[5] = new CoordenadasPlanta(A, 350, 150, 5, this);
-        PFila5[6] = new CoordenadasPlanta(A, 415, 150, 5, this);
-        PFila5[7] = new CoordenadasPlanta(A, 480, 150, 5, this);
-        PFila5[8] = new CoordenadasPlanta(A, 545, 150, 5, this);
+        PFila5[0] = new CoordenadasPlanta(A, 81, 351, 5, this);
+        PFila5[1] = new CoordenadasPlanta(A, 139, 351, 5, this);
+        PFila5[2] = new CoordenadasPlanta(A, 197, 351, 5, this);
+        PFila5[3] = new CoordenadasPlanta(A, 258, 351, 5, this);
+        PFila5[4] = new CoordenadasPlanta(A, 315, 351, 5, this);
+        PFila5[5] = new CoordenadasPlanta(A, 374, 351, 5, this);
+        PFila5[6] = new CoordenadasPlanta(A, 437, 351, 5, this);
+        PFila5[7] = new CoordenadasPlanta(A, 496, 351, 5, this);
+        PFila5[8] = new CoordenadasPlanta(A, 559, 351, 5, this);
     }
 
     //filas 70
