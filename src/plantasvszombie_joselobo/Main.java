@@ -75,10 +75,7 @@ public class Main extends javax.swing.JFrame {
         JP_DetectorMouse = new javax.swing.JPanel();
         jFrame1 = new javax.swing.JFrame();
         JP_PanelPlantastest = new Fondo("/.GameImage\\PanelPlantas.png");
-        P_Carta2 = new javax.swing.JPanel();
         P_Carta3 = new javax.swing.JPanel();
-        P_Carta4 = new javax.swing.JPanel();
-        P_Carta1 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
         P_X = new javax.swing.JPanel();
@@ -574,65 +571,9 @@ public class Main extends javax.swing.JFrame {
         JP_PanelPlantastest.setMinimumSize(new java.awt.Dimension(544, 100));
         JP_PanelPlantastest.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        P_Carta2.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta2Layout = new javax.swing.GroupLayout(P_Carta2);
-        P_Carta2.setLayout(P_Carta2Layout);
-        P_Carta2Layout.setHorizontalGroup(
-            P_Carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta2Layout.setVerticalGroup(
-            P_Carta2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        JP_PanelPlantastest.add(P_Carta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 40, 50));
-
         P_Carta3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta3Layout = new javax.swing.GroupLayout(P_Carta3);
-        P_Carta3.setLayout(P_Carta3Layout);
-        P_Carta3Layout.setHorizontalGroup(
-            P_Carta3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta3Layout.setVerticalGroup(
-            P_Carta3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
+        P_Carta3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JP_PanelPlantastest.add(P_Carta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, 50));
-
-        P_Carta4.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta4Layout = new javax.swing.GroupLayout(P_Carta4);
-        P_Carta4.setLayout(P_Carta4Layout);
-        P_Carta4Layout.setHorizontalGroup(
-            P_Carta4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta4Layout.setVerticalGroup(
-            P_Carta4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        JP_PanelPlantastest.add(P_Carta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 40, 50));
-
-        P_Carta1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout P_Carta1Layout = new javax.swing.GroupLayout(P_Carta1);
-        P_Carta1.setLayout(P_Carta1Layout);
-        P_Carta1Layout.setHorizontalGroup(
-            P_Carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        P_Carta1Layout.setVerticalGroup(
-            P_Carta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        JP_PanelPlantastest.add(P_Carta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, 50));
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -1074,10 +1015,7 @@ public class Main extends javax.swing.JFrame {
     public javax.swing.JPanel JP_Soles;
     private javax.swing.JFrame Jf_MenuPrincipal;
     private javax.swing.JFrame Jf_VideoIntro;
-    private javax.swing.JPanel P_Carta1;
-    private javax.swing.JPanel P_Carta2;
     private javax.swing.JPanel P_Carta3;
-    private javax.swing.JPanel P_Carta4;
     private javax.swing.JPanel P_CartaGirasol;
     private javax.swing.JPanel P_CartaLanzaguisantes;
     private javax.swing.JPanel P_CartaNuez;
