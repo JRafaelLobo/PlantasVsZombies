@@ -23,11 +23,11 @@ public class Partida extends Thread {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 9999;
+    public int Cantsoles = 9999999;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
-    public double multiplicador = .2;
+    public double multiplicador = 1;
 
     public Partida(Main main) {
         this.main = main;
@@ -96,18 +96,24 @@ public class Partida extends Thread {
                         if (Cantsoles >= 50) {
                             getfilaPlanta(filas)[columnas].CreateGirasol();
                             Cantsoles -= 50;
+                            Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
+                            effect.start();
                         }
                     }
                     case 1 -> {
                         if (Cantsoles >= 100) {
                             getfilaPlanta(filas)[columnas].CreateLanzaguisante();
                             Cantsoles -= 100;
+                            Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
+                            effect.start();
                         }
                     }
                     case 2 -> {
                         if (Cantsoles >= 50) {
                             getfilaPlanta(filas)[columnas].CreateNuez();
                             Cantsoles -= 50;
+                            Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
+                            effect.start();
                         }
 
                     }
@@ -116,12 +122,11 @@ public class Partida extends Thread {
                         if (Cantsoles >= 150) {
                             getfilaPlanta(filas)[columnas].CreateGirasol();
                             Cantsoles -= 150;
-
+                            Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
+                            effect.start();
                         }
                     }
                 }
-                Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
-                effect.start();
 
             }
         } catch (Exception e) {

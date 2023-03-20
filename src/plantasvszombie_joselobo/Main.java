@@ -1,6 +1,6 @@
 package plantasvszombie_joselobo;
 
-import Niveles.Nivel_1;
+import Niveles.*;
 import Hilos.*;
 import Plantas_Pack.*;
 import java.awt.Color;
@@ -30,6 +30,9 @@ public class Main extends javax.swing.JFrame {
         JP_DetectorMouse.setEnabled(false);
         JP_PanelBlancoSeleccionPlantas.setBackground(new Color(0, 0, 0, 110));
         JP_PanelBlancoSeleccionPlantas.setVisible(false);
+        JP_PatioFrontal.setOpaque(false);
+        FondoNormal.setOpaque(false);
+        FondoTuto.setOpaque(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -59,16 +62,16 @@ public class Main extends javax.swing.JFrame {
         P_CartaGirasol = new Fondo("./GameImage\\card_sunflower.png");
         P_CartaPetacereza = new javax.swing.JPanel();
         JP_ImagenCartas = new Fondo("./GameImage\\PanelPlantas.png");
-        JP_PanelBlancoSeleccionPlantas = new javax.swing.JPanel();
         lb_Palita = new javax.swing.JLabel();
         P_TopBar3 = new javax.swing.JPanel();
         P_X3 = new javax.swing.JPanel();
         X3 = new javax.swing.JLabel();
+        JP_PanelBlancoSeleccionPlantas = new javax.swing.JPanel();
         JP_Soles = new javax.swing.JPanel();
         JP_Proyectiles = new javax.swing.JPanel();
         JP_PatioFrontal = new javax.swing.JPanel();
-        FondoNormal = new Fondo("/.GameImage\\FondoPatioRecortadapng.png");
         FondoTuto = new Fondo("./GameImage\\backlvl2reajustada.jpeg");
+        FondoNormal = new Fondo("./GameImage\\FondoPatioRecortada.png");
         JP_DetectorMouse = new javax.swing.JPanel();
         jFrame1 = new javax.swing.JFrame();
         JP_PanelPlantastest = new Fondo("/.GameImage\\PanelPlantas.png");
@@ -423,30 +426,13 @@ public class Main extends javax.swing.JFrame {
 
         JF_PatioFrontal.getContentPane().add(JP_PanelPlantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 380, 70));
 
-        JP_PanelBlancoSeleccionPlantas.setBackground(new java.awt.Color(255, 255, 255));
-        JP_PanelBlancoSeleccionPlantas.setForeground(new java.awt.Color(102, 102, 102));
-        JP_PanelBlancoSeleccionPlantas.setMaximumSize(new java.awt.Dimension(640, 430));
-
-        javax.swing.GroupLayout JP_PanelBlancoSeleccionPlantasLayout = new javax.swing.GroupLayout(JP_PanelBlancoSeleccionPlantas);
-        JP_PanelBlancoSeleccionPlantas.setLayout(JP_PanelBlancoSeleccionPlantasLayout);
-        JP_PanelBlancoSeleccionPlantasLayout.setHorizontalGroup(
-            JP_PanelBlancoSeleccionPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        JP_PanelBlancoSeleccionPlantasLayout.setVerticalGroup(
-            JP_PanelBlancoSeleccionPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        JF_PatioFrontal.getContentPane().add(JP_PanelBlancoSeleccionPlantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
-
         lb_Palita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Pala.png"))); // NOI18N
         lb_Palita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lb_PalitaMouseClicked(evt);
             }
         });
-        JF_PatioFrontal.getContentPane().add(lb_Palita, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 35, -1, -1));
+        JF_PatioFrontal.getContentPane().add(lb_Palita, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 35, -1, -1));
 
         P_TopBar3.setBackground(new java.awt.Color(0, 0, 0));
         P_TopBar3.setForeground(new java.awt.Color(153, 255, 153));
@@ -516,6 +502,23 @@ public class Main extends javax.swing.JFrame {
 
         JF_PatioFrontal.getContentPane().add(P_TopBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
 
+        JP_PanelBlancoSeleccionPlantas.setBackground(new java.awt.Color(255, 255, 255));
+        JP_PanelBlancoSeleccionPlantas.setForeground(new java.awt.Color(102, 102, 102));
+        JP_PanelBlancoSeleccionPlantas.setMaximumSize(new java.awt.Dimension(640, 430));
+
+        javax.swing.GroupLayout JP_PanelBlancoSeleccionPlantasLayout = new javax.swing.GroupLayout(JP_PanelBlancoSeleccionPlantas);
+        JP_PanelBlancoSeleccionPlantas.setLayout(JP_PanelBlancoSeleccionPlantasLayout);
+        JP_PanelBlancoSeleccionPlantasLayout.setHorizontalGroup(
+            JP_PanelBlancoSeleccionPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        JP_PanelBlancoSeleccionPlantasLayout.setVerticalGroup(
+            JP_PanelBlancoSeleccionPlantasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        JF_PatioFrontal.getContentPane().add(JP_PanelBlancoSeleccionPlantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+
         JP_Soles.setOpaque(false);
         JP_Soles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JF_PatioFrontal.getContentPane().add(JP_Soles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
@@ -527,23 +530,6 @@ public class Main extends javax.swing.JFrame {
         JP_PatioFrontal.setMaximumSize(new java.awt.Dimension(640, 430));
         JP_PatioFrontal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JF_PatioFrontal.getContentPane().add(JP_PatioFrontal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
-
-        FondoNormal.setMaximumSize(new java.awt.Dimension(640, 400));
-        FondoNormal.setMinimumSize(new java.awt.Dimension(640, 400));
-        FondoNormal.setPreferredSize(new java.awt.Dimension(640, 400));
-
-        javax.swing.GroupLayout FondoNormalLayout = new javax.swing.GroupLayout(FondoNormal);
-        FondoNormal.setLayout(FondoNormalLayout);
-        FondoNormalLayout.setHorizontalGroup(
-            FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        FondoNormalLayout.setVerticalGroup(
-            FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        JF_PatioFrontal.getContentPane().add(FondoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
 
         FondoTuto.setMaximumSize(new java.awt.Dimension(640, 400));
         FondoTuto.setMinimumSize(new java.awt.Dimension(640, 400));
@@ -561,6 +547,19 @@ public class Main extends javax.swing.JFrame {
         );
 
         JF_PatioFrontal.getContentPane().add(FondoTuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
+
+        javax.swing.GroupLayout FondoNormalLayout = new javax.swing.GroupLayout(FondoNormal);
+        FondoNormal.setLayout(FondoNormalLayout);
+        FondoNormalLayout.setHorizontalGroup(
+            FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        FondoNormalLayout.setVerticalGroup(
+            FondoNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        JF_PatioFrontal.getContentPane().add(FondoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 400));
 
         JP_DetectorMouse.setOpaque(false);
         JP_DetectorMouse.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -858,11 +857,13 @@ public class Main extends javax.swing.JFrame {
                 Jf_MenuPrincipal.setVisible(false);
                 JF_PatioFrontal.setVisible(true);
                 JP_PatioFrontal.setOpaque(false);
-                FondoNormal.setVisible(false);
-                FondoTuto.setVisible(true);
-                partida = new Nivel_1(Main.this);
+                FondoNormal.setVisible(true);
+                FondoTuto.setVisible(false);
+                partida = new Nivel_2(Main.this);
                 partida.start();
-                //JF_PatioFrontal.setVisible(true);
+                JF_PatioFrontal.setVisible(true);
+                //JP_DetectorMouse.setVisible(true);
+                //JP_DetectorMouse.setEnabled(true);
             }
 
         } else {
@@ -977,7 +978,7 @@ public class Main extends javax.swing.JFrame {
             eliminarPlanta = false;
             int x = evt.getX();
             int y = evt.getY() - 30;
-            System.out.println("x:" + x + " y:" + y);
+            //System.out.println("x:" + x + " y:" + y);
             int fila = partida.GetFilasAnalisis(y);
             int columna = partida.GetColumnaAnalisis(x);
             partida.Plantar(fila, columna, plantaSelecionada);
@@ -985,7 +986,7 @@ public class Main extends javax.swing.JFrame {
         if (eliminarPlanta) {
             int x = evt.getX();
             int y = evt.getY() - 30;
-            System.out.println("x:" + x + " y:" + y);
+            //System.out.println("x:" + x + " y:" + y);
             int fila = partida.GetFilasAnalisis(y);
             int columna = partida.GetColumnaAnalisis(x);
             partida.pala(fila, columna);
@@ -1122,7 +1123,6 @@ public class Main extends javax.swing.JFrame {
     2: Nuez
     3: Petacereza
      */
-
     public javax.swing.JLabel getCantSoles() {
         return lb_CantSoles;
     }
