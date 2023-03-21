@@ -85,7 +85,7 @@ public class CoordenadasPlanta {
             e.printStackTrace();
         }
         try {
-            this.planta.stop();
+           // this.planta.stop();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -58,7 +58,7 @@ public class PetaCereza extends Planta {
     @Override
     public void run() {
         int n = 50;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             try {
                 File archivo = new File("./GameImage\\PetaCereza.png");
                 Image img = Toolkit.getDefaultToolkit().createImage(
@@ -74,22 +74,28 @@ public class PetaCereza extends Planta {
                 Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        for (int i = 1; i <= 5; i++) {
-            ArrayList<Zombi> T = partida.getfilaZombis(fila);
-            for (Zombi zombi : T) {
-                if (zombi.getX() < x + 120 && zombi.getX() > x - 120) {
-                    if (zombi.getY() < y + 120 && zombi.getY() > y - 120) {
+        for (int i = fila - 1; i <= fila + 1; i++) {
+            ArrayList<Zombi> T = null;
+            boolean flag = true;
+            if (i <= 0 || i > 5) {
+                flag = false;
+            }
+            if (flag) {
+                T = partida.getfilaZombis(i);
+
+                for (int j = 0; j < T.size(); j++) {
+                    if (T.get(j).getX() < x + 150 && T.get(j).getX() > x - 150) {
                         try {
-                            zombi.recucirVida(500);
+                            T.get(j).recucirVida(500);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
-                }
-                try {
-                    Thread.sleep(0);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
+                    try {
+                        Thread.sleep(0);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
             try {

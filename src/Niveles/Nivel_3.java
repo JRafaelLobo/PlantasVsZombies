@@ -84,7 +84,7 @@ public class Nivel_3 extends Partida {
         GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_3.this);
         GeneSol.start();
         try {
-            Thread.sleep(22000);
+            Thread.sleep((long) (22000*multiplicador));
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
