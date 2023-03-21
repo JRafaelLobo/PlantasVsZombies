@@ -1,12 +1,12 @@
-package plantasvszombie_joselobo;
+ package plantasvszombie_joselobo;
 
 public class AdministracionDeRecursos {
     // javax.swing.JPanel() PanelControl_Soles;
 
-    public javax.swing.JPanel PanelControl_Soles;
-    public javax.swing.JPanel PanelControl_Proyectiles;
-    public javax.swing.JPanel PanelControl_Zombi;
-    public javax.swing.JPanel PanelControl_Plantas;
+    public transient javax.swing.JPanel PanelControl_Soles;
+    public transient javax.swing.JPanel PanelControl_Proyectiles;
+    public transient javax.swing.JPanel PanelControl_Zombi;
+    public transient javax.swing.JPanel PanelControl_Plantas;
 
     private Main main;
 

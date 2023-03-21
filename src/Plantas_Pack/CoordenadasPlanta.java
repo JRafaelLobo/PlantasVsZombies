@@ -8,7 +8,7 @@ import plantasvszombie_joselobo.Partida;
 
 public class CoordenadasPlanta {
 
-    private AdministracionDeRecursos main;
+    private transient AdministracionDeRecursos main;
     private int x, y, fila;
     private Partida partida;
     private Planta planta;
@@ -74,8 +74,9 @@ public class CoordenadasPlanta {
 
     public void stop() {
         if (planta != null) {
-            this.planta.setPause(true);
-
+            if (planta.isAlive()) {
+                this.planta.suspend();
+            }
         }
     }
 

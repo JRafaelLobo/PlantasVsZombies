@@ -11,9 +11,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Partida extends Thread {
-    
+
     public Main main;
     public AdministracionDeRecursos A;
     public ArrayList<Zombi> ZFilas1 = new ArrayList();
@@ -33,13 +34,13 @@ public class Partida extends Thread {
     public double multiplicador = 1;
     public int control = 0;
     public boolean pause = false;
-    
+
     public Partida(Main main) {
         this.main = main;
         A = new AdministracionDeRecursos(main);
         Generar();
     }
-    
+
     public ArrayList<Zombi> getfilaZombis(int fila) {
         switch (fila) {
             case 1:
@@ -56,7 +57,7 @@ public class Partida extends Thread {
                 return null;
         }
     }
-    
+
     public CoordenadasPlanta[] getfilaPlanta(int fila) {
         switch (fila) {
             case 1:
@@ -73,8 +74,13 @@ public class Partida extends Thread {
                 return null;
         }
     }
-    
+
     public void Generar() {
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                
+            }
+        });
         PFila2[0] = new CoordenadasPlanta(A, 25, 145, 2, this);
         PFila2[1] = new CoordenadasPlanta(A, 90, 145, 2, this);
         PFila2[2] = new CoordenadasPlanta(A, 155, 145, 2, this);
@@ -85,15 +91,15 @@ public class Partida extends Thread {
         PFila2[7] = new CoordenadasPlanta(A, 480, 145, 2, this);
         PFila2[8] = new CoordenadasPlanta(A, 545, 145, 2, this);
     }
-    
+
     public int GetFilasAnalisis(int y) {
         return -1;
     }
-    
+
     public int GetColumnaAnalisis(int x) {
         return -1;
     }
-    
+
     public void Plantar(int filas, int columnas, int tipoDePlanta) {
         try {
             if (getfilaPlanta(filas)[columnas].getPlanta() == null && tipoDePlanta != -1) {
@@ -121,7 +127,7 @@ public class Partida extends Thread {
                             Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
                             effect.start();
                         }
-                        
+
                     }
                     case 3 -> {
                         //falta la petacereza
@@ -133,7 +139,7 @@ public class Partida extends Thread {
                         }
                     }
                 }
-                
+
             }
         } catch (Exception e) {
         }
@@ -141,7 +147,7 @@ public class Partida extends Thread {
         main.plantaSelecionada = -1;
         main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
     }
-    
+
     public void EliminarPlanta(int filas, int columnas) {
         try {
             getfilaPlanta(filas)[columnas].DeletePlant();
@@ -150,14 +156,14 @@ public class Partida extends Thread {
         //main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
         //main.eliminarPlanta = false;
     }
-    
+
     public void pala(int filas, int columnas) {
         try {
             getfilaPlanta(filas)[columnas].remover();
         } catch (Exception e) {
         }
     }
-    
+
     public void pause() {
         pause = true;
         if (main.JDialog_Pause.isVisible()) {
@@ -170,7 +176,7 @@ public class Partida extends Thread {
                 ArrayList<Zombi> f = getfilaZombis(i);
                 for (int j = 0; j < f.size(); j++) {
                     try {
-                        f.get(i).setPause(true);
+                        f.get(i).suspend();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -191,9 +197,9 @@ public class Partida extends Thread {
             Logger.getLogger(Partida.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void Continue() {
-        
+
         for (int i = 1; i <= 5; i++) {
             for (int j = 0; j < 9; j++) {
                 getfilaPlanta(i)[j].resume();
@@ -217,18 +223,18 @@ public class Partida extends Thread {
         main.Music.start();
         this.start();
     }
-    
+
     public void Perdiste() {
         JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Perdiste");
     }
-    
+
     public void Ganaste() {
         main.JDialog_Ganaste.pack();
         main.JDialog_Ganaste.setLocationRelativeTo(main.JP_PatioFrontal);
         main.JDialog_Ganaste.setVisible(true);
         main.JDialog_Ganaste.setModal(true);
     }
-    
+
     public static Clip playMusic(String filepath) {
         try {
             File music = new File(filepath);
