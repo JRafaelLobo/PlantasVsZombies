@@ -82,7 +82,6 @@ public class PetaCereza extends Planta {
             }
             if (flag) {
                 T = partida.getfilaZombis(i);
-
                 for (int j = 0; j < T.size(); j++) {
                     if (T.get(j).getX() < x + 150 && T.get(j).getX() > x - 150) {
                         try {

@@ -137,4 +137,12 @@ public class Planta extends Thread {
     public void deletPlantita() {
 
     }
+
+    public void Para() {
+        this.stop();
+    }
+
+    public void Continua() {
+        this.resume();
+    }
 }

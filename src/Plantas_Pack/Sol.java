@@ -114,6 +114,7 @@ public class Sol extends Thread {
                     //P.start();
                     sol.setVisible(false);
                     sol = null;
+                    partida.soles.remove(this);
                 }
             }
         }
@@ -134,6 +135,7 @@ public class Sol extends Thread {
             main.getMain().SetTextCantSoles(Integer.toString(partida.Cantsoles));
             sol.setVisible(false);
             sol = null;
+            partida.soles.remove(this);
             try {
                 Thread.sleep(0);
             } catch (InterruptedException ex) {

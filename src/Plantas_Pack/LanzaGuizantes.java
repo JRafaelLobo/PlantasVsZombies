@@ -36,7 +36,7 @@ public class LanzaGuizantes extends Planta {
 
     @Override
     public void build() {
-        tiempoRecarga=9000;
+        tiempoRecarga = 9000;
         lanzaguisante = new javax.swing.JLabel();
         try {
             File archivo = new File("./GameImage\\lanzaguisantes.gif");
@@ -119,5 +119,19 @@ public class LanzaGuizantes extends Planta {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void Para() {
+        for (Guizante guisante : guisantes) {
+            guisante.stop();
+        }
+        this.stop();
+    }
+
+    public void Continua() {
+        for (Guizante guisante : guisantes) {
+            guisante.resume();
+        }
+        this.resume();
     }
 }

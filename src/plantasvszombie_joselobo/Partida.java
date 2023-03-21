@@ -154,6 +154,58 @@ public class Partida extends Thread {
         }
     }
 
+    public void pause() {
+        if (main.JDialog_Pause.isVisible()) {
+            for (int i = 1; i <= 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    getfilaPlanta(i)[j].stop();
+                }
+            }
+            for (int i = 1; i <= 5; i++) {
+                ArrayList<Zombi> f = getfilaZombis(i);
+                for (int j = 0; j < f.size(); j++) {
+                    try {
+                        f.get(i).stop();
+                    } catch (Exception e) {
+                        System.out.println("UPs Zombi");
+                    }
+                }
+            }
+            for (int i = 0; i < soles.size(); i++) {
+                try {
+                    soles.get(i).stop();
+                } catch (Exception e) {
+                    System.out.println("Ups Soles");
+                }
+            }
+            main.Music.stop();
+        }
+    }
+
+    public void Continue() {
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                getfilaPlanta(i)[j].resume();
+            }
+        }
+        for (int i = 1; i <= 5; i++) {
+            ArrayList<Zombi> f = getfilaZombis(i);
+            for (int j = 0; j < f.size(); j++) {
+                try {
+                    f.get(i).resume();
+                } catch (Exception e) {
+                }
+            }
+        }
+        for (int i = 0; i < soles.size(); i++) {
+            try {
+                soles.get(i).resume();
+            } catch (Exception e) {
+            }
+        }
+        main.Music.start();
+    }
+
     public void Perdiste() {
         JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Perdiste");
     }

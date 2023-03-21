@@ -72,6 +72,20 @@ public class CoordenadasPlanta {
         this.planta.start();
     }
 
+    public void stop() {
+        try {
+            this.planta.Para();
+        } catch (NullPointerException e) {
+        }
+    }
+
+    public void resume() {
+        try {
+            this.planta.Continua();
+        } catch (NullPointerException e) {
+        }
+    }
+
     public void DeletePlant() {
         //;
         try {
@@ -85,7 +99,7 @@ public class CoordenadasPlanta {
             e.printStackTrace();
         }
         try {
-           // this.planta.stop();
+            // this.planta.stop();
         } catch (Exception e) {
             e.printStackTrace();
         }

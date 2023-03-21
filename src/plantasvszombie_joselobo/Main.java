@@ -56,7 +56,7 @@ public class Main extends javax.swing.JFrame {
         P_X4 = new javax.swing.JPanel();
         X4 = new javax.swing.JLabel();
         JF_PatioFrontal = new javax.swing.JFrame();
-        jLabel1 = new javax.swing.JLabel();
+        lb_PauseButton = new javax.swing.JLabel();
         JP_PanelPlantas = new javax.swing.JPanel();
         lb_CantSoles = new javax.swing.JLabel();
         P_CartaLanzaguisantes = new Fondo("./GameImage\\card_peashooter.png");
@@ -79,7 +79,7 @@ public class Main extends javax.swing.JFrame {
         JP_PanelPlantastest = new Fondo("/.GameImage\\PanelPlantas.png");
         P_Carta3 = new javax.swing.JPanel();
         lb_Pause = new javax.swing.JLabel();
-        D_Pause = new javax.swing.JDialog();
+        JDialog_Pause = new javax.swing.JDialog();
         Icon_Pause = new javax.swing.JLabel();
         B_Cancelar = new javax.swing.JButton();
         B_Reanudar1 = new javax.swing.JButton();
@@ -326,8 +326,13 @@ public class Main extends javax.swing.JFrame {
         JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
-        JF_PatioFrontal.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lb_PauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/PausaButton.png"))); // NOI18N
+        lb_PauseButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lb_PauseButtonMouseClicked(evt);
+            }
+        });
+        JF_PatioFrontal.getContentPane().add(lb_PauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
 
         JP_PanelPlantas.setMaximumSize(new java.awt.Dimension(380, 70));
         JP_PanelPlantas.setMinimumSize(new java.awt.Dimension(380, 70));
@@ -612,21 +617,25 @@ public class Main extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        D_Pause.setBackground(new java.awt.Color(51, 29, 0));
-        D_Pause.setUndecorated(true);
-        D_Pause.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JDialog_Pause.setUndecorated(true);
+        JDialog_Pause.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Icon_Pause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Pause.png"))); // NOI18N
-        D_Pause.getContentPane().add(Icon_Pause, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        JDialog_Pause.getContentPane().add(Icon_Pause, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         B_Cancelar.setText("r");
-        D_Pause.getContentPane().add(B_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
+        JDialog_Pause.getContentPane().add(B_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
 
         B_Reanudar1.setText("r");
-        D_Pause.getContentPane().add(B_Reanudar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
+        B_Reanudar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Reanudar1MouseClicked(evt);
+            }
+        });
+        JDialog_Pause.getContentPane().add(B_Reanudar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, -1));
 
         B_Reiniciar.setText("r");
-        D_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, -1));
+        JDialog_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantas VS Zombies");
@@ -980,6 +989,22 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lb_PalitaMouseClicked
 
+    private void lb_PauseButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_PauseButtonMouseClicked
+        // TODO add your handling code here:ç
+        JDialog_Pause.pack();
+        JDialog_Pause.setLocationRelativeTo(JF_PatioFrontal);
+        JDialog_Pause.setVisible(true);
+        partida.pause();
+        JDialog_Pause.setModal(true);
+
+    }//GEN-LAST:event_lb_PauseButtonMouseClicked
+
+    private void B_Reanudar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Reanudar1MouseClicked
+        // TODO add your handling code here:
+        JDialog_Pause.setVisible(false);
+        partida.Continue();
+    }//GEN-LAST:event_B_Reanudar1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1038,11 +1063,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton B_QUIT;
     private javax.swing.JButton B_Reanudar1;
     private javax.swing.JButton B_Reiniciar;
-    private javax.swing.JDialog D_Pause;
     private javax.swing.JLabel FondoMenuPrincipal;
     private javax.swing.JPanel FondoNormal;
     private javax.swing.JPanel FondoTuto;
     private javax.swing.JLabel Icon_Pause;
+    public javax.swing.JDialog JDialog_Pause;
     private javax.swing.JFrame JF_PatioFrontal;
     private javax.swing.JProgressBar JPB_CargaInicio;
     public javax.swing.JPanel JP_DetectorMouse;
@@ -1075,18 +1100,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lb_CantSoles;
     private javax.swing.JLabel lb_Palita;
     private javax.swing.JLabel lb_Pause;
+    private javax.swing.JLabel lb_PauseButton;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
 //mis variables
     private int xMouse, yMouse;
 
-    private Clip Music;
+    public Clip Music;
     public boolean eliminarPlanta;
     private Usuario usuario = new Usuario();
     private Reproductor video = new Reproductor();
