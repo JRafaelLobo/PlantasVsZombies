@@ -24,8 +24,9 @@ public class Main extends javax.swing.JFrame {
         Music.start();
         Music.loop(Clip.LOOP_CONTINUOUSLY);
         CambiarPantallaTiempo CPT = new CambiarPantallaTiempo(Jf_MenuPrincipal, this, 4000);
-        Thread CambiarMain = new Thread(CPT);
-        CambiarMain.start();
+        CPT.start();
+        BarraDeCarga BDC = new BarraDeCarga(0, 4000, JPB_CargaInicio);
+        BDC.start();
         JP_DetectorMouse.setVisible(false);
         JP_DetectorMouse.setEnabled(false);
         JP_PanelBlancoSeleccionPlantas.setBackground(new Color(0, 0, 0, 110));
@@ -55,12 +56,13 @@ public class Main extends javax.swing.JFrame {
         P_X4 = new javax.swing.JPanel();
         X4 = new javax.swing.JLabel();
         JF_PatioFrontal = new javax.swing.JFrame();
+        jLabel1 = new javax.swing.JLabel();
         JP_PanelPlantas = new javax.swing.JPanel();
         lb_CantSoles = new javax.swing.JLabel();
         P_CartaLanzaguisantes = new Fondo("./GameImage\\card_peashooter.png");
         P_CartaNuez = new Fondo("./GameImage\\card_wallnut.png");
         P_CartaGirasol = new Fondo("./GameImage\\card_sunflower.png");
-        P_CartaPetacereza = new javax.swing.JPanel();
+        P_CartaPetacereza = new Fondo("./GameImage\\card_cherrybomb.png");
         JP_ImagenCartas = new Fondo("./GameImage\\PanelPlantas.png");
         lb_Palita = new javax.swing.JLabel();
         P_TopBar3 = new javax.swing.JPanel();
@@ -76,6 +78,13 @@ public class Main extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         JP_PanelPlantastest = new Fondo("/.GameImage\\PanelPlantas.png");
         P_Carta3 = new javax.swing.JPanel();
+        lb_Pause = new javax.swing.JLabel();
+        D_Pause = new javax.swing.JDialog();
+        Icon_Pause = new javax.swing.JLabel();
+        B_Cancelar = new javax.swing.JButton();
+        B_Reanudar1 = new javax.swing.JButton();
+        B_Reiniciar = new javax.swing.JButton();
+        JPB_CargaInicio = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
         P_X = new javax.swing.JPanel();
@@ -316,6 +325,9 @@ public class Main extends javax.swing.JFrame {
         JF_PatioFrontal.setResizable(false);
         JF_PatioFrontal.setSize(new java.awt.Dimension(640, 430));
         JF_PatioFrontal.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("jLabel1");
+        JF_PatioFrontal.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         JP_PanelPlantas.setMaximumSize(new java.awt.Dimension(380, 70));
         JP_PanelPlantas.setMinimumSize(new java.awt.Dimension(380, 70));
@@ -575,18 +587,46 @@ public class Main extends javax.swing.JFrame {
         P_Carta3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JP_PanelPlantastest.add(P_Carta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, 50));
 
+        lb_Pause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Pause.png"))); // NOI18N
+
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(JP_PanelPlantastest, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jFrame1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lb_Pause)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame1Layout.createSequentialGroup()
                 .addComponent(JP_PanelPlantastest, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 204, Short.MAX_VALUE))
+            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jFrame1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lb_Pause)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        D_Pause.setBackground(new java.awt.Color(51, 29, 0));
+        D_Pause.setUndecorated(true);
+        D_Pause.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Icon_Pause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Pause.png"))); // NOI18N
+        D_Pause.getContentPane().add(Icon_Pause, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        B_Cancelar.setText("r");
+        D_Pause.getContentPane().add(B_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
+
+        B_Reanudar1.setText("r");
+        D_Pause.getContentPane().add(B_Reanudar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
+
+        B_Reiniciar.setText("r");
+        D_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantas VS Zombies");
@@ -596,6 +636,11 @@ public class Main extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(640, 430));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JPB_CargaInicio.setBackground(new java.awt.Color(41, 0, 0));
+        JPB_CargaInicio.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(JPB_CargaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 410, 30));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(640, 430));
         jPanel1.setMinimumSize(new java.awt.Dimension(640, 430));
@@ -673,18 +718,7 @@ public class Main extends javax.swing.JFrame {
         Portada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Portada.jpg"))); // NOI18N
         jPanel1.add(Portada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1000,11 +1034,17 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AbsoluteLayout_MenuPrincipal;
     private javax.swing.JButton B_Adventure;
+    private javax.swing.JButton B_Cancelar;
     private javax.swing.JButton B_QUIT;
+    private javax.swing.JButton B_Reanudar1;
+    private javax.swing.JButton B_Reiniciar;
+    private javax.swing.JDialog D_Pause;
     private javax.swing.JLabel FondoMenuPrincipal;
     private javax.swing.JPanel FondoNormal;
     private javax.swing.JPanel FondoTuto;
+    private javax.swing.JLabel Icon_Pause;
     private javax.swing.JFrame JF_PatioFrontal;
+    private javax.swing.JProgressBar JPB_CargaInicio;
     public javax.swing.JPanel JP_DetectorMouse;
     private javax.swing.JPanel JP_ImagenCartas;
     public javax.swing.JPanel JP_PanelBlancoSeleccionPlantas;
@@ -1035,10 +1075,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lb_CantSoles;
     private javax.swing.JLabel lb_Palita;
+    private javax.swing.JLabel lb_Pause;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
 //mis variables

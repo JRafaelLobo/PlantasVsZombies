@@ -26,7 +26,9 @@ public class Girasol extends Planta {
     }
 
     @Override
+
     public void build() {
+        tiempoRecarga = 8000;
         girasol = new javax.swing.JLabel();
         try {
             File archivo = new File("./GameImage\\sunflower.gif");

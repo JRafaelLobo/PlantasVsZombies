@@ -15,6 +15,7 @@ public class GeneraSoles extends Thread {
     private AdministracionDeRecursos main;
     private Partida partida;
     private boolean resume = true;
+    private boolean primera_vez = true;
 
     public GeneraSoles(int TiempoPorCaida, AdministracionDeRecursos main, Partida partida) {
         this.TiempoPorCaida = TiempoPorCaida;
@@ -30,8 +31,22 @@ public class GeneraSoles extends Thread {
         this.resume = resume;
     }
 
+    @Override
     public void run() {
         Random random = new Random();
+        try {
+            Thread.sleep((long) (TiempoPorCaida * 2 * partida.multiplicador));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GeneraSoles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        x = random.nextInt(301) + 100;
+        partida.soles.add(new Sol(x, y, main, partida));
+        partida.soles.get(partida.soles.size() - 1).start();
+        try {
+            Thread.sleep((long) (TiempoPorCaida * partida.multiplicador));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GeneraSoles.class.getName()).log(Level.SEVERE, null, ex);
+        }
         while (resume) {
             x = random.nextInt(301) + 100;
             partida.soles.add(new Sol(x, y, main, partida));

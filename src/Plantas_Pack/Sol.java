@@ -96,7 +96,7 @@ public class Sol extends Thread {
                     main.PanelControl_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
                 }
                 try {
-                    Thread.sleep((long) (50 * partida.multiplicador));
+                    Thread.sleep((long) (30 * partida.multiplicador));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Sol.class.getName()).log(Level.SEVERE, null, ex);
                 }

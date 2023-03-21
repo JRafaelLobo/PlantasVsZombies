@@ -67,6 +67,11 @@ public class CoordenadasPlanta {
         this.planta = new Nuez(x, y, fila, main, partida);
     }
 
+    public void CreatePetaCereza() {
+        this.planta = new PetaCereza(x, y, fila, main, partida);
+        this.planta.start();
+    }
+
     public void DeletePlant() {
         //;
         try {

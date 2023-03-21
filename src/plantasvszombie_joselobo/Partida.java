@@ -24,7 +24,7 @@ public class Partida extends Thread {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 9999999;
+    public int Cantsoles = 9999;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
@@ -122,7 +122,7 @@ public class Partida extends Thread {
                     case 3 -> {
                         //falta la petacereza
                         if (Cantsoles >= 150) {
-                            getfilaPlanta(filas)[columnas].CreateGirasol();
+                            getfilaPlanta(filas)[columnas].CreatePetaCereza();
                             Cantsoles -= 150;
                             Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
                             effect.start();

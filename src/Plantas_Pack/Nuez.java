@@ -18,7 +18,8 @@ public class Nuez extends Planta {
 
     public Nuez(int x, int y, int fila, AdministracionDeRecursos main, Partida partida) {
         super(x, y, fila, main, partida);
-        vida = 4000;
+        vida = 1400;
+        tiempoRecarga = 2000;
         build();
     }
 

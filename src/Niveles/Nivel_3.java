@@ -10,11 +10,11 @@ import java.util.logging.Logger;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Nivel_2 extends Partida {
+public class Nivel_3 extends Partida {
 
     protected Random random = new Random();
 
-    public Nivel_2(Main main) {
+    public Nivel_3(Main main) {
         super(main);
 
     }
@@ -81,7 +81,7 @@ public class Nivel_2 extends Partida {
         } catch (InterruptedException ex) {
         }
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-        GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_2.this);
+        GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_3.this);
         GeneSol.start();
         try {
             Thread.sleep(22000);
@@ -89,7 +89,6 @@ public class Nivel_2 extends Partida {
             ex.printStackTrace();
         }
         for (int i = 0; i < 10; i++) {
-            //1 minuto y 31 segundos
             int R = random.nextInt(5) + 1;
             int porcentaje = random.nextInt(100);
             if (porcentaje > 60) {
@@ -102,7 +101,7 @@ public class Nivel_2 extends Partida {
             try {
                 Thread.sleep(0);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Nivel_2.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Nivel_3.class.getName()).log(Level.SEVERE, null, ex);
             }
             switch (i) {
                 case 1 -> {

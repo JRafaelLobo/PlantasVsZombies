@@ -36,6 +36,7 @@ public class LanzaGuizantes extends Planta {
 
     @Override
     public void build() {
+        tiempoRecarga=9000;
         lanzaguisante = new javax.swing.JLabel();
         try {
             File archivo = new File("./GameImage\\lanzaguisantes.gif");

@@ -11,7 +11,7 @@ import plantasvszombie_joselobo.*;
  *
  * @author rinal
  */
-public class CambiarPantallaTiempo implements Runnable {
+public class CambiarPantallaTiempo extends Thread {
 
     private JFrame Cambio, Anterior;
     private int milisegundos;

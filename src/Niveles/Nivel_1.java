@@ -65,10 +65,10 @@ public class Nivel_1 extends Partida {
         } catch (InterruptedException ex) {
         }
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-        GeneraSoles GeneSol = new GeneraSoles(10000, A, Nivel_1.this);
+        GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_1.this);
         GeneSol.start();
         try {
-            Thread.sleep((long) (15000 * multiplicador));
+            Thread.sleep((long) (22000 * multiplicador));
         } catch (InterruptedException ex) {
             Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
         }
