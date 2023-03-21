@@ -123,9 +123,9 @@ public class LanzaGuizantes extends Planta {
 
     public void Para() {
         for (Guizante guisante : guisantes) {
-            guisante.stop();
+            guisante.suspend();
         }
-        this.stop();
+        this.suspend();
     }
 
     public void Continua() {

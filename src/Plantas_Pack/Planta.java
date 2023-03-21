@@ -139,7 +139,7 @@ public class Planta extends Thread {
     }
 
     public void Para() {
-        this.stop();
+        this.suspend();
     }
 
     public void Continua() {

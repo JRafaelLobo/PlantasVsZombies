@@ -165,7 +165,7 @@ public class Partida extends Thread {
                 ArrayList<Zombi> f = getfilaZombis(i);
                 for (int j = 0; j < f.size(); j++) {
                     try {
-                        f.get(i).stop();
+                        f.get(i).suspend();
                     } catch (Exception e) {
                         System.out.println("UPs Zombi");
                     }
@@ -173,7 +173,7 @@ public class Partida extends Thread {
             }
             for (int i = 0; i < soles.size(); i++) {
                 try {
-                    soles.get(i).stop();
+                    soles.get(i).suspend();
                 } catch (Exception e) {
                     System.out.println("Ups Soles");
                 }
