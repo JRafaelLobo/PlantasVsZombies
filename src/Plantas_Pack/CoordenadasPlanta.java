@@ -73,16 +73,15 @@ public class CoordenadasPlanta {
     }
 
     public void stop() {
-        try {
-            this.planta.Para();
-        } catch (NullPointerException e) {
+        if (planta != null) {
+            this.planta.setPause(true);
+
         }
     }
 
     public void resume() {
-        try {
-            this.planta.Continua();
-        } catch (NullPointerException e) {
+        if (planta != null) {
+            this.planta.setPause(false);
         }
     }
 

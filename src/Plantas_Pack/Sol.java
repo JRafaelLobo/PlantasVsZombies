@@ -8,7 +8,6 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -102,7 +101,7 @@ public class Sol extends Thread {
                 }
             }
         }
-        Timer T = new Timer((int) (18000 * partida.multiplicador), null);//25
+        Timer T = new Timer((int) (8000 * partida.multiplicador), null);//25
         T.start();
         T.addActionListener(
                 new java.awt.event.ActionListener() {

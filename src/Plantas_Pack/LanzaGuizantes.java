@@ -65,7 +65,11 @@ public class LanzaGuizantes extends Planta {
     public void run() {
         //aqui ultima modificacion haciendo una referencia
         while (vida > 0) {
-            if (!refFilaZombi.isEmpty()) {
+            if (!refFilaZombi.isEmpty() && !pause
+                    
+                    
+                    
+                    ) {
                 try {
                     Thread.sleep((long) (tiempoDeAtaque * partida.multiplicador));
                 } catch (InterruptedException ex) {
@@ -96,7 +100,9 @@ public class LanzaGuizantes extends Planta {
 
     @Override
     public void setInvisible() {
-        lanzaguisante.setVisible(false);
+        if (lanzaguisante != null) {
+            lanzaguisante.setVisible(false);
+        }
     }
 
     @Override

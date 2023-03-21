@@ -109,7 +109,9 @@ public class PetaCereza extends Planta {
 
     @Override
     public void setInvisible() {
-        petacereza.setVisible(false);
+        if (petacereza != null) {
+            petacereza.setVisible(false);
+        }
     }
 
     @Override

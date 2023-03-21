@@ -48,41 +48,43 @@ public class ZombiCono extends Zombi {
     public void run() {
         // System.out.println(partida.getfilaZombis(fila));
         while (vida > 0) {
-            try {
-                Thread.sleep(0);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ZombiNormal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            int test = TestNear();
-            if (test != -1) {
-                Clip effect = playMusic("./GameMusic\\SoundEffects\\ZombieEat2.wav");
-                effect.start();
-                partida.getfilaPlanta(fila)[test].getPlanta().reducirVida(dano);
+            if (!pause) {
 
                 try {
-                    Thread.sleep((long) (tiempoDeAtaque * partida.multiplicador));
+                    Thread.sleep(0);
                 } catch (InterruptedException ex) {
-                    ex.printStackTrace();
+                    Logger.getLogger(ZombiNormal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                try {
-                    x--;
-                    label.setLocation(x, y);
-                    main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-                    try {
-                        Rzombihitbox.setLocation(x, y);
+                int test = TestNear();
+                if (test != -1) {
+                    Clip effect = playMusic("./GameMusic\\SoundEffects\\ZombieEat2.wav");
+                    effect.start();
+                    partida.getfilaPlanta(fila)[test].getPlanta().reducirVida(dano);
 
+                    try {
+                        Thread.sleep((long) (tiempoDeAtaque * partida.multiplicador));
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                } else {
+                    try {
+                        x--;
+                        label.setLocation(x, y);
+                        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                        try {
+                            Rzombihitbox.setLocation(x, y);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        if (x < -10) {
+                            partida.perdida = true;
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    if (x < -10) {
-                        partida.perdida = true;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
-
             try {
                 Thread.sleep((long) (velocidad * partida.multiplicador));
             } catch (InterruptedException ex) {
@@ -98,8 +100,6 @@ public class ZombiCono extends Zombi {
         //}*/
 
     }
-
-
 
     public int getVida() {
         return vida;

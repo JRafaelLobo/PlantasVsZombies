@@ -15,9 +15,10 @@ public class Zombi extends Thread {
 
     protected AdministracionDeRecursos main;
     protected Partida partida;
-    protected int vida = 200, dano = 20, velocidad = 150, tiempoDeAtaque = 1000, x, y, fila;
+    protected int vida = 200, dano = 20, velocidad = 120, tiempoDeAtaque = 1000, x, y, fila;
     protected javax.swing.JLabel label;
     protected Rectangle Rzombihitbox;
+    protected boolean pause = false;
 
     public Zombi() {
     }
@@ -40,8 +41,8 @@ public class Zombi extends Thread {
     }
 
     public void recucirVida(int vida) {
+        this.vida = this.vida - vida;
         if (this.vida > 0) {
-            this.vida = this.vida - vida;
             Parpadear();
         } else {
             label.setVisible(false);
@@ -73,6 +74,14 @@ public class Zombi extends Thread {
         return x;
     }
 
+    public boolean isPause() {
+        return pause;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
+    }
+
     public void setX(int x) {
         this.x = x;
     }
@@ -84,5 +93,5 @@ public class Zombi extends Thread {
     public void setY(int y) {
         this.y = y;
     }
-    
+
 }

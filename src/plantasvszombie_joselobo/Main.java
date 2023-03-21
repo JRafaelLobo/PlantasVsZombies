@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.TimerTask;
 import javax.sound.sampled.*;
 import javax.swing.*;
-import javafx.event.*;
+//import javafx.event.*;
 
 public class Main extends javax.swing.JFrame {
 
@@ -84,6 +84,8 @@ public class Main extends javax.swing.JFrame {
         B_Cancelar = new javax.swing.JButton();
         B_Reanudar1 = new javax.swing.JButton();
         B_Reiniciar = new javax.swing.JButton();
+        JDialog_Ganaste = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
         JPB_CargaInicio = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
@@ -637,6 +639,11 @@ public class Main extends javax.swing.JFrame {
         B_Reiniciar.setText("r");
         JDialog_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
+        JDialog_Ganaste.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Ganaste yippe!");
+        JDialog_Ganaste.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantas VS Zombies");
         setLocationByPlatform(true);
@@ -996,7 +1003,6 @@ public class Main extends javax.swing.JFrame {
         JDialog_Pause.setVisible(true);
         partida.pause();
         JDialog_Pause.setModal(true);
-
     }//GEN-LAST:event_lb_PauseButtonMouseClicked
 
     private void B_Reanudar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Reanudar1MouseClicked
@@ -1067,6 +1073,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel FondoNormal;
     private javax.swing.JPanel FondoTuto;
     private javax.swing.JLabel Icon_Pause;
+    public javax.swing.JDialog JDialog_Ganaste;
     public javax.swing.JDialog JDialog_Pause;
     private javax.swing.JFrame JF_PatioFrontal;
     private javax.swing.JProgressBar JPB_CargaInicio;
@@ -1100,6 +1107,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lb_CantSoles;
@@ -1114,7 +1122,7 @@ public class Main extends javax.swing.JFrame {
     public Clip Music;
     public boolean eliminarPlanta;
     private Usuario usuario = new Usuario();
-    private Reproductor video = new Reproductor();
+   //private Reproductor video = new Reproductor();
     int plantaSelecionada = -1;
     public Partida partida;
     public double VolumenMusica;

@@ -1,4 +1,4 @@
-package plantasvszombie_joselobo;
+/*package plantasvszombie_joselobo;
 
 import java.awt.BorderLayout;
 import java.io.File;
@@ -23,23 +23,15 @@ public class Reproductor {
         this.jfxpanel = new JFXPanel();
     }
 
-    /**
-     * @param jpanel the jpanel to set
-     */
     public void setJpanel(JPanel jpanel) {
         this.jpanel = jpanel;
     }
 
-    /**
-     * @return the mediaPlayer
-     */
     public MediaPlayer getMediaPlayer() {
         return mediaPlayer;
     }
 
-    /**
-     * @param ruta the ruta to set
-     */
+
     public void setRuta(String ruta) {
         this.ruta = ruta;
     }
@@ -105,4 +97,4 @@ public class Reproductor {
         }
     }
 
-}
+}*/

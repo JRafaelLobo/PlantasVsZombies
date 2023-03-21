@@ -5,13 +5,15 @@ import Plantas_Pack.Sol;
 import Plantas_Pack.Zombi;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 public class Partida extends Thread {
-
+    
     public Main main;
     public AdministracionDeRecursos A;
     public ArrayList<Zombi> ZFilas1 = new ArrayList();
@@ -24,18 +26,20 @@ public class Partida extends Thread {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 9999;
+    public int Cantsoles = 50;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
     public double multiplicador = 1;
-
+    public int control = 0;
+    public boolean pause = false;
+    
     public Partida(Main main) {
         this.main = main;
         A = new AdministracionDeRecursos(main);
         Generar();
     }
-
+    
     public ArrayList<Zombi> getfilaZombis(int fila) {
         switch (fila) {
             case 1:
@@ -52,7 +56,7 @@ public class Partida extends Thread {
                 return null;
         }
     }
-
+    
     public CoordenadasPlanta[] getfilaPlanta(int fila) {
         switch (fila) {
             case 1:
@@ -69,7 +73,7 @@ public class Partida extends Thread {
                 return null;
         }
     }
-
+    
     public void Generar() {
         PFila2[0] = new CoordenadasPlanta(A, 25, 145, 2, this);
         PFila2[1] = new CoordenadasPlanta(A, 90, 145, 2, this);
@@ -81,15 +85,15 @@ public class Partida extends Thread {
         PFila2[7] = new CoordenadasPlanta(A, 480, 145, 2, this);
         PFila2[8] = new CoordenadasPlanta(A, 545, 145, 2, this);
     }
-
+    
     public int GetFilasAnalisis(int y) {
         return -1;
     }
-
+    
     public int GetColumnaAnalisis(int x) {
         return -1;
     }
-
+    
     public void Plantar(int filas, int columnas, int tipoDePlanta) {
         try {
             if (getfilaPlanta(filas)[columnas].getPlanta() == null && tipoDePlanta != -1) {
@@ -117,7 +121,7 @@ public class Partida extends Thread {
                             Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
                             effect.start();
                         }
-
+                        
                     }
                     case 3 -> {
                         //falta la petacereza
@@ -129,7 +133,7 @@ public class Partida extends Thread {
                         }
                     }
                 }
-
+                
             }
         } catch (Exception e) {
         }
@@ -137,7 +141,7 @@ public class Partida extends Thread {
         main.plantaSelecionada = -1;
         main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
     }
-
+    
     public void EliminarPlanta(int filas, int columnas) {
         try {
             getfilaPlanta(filas)[columnas].DeletePlant();
@@ -146,15 +150,16 @@ public class Partida extends Thread {
         //main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
         //main.eliminarPlanta = false;
     }
-
+    
     public void pala(int filas, int columnas) {
         try {
             getfilaPlanta(filas)[columnas].remover();
         } catch (Exception e) {
         }
     }
-
+    
     public void pause() {
+        pause = true;
         if (main.JDialog_Pause.isVisible()) {
             for (int i = 1; i <= 5; i++) {
                 for (int j = 0; j < 9; j++) {
@@ -165,9 +170,9 @@ public class Partida extends Thread {
                 ArrayList<Zombi> f = getfilaZombis(i);
                 for (int j = 0; j < f.size(); j++) {
                     try {
-                        f.get(i).suspend();
+                        f.get(i).setPause(true);
                     } catch (Exception e) {
-                        System.out.println("UPs Zombi");
+                        e.printStackTrace();
                     }
                 }
             }
@@ -180,9 +185,15 @@ public class Partida extends Thread {
             }
             main.Music.stop();
         }
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Partida.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
+    
     public void Continue() {
+        
         for (int i = 1; i <= 5; i++) {
             for (int j = 0; j < 9; j++) {
                 getfilaPlanta(i)[j].resume();
@@ -192,28 +203,32 @@ public class Partida extends Thread {
             ArrayList<Zombi> f = getfilaZombis(i);
             for (int j = 0; j < f.size(); j++) {
                 try {
-                    f.get(i).resume();
+                    f.get(i).start();
                 } catch (Exception e) {
                 }
             }
         }
         for (int i = 0; i < soles.size(); i++) {
             try {
-                soles.get(i).resume();
+                soles.get(i).start();
             } catch (Exception e) {
             }
         }
         main.Music.start();
+        this.start();
     }
-
+    
     public void Perdiste() {
         JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Perdiste");
     }
-
+    
     public void Ganaste() {
-        JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Ganaste");
+        main.JDialog_Ganaste.pack();
+        main.JDialog_Ganaste.setLocationRelativeTo(main.JP_PatioFrontal);
+        main.JDialog_Ganaste.setVisible(true);
+        main.JDialog_Ganaste.setModal(true);
     }
-
+    
     public static Clip playMusic(String filepath) {
         try {
             File music = new File(filepath);

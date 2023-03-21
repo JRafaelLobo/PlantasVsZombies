@@ -5,6 +5,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -59,14 +61,21 @@ public class Girasol extends Planta {
     public void run() {
         //aqui ultima modificacion haciendo una referencia
         while (vida > 0) {
-            try {
-                Thread.sleep((long) (20000 * partida.multiplicador));
-            } catch (InterruptedException ex) {
-                girasol.setVisible(false);
-                RPlantaHitbox = null;
-                girasol = null;
+            if (!pause) {
+                try {
+                    Thread.sleep((long) (20000 * partida.multiplicador));
+                } catch (InterruptedException ex) {
+                    girasol.setVisible(false);
+                    RPlantaHitbox = null;
+                    girasol = null;
+                }
+                Producir();
             }
-            Producir();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Girasol.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         /*girasol.setVisible(false);
         RPlantaHitbox = null;
@@ -81,7 +90,9 @@ public class Girasol extends Planta {
 
     @Override
     public void setInvisible() {
-        girasol.setVisible(false);
+        if (girasol != null) {
+            girasol.setVisible(false);
+        }
     }
 
     @Override
