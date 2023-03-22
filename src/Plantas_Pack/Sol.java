@@ -166,7 +166,8 @@ public class Sol extends Thread implements Serializable {
         }
     }
 
-    public void reload() {
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
         main.PanelControl_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 }

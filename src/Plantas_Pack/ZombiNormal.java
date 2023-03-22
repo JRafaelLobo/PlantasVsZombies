@@ -200,7 +200,8 @@ public class ZombiNormal extends Zombi implements Serializable {
         return null;
     }
 
-    public void reload() {
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
         main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 }

@@ -151,10 +151,11 @@ public class LanzaGuizantes extends Planta implements Serializable {
         this.resume();
     }
 
-    public void reload() {
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
         main.PanelControl_Plantas.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         for (Guizante guisante : guisantes) {
-            guisante.reload();
+            guisante.reload(main);
         }
     }
 }

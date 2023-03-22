@@ -111,9 +111,10 @@ public class CoordenadasPlanta implements Serializable {
         this.planta = null;
     }
 
-    public void reload() {
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
         if (this.planta != null) {
-            planta.reload();
+            planta.reload(main);
         }
     }
 }

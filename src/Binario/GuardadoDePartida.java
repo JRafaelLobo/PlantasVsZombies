@@ -70,6 +70,13 @@ public class GuardadoDePartida {
 
     public boolean FileExist() {
         return archivo.exists();
+    }
+
+    @Override
+    public String toString() {
+
+        return "GuardadoDePartida{" + "P=" + P + ", archivo=" + archivo + '}';
 
     }
+
 }

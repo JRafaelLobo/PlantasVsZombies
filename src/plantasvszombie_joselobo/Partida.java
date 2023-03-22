@@ -18,7 +18,7 @@ import javax.swing.SwingUtilities;
 public class Partida extends Thread implements Serializable {
 
     public transient Main main;
-    public AdministracionDeRecursos A;
+    public transient AdministracionDeRecursos A;
     public ArrayList<Zombi> ZFilas1 = new ArrayList();
     public ArrayList<Zombi> ZFilas2 = new ArrayList();
     public ArrayList<Zombi> ZFilas3 = new ArrayList();
@@ -232,10 +232,11 @@ public class Partida extends Thread implements Serializable {
 
     public void Reload(Main main) {
         A = new AdministracionDeRecursos(main);
+        this.main = main;
         for (int i = 1; i <= 5; i++) {
             try {
                 for (int j = 0; j < 9; j++) {
-                    getfilaPlanta(i)[j].reload();
+                    getfilaPlanta(i)[j].reload(A);
                 }
             } catch (Exception e) {
                 System.out.println("fila selecionada dio error: " + i);
@@ -243,14 +244,14 @@ public class Partida extends Thread implements Serializable {
         }
         for (int i = 1; i <= 5; i++) {
             for (Zombi z : getfilaZombis(i)) {
-                z.reload();
+                z.reload(A);
             }
         }
         GeneSol.resume();
         for (Sol sole : soles) {
-            sole.reload();
+            sole.reload(A);
         }
-        main.Music.start();
+        Continue();
     }
 
     public static Clip playMusic(String filepath) {

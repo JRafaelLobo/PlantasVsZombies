@@ -147,7 +147,7 @@ public class Planta extends Thread implements Serializable {
         this.resume();
     }
 
-    public void reload() {
-
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
     }
 }

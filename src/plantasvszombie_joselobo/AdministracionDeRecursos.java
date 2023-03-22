@@ -2,7 +2,7 @@ package plantasvszombie_joselobo;
 
 import java.io.Serializable;
 
-public class AdministracionDeRecursos implements Serializable{
+public class AdministracionDeRecursos implements Serializable {
     // javax.swing.JPanel() PanelControl_Soles;
 
     //transient
@@ -10,9 +10,7 @@ public class AdministracionDeRecursos implements Serializable{
     public transient javax.swing.JPanel PanelControl_Proyectiles;
     public transient javax.swing.JPanel PanelControl_Zombi;
     public transient javax.swing.JPanel PanelControl_Plantas;
-    public Usuario UsuarioActual ;
-
-    private Main main;
+    private transient Main main;
 
     public AdministracionDeRecursos(Main main) {
         this.main = main;
@@ -32,7 +30,6 @@ public class AdministracionDeRecursos implements Serializable{
         PanelControl_Plantas.setOpaque(false);
         PanelControl_Plantas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         this.main.JP_PatioFrontal.add(PanelControl_Plantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
-        UsuarioActual = this.main.UserActual;
     }
 
     public Main getMain() {

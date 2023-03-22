@@ -135,7 +135,8 @@ public class Guizante extends Thread implements Serializable {
         }
     }
 
-    public void reload() {
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
         main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 }

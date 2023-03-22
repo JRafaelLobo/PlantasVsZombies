@@ -96,7 +96,8 @@ public class Nuez extends Planta implements Serializable {
     }
 
     @Override
-    public void reload() {
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
         main.PanelControl_Plantas.add(nuez, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 }

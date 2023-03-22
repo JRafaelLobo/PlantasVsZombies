@@ -955,6 +955,9 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             case 1 -> {
+                Music = playMusic("./GameMusic\\Day_Stage.wav");
+                Music.start();
+                Music.loop(Clip.LOOP_CONTINUOUSLY);
                 if (guardarPartida.FileExist()) {
                     JF_PatioFrontal.pack();
                     JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
@@ -966,9 +969,7 @@ public class Main extends javax.swing.JFrame {
                     partida = guardarPartida.getP();
                     partida.Reload(this);
                 } else {
-                    Music = playMusic("./GameMusic\\Day_Stage.wav");
-                    Music.start();
-                    Music.loop(Clip.LOOP_CONTINUOUSLY);
+
                     if (partida != null) {
                         partida.Reiniciar();
                     }
@@ -987,6 +988,9 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             case 2 -> {
+                Music = playMusic("./GameMusic\\Day_Stage.wav");
+                Music.start();
+                Music.loop(Clip.LOOP_CONTINUOUSLY);
                 if (guardarPartida.FileExist()) {
                     JF_PatioFrontal.pack();
                     JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
@@ -995,12 +999,13 @@ public class Main extends javax.swing.JFrame {
                     JP_PatioFrontal.setOpaque(false);
                     FondoNormal.setVisible(true);
                     FondoTuto.setVisible(false);
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
                     partida = guardarPartida.getP();
                     partida.Reload(this);
                 } else {
-                    Music = playMusic("./GameMusic\\Day_Stage.wav");
-                    Music.start();
-                    Music.loop(Clip.LOOP_CONTINUOUSLY);
+
                     if (partida != null) {
                         partida.Reiniciar();
                     }
@@ -1018,6 +1023,9 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             case 3 -> {
+                Music = playMusic("./GameMusic\\Day_Stage.wav");
+                Music.start();
+                Music.loop(Clip.LOOP_CONTINUOUSLY);
                 if (guardarPartida.FileExist()) {
                     JF_PatioFrontal.pack();
                     JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
@@ -1029,9 +1037,7 @@ public class Main extends javax.swing.JFrame {
                     partida = guardarPartida.getP();
                     partida.Reload(this);
                 } else {
-                    Music = playMusic("./GameMusic\\Day_Stage.wav");
-                    Music.start();
-                    Music.loop(Clip.LOOP_CONTINUOUSLY);
+
                     if (partida != null) {
                         partida.Reiniciar();
                     }

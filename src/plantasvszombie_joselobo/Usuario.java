@@ -6,7 +6,6 @@ public class Usuario implements Serializable {
 
     private String nombre;
     private int lvl;
-    private Partida partida;
 
     public Usuario(String nombre, int lvl) {
         this.nombre = nombre;
@@ -33,13 +32,6 @@ public class Usuario implements Serializable {
         this.lvl++;
     }
 
-    public Partida getPartida() {
-        return partida;
-    }
-
-    public void setPartida(Partida partida) {
-        this.partida = partida;
-    }
 
     @Override
     public String toString() {
