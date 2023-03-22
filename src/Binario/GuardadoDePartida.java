@@ -68,4 +68,8 @@ public class GuardadoDePartida {
         }
     }
 
+    public boolean FileExist() {
+        return archivo.exists();
+
+    }
 }

@@ -955,64 +955,101 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             case 1 -> {
-                Music = playMusic("./GameMusic\\Day_Stage.wav");
-                Music.start();
-                Music.loop(Clip.LOOP_CONTINUOUSLY);
-                if (partida != null) {
-                    partida.Reiniciar();
+                if (guardarPartida.FileExist()) {
+                    JF_PatioFrontal.pack();
+                    JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                    Jf_MenuPrincipal.setVisible(false);
+                    JF_PatioFrontal.setVisible(true);
+                    JP_PatioFrontal.setOpaque(false);
+                    FondoNormal.setVisible(false);
+                    FondoTuto.setVisible(true);
+                    partida = guardarPartida.getP();
+                    partida.Reload(this);
+                } else {
+                    Music = playMusic("./GameMusic\\Day_Stage.wav");
+                    Music.start();
+                    Music.loop(Clip.LOOP_CONTINUOUSLY);
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
+
+                    JF_PatioFrontal.pack();
+                    JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                    Jf_MenuPrincipal.setVisible(false);
+                    JF_PatioFrontal.setVisible(true);
+                    JP_PatioFrontal.setOpaque(false);
+                    FondoNormal.setVisible(false);
+                    FondoTuto.setVisible(true);
+                    partida = new Nivel_1(Main.this);
+                    partida.start();
+                    JF_PatioFrontal.setVisible(true);
+
                 }
-
-                JF_PatioFrontal.pack();
-                JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
-                Jf_MenuPrincipal.setVisible(false);
-                JF_PatioFrontal.setVisible(true);
-                JP_PatioFrontal.setOpaque(false);
-                FondoNormal.setVisible(false);
-                FondoTuto.setVisible(true);
-                partida = new Nivel_1(Main.this);
-                partida.start();
-                JF_PatioFrontal.setVisible(true);
-
             }
             case 2 -> {
-                Music = playMusic("./GameMusic\\Day_Stage.wav");
-                Music.start();
-                Music.loop(Clip.LOOP_CONTINUOUSLY);
-                if (partida != null) {
-                    partida.Reiniciar();
-                }
+                if (guardarPartida.FileExist()) {
+                    JF_PatioFrontal.pack();
+                    JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                    Jf_MenuPrincipal.setVisible(false);
+                    JF_PatioFrontal.setVisible(true);
+                    JP_PatioFrontal.setOpaque(false);
+                    FondoNormal.setVisible(true);
+                    FondoTuto.setVisible(false);
+                    partida = guardarPartida.getP();
+                    partida.Reload(this);
+                } else {
+                    Music = playMusic("./GameMusic\\Day_Stage.wav");
+                    Music.start();
+                    Music.loop(Clip.LOOP_CONTINUOUSLY);
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
 
-                JF_PatioFrontal.pack();
-                JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
-                Jf_MenuPrincipal.setVisible(false);
-                JF_PatioFrontal.setVisible(true);
-                JP_PatioFrontal.setOpaque(false);
-                FondoNormal.setVisible(true);
-                FondoTuto.setVisible(false);
-                partida = new Nivel_2(Main.this);
-                partida.start();
-                JF_PatioFrontal.setVisible(true);
+                    JF_PatioFrontal.pack();
+                    JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                    Jf_MenuPrincipal.setVisible(false);
+                    JF_PatioFrontal.setVisible(true);
+                    JP_PatioFrontal.setOpaque(false);
+                    FondoNormal.setVisible(true);
+                    FondoTuto.setVisible(false);
+                    partida = new Nivel_2(Main.this);
+                    partida.start();
+                    JF_PatioFrontal.setVisible(true);
+                }
             }
             case 3 -> {
-                Music = playMusic("./GameMusic\\Day_Stage.wav");
-                Music.start();
-                Music.loop(Clip.LOOP_CONTINUOUSLY);
-                if (partida != null) {
-                    partida.Reiniciar();
+                if (guardarPartida.FileExist()) {
+                    JF_PatioFrontal.pack();
+                    JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                    Jf_MenuPrincipal.setVisible(false);
+                    JF_PatioFrontal.setVisible(true);
+                    JP_PatioFrontal.setOpaque(false);
+                    FondoNormal.setVisible(true);
+                    FondoTuto.setVisible(false);
+                    partida = guardarPartida.getP();
+                    partida.Reload(this);
+                } else {
+                    Music = playMusic("./GameMusic\\Day_Stage.wav");
+                    Music.start();
+                    Music.loop(Clip.LOOP_CONTINUOUSLY);
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
+
+                    JF_PatioFrontal.pack();
+                    JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                    Jf_MenuPrincipal.setVisible(false);
+                    JF_PatioFrontal.setVisible(true);
+                    JP_PatioFrontal.setOpaque(false);
+                    FondoNormal.setVisible(true);
+                    FondoTuto.setVisible(false);
+                    partida = new Nivel_3(Main.this);
+                    partida.start();
+                    JF_PatioFrontal.setVisible(true);
+
                 }
-
-                JF_PatioFrontal.pack();
-                JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
-                Jf_MenuPrincipal.setVisible(false);
-                JF_PatioFrontal.setVisible(true);
-                JP_PatioFrontal.setOpaque(false);
-                FondoNormal.setVisible(true);
-                FondoTuto.setVisible(false);
-                partida = new Nivel_3(Main.this);
-                partida.start();
-                JF_PatioFrontal.setVisible(true);
-
             }
+
             case 4 -> {
                 if (partida != null) {
                     partida.Reiniciar();
@@ -1227,7 +1264,7 @@ public class Main extends javax.swing.JFrame {
     private void RapidezActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RapidezActionPerformed
         // TODO add your handling code here:
         if (Rapidez.isSelected()) {
-            partida.multiplicador = 0.3;//0.667
+            partida.multiplicador = 0.667;//0.667
         } else {
             partida.multiplicador = 1;
         }

@@ -17,7 +17,7 @@ import javax.swing.SwingUtilities;
 
 public class Partida extends Thread implements Serializable {
 
-    public Main main;
+    public transient Main main;
     public AdministracionDeRecursos A;
     public ArrayList<Zombi> ZFilas1 = new ArrayList();
     public ArrayList<Zombi> ZFilas2 = new ArrayList();
