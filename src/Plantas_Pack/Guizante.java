@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
@@ -45,7 +46,11 @@ public class Guizante extends Thread {
         }
         guisante.setOpaque(false);
         guisante.setLocation(x, y);
-        this.main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            }
+        });
         guisante.setText(" ");
     }
 
@@ -76,7 +81,11 @@ public class Guizante extends Thread {
             }
             x++;
             guisante.setLocation(x, y);
-            main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                }
+            });
             RguisanteHitbox.setLocation(x, y);
             for (int i = 0; i < refFilaZombi.size(); i++) {
 
@@ -103,7 +112,7 @@ public class Guizante extends Thread {
                     }
                 }
             }
-            if (x > 800) {
+            if (x > 640) {
                 isAlive = false;
                 try {
                     Thread.sleep(0);
@@ -111,7 +120,12 @@ public class Guizante extends Thread {
                 }
             }
         }
-        guisante.setVisible(false);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                guisante.setVisible(false);
+
+            }
+        });
         try {
             Thread.sleep(0);
         } catch (InterruptedException ex) {

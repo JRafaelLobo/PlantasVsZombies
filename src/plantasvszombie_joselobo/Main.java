@@ -848,9 +848,9 @@ public class Main extends javax.swing.JFrame {
                 Jf_MenuPrincipal.setVisible(false);
                 JF_PatioFrontal.setVisible(true);
                 JP_PatioFrontal.setOpaque(false);
-                FondoNormal.setVisible(true);
-                FondoTuto.setVisible(false);
-                partida = new Nivel_2(Main.this);
+                FondoNormal.setVisible(false);
+                FondoTuto.setVisible(true);
+                partida = new Nivel_1(Main.this);
                 partida.start();
                 JF_PatioFrontal.setVisible(true);
                 //JP_DetectorMouse.setVisible(true);
@@ -1122,7 +1122,7 @@ public class Main extends javax.swing.JFrame {
     public Clip Music;
     public boolean eliminarPlanta;
     private Usuario usuario = new Usuario();
-   //private Reproductor video = new Reproductor();
+    //private Reproductor video = new Reproductor();
     int plantaSelecionada = -1;
     public Partida partida;
     public double VolumenMusica;

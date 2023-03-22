@@ -47,7 +47,7 @@ public class Zombi extends Thread {
         } else {
             label.setVisible(false);
             Rzombihitbox = null;
-            partida.getfilaZombis(fila).remove(this);
+            //partida.getfilaZombis(fila).remove(this);
         }
         // if (partida.getfilaZombis(fila).get(0) != null) {
         // int numeliminar = partida.getfilaZombis(fila).indexOf(this);

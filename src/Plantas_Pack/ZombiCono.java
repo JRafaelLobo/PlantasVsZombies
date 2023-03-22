@@ -14,6 +14,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
@@ -40,7 +41,11 @@ public class ZombiCono extends Zombi {
         }
         label.setOpaque(false);
         label.setLocation(x, y);
-        this.main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            }
+        });
         label.setText(" ");
     }
 
@@ -60,7 +65,6 @@ public class ZombiCono extends Zombi {
                     Clip effect = playMusic("./GameMusic\\SoundEffects\\ZombieEat2.wav");
                     effect.start();
                     partida.getfilaPlanta(fila)[test].getPlanta().reducirVida(dano);
-
                     try {
                         Thread.sleep((long) (tiempoDeAtaque * partida.multiplicador));
                     } catch (InterruptedException ex) {
@@ -70,7 +74,11 @@ public class ZombiCono extends Zombi {
                     try {
                         x--;
                         label.setLocation(x, y);
-                        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                        SwingUtilities.invokeLater(new Runnable() {
+                            public void run() {
+                                main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                            }
+                        });
                         try {
                             Rzombihitbox.setLocation(x, y);
 
@@ -172,11 +180,22 @@ public class ZombiCono extends Zombi {
 
     public void Parpadear() {
         if (vida > 0) {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
-            a.start();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
+                    a.start();
+                }
+            });
+
         } else {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
-            a.start();
+
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
+                    a.start();
+                }
+            });
+
         }
 
     }

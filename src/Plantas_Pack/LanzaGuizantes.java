@@ -13,6 +13,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import static plantasvszombie_joselobo.Main.playMusic;
@@ -48,7 +49,11 @@ public class LanzaGuizantes extends Planta {
         }
         lanzaguisante.setOpaque(false);
         lanzaguisante.setLocation(x, y);
-        main.PanelControl_Plantas.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                main.PanelControl_Plantas.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            }
+        });
         lanzaguisante.setText(" ");
         refFilaZombi = partida.getfilaZombis(fila);
     }
@@ -65,16 +70,20 @@ public class LanzaGuizantes extends Planta {
     public void run() {
         //aqui ultima modificacion haciendo una referencia
         while (vida > 0) {
-            if (!refFilaZombi.isEmpty() && !pause
-                    
-                    
-                    
-                    ) {
-                try {
-                    Thread.sleep((long) (tiempoDeAtaque * partida.multiplicador));
-                } catch (InterruptedException ex) {
+            boolean tirar = false;
+            for (Zombi Z : refFilaZombi) {
+                if (Z.getX() < 640) {
+                    tirar = true;
+                    break;
                 }
+            }
+            try {
+                Thread.sleep((long) (tiempoDeAtaque * partida.multiplicador));
+            } catch (InterruptedException ex) {
+            }
+            if (tirar) {
                 Attack();
+
             }
             try {
                 Thread.sleep(0);

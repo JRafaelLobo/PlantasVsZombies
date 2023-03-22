@@ -13,6 +13,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.*;
 
 public class ZombiNormal extends Zombi {
@@ -32,7 +33,11 @@ public class ZombiNormal extends Zombi {
         }
         label.setOpaque(false);
         label.setLocation(x, y);
-        this.main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            }
+        });
         label.setText(" ");
     }
 
@@ -62,7 +67,12 @@ public class ZombiNormal extends Zombi {
                     try {
                         x--;
                         label.setLocation(x, y);
-                        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                        SwingUtilities.invokeLater(new Runnable() {
+                            public void run() {
+                                main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+
+                            }
+                        });
                         try {
                             Rzombihitbox.setLocation(x, y);
 
@@ -164,11 +174,20 @@ public class ZombiNormal extends Zombi {
 
     public void Parpadear() {
         if (vida > 0) {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
-            a.start();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
+                    a.start();
+                }
+            });
+
         } else {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
-            a.start();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
+                    a.start();
+                }
+            });
         }
 
     }

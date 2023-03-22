@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
@@ -42,7 +43,11 @@ public class Girasol extends Planta {
         }
         girasol.setOpaque(false);
         girasol.setLocation(x, y);
-        main.PanelControl_Plantas.add(girasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                main.PanelControl_Plantas.add(girasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            }
+        });
         girasol.setText(" ");
     }
 
@@ -90,16 +95,28 @@ public class Girasol extends Planta {
 
     @Override
     public void setInvisible() {
-        if (girasol != null) {
-            girasol.setVisible(false);
-        }
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                if (girasol != null) {
+                    girasol.setVisible(false);
+                }
+            }
+        });
+
     }
 
     @Override
     public void deletPlantita() {
-        girasol.setVisible(false);
-        girasol = null;
-        RPlantaHitbox = null;
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                if (girasol != null) {
+                    girasol.setVisible(false);
+                    girasol = null;
+                    RPlantaHitbox = null;
+                }
+            }
+        });
+
     }
 
 }

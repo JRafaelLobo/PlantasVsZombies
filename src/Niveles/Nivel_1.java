@@ -57,101 +57,25 @@ public class Nivel_1 extends Partida {
         PFila4[8] = new CoordenadasPlanta(A, 545, 290, 4, this);
     }
 
-    //filas 70
-    //fila 2=130,3=210,3=280/lanzaguisantes
+//base zombi 640
     public void run() {
-        try {
-            Thread.sleep((long) (200 * multiplicador));//35000
-        } catch (InterruptedException ex) {
-        }
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
         GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_1.this);
         GeneSol.start();
         try {
-            Thread.sleep((long) (22000 * multiplicador));
+            Thread.sleep((long) (100 * multiplicador));//22000
         } catch (InterruptedException ex) {
             Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
         }
+        int[] ZobiX = zombiesCoordenadasY();
         for (int i = 0; i < 13; i++) {
-            switch (((random.nextInt(3)))) {
-                case 0 -> {
-                    ZFilas2.add(new ZombiNormal(A, Nivel_1.this, 640, 140, 2));
-                    ZFilas2.get(ZFilas2.size() - 1).start();
-                }
-                case 1 -> {
-                    ZFilas3.add(new ZombiNormal(A, Nivel_1.this, 640, 210, 3));
-                    ZFilas3.get(ZFilas3.size() - 1).start();
+            int R = random.nextInt(3) + 2;
+            getfilaZombis(R).add(new ZombiNormal(A, this, ZobiX[i], ZombiCordenadasY(R), R));
+            getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
+        }
 
-                }
-                case 2 -> {
-                    ZFilas4.add(new ZombiNormal(A, Nivel_1.this, 640, 280, 4));
-                    ZFilas4.get(ZFilas4.size() - 1).start();
-
-                }
-            }
-            if (i == 0) {
-                try {
-                    Thread.sleep((long) (12000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 1) {
-                try {
-                    Thread.sleep((long) (12000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 2) {
-                try {
-                    Thread.sleep((long) (10000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 3) {
-                try {
-                    Thread.sleep((long) (2000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 4) {
-                try {
-                    Thread.sleep((long) (5000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 5) {
-                try {
-                    Thread.sleep((long) (10000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 6) {
-                try {
-                    Thread.sleep((long) (10000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 7) {
-                try {
-                    Thread.sleep((long) (5000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i == 8) {
-                try {
-                    Thread.sleep((long) (10000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-            if (i > 8) {
-                try {
-                    Thread.sleep((long) (3000 * multiplicador));
-                } catch (InterruptedException ex) {
-                }
-            }
-
-        }//fin for i
-        while (ganada == false) {
+        while (ganada
+                == false) {
             if (ZFilas1.isEmpty()
                     && ZFilas2.isEmpty()
                     && ZFilas3.isEmpty()
@@ -212,6 +136,47 @@ public class Nivel_1 extends Partida {
             return 8;
         }
         return -1;
+    }
+
+    public int ZombiCordenadasY(int d) {
+
+        switch (d) {
+            case 1 -> {
+                return -1;
+            }
+            case 2 -> {
+                return 140;
+            }
+            case 3 -> {
+                return 210;
+            }
+            case 4 -> {
+                return 280;
+            }
+            case 5 -> {
+                return -1;
+            }
+        }
+        return -1;
+    }
+
+    public int[] zombiesCoordenadasY() {
+        int[] temp = new int[13];
+        temp[0] = 640;
+        temp[1] = 740;
+        temp[2] = 800;
+        temp[3] = 820;
+        temp[4] = 830;
+        temp[5] = 1000;
+        temp[6] = 1020;
+        temp[7] = 1030;
+        temp[8] = 1040;
+        temp[9] = 1050;
+        temp[10] = 1060;
+        temp[11] = 1100;
+        temp[12] = 1120;
+
+        return temp;
     }
 
 }

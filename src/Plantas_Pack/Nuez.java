@@ -4,6 +4,7 @@ import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
@@ -36,7 +37,11 @@ public class Nuez extends Planta {
         }
         nuez.setOpaque(false);
         nuez.setLocation(x, y);
-        main.PanelControl_Plantas.add(nuez, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                main.PanelControl_Plantas.add(nuez, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+            }
+        });
         nuez.setText(" ");
     }
 
@@ -68,14 +73,24 @@ public class Nuez extends Planta {
 
     @Override
     public void setInvisible() {
-        nuez.setVisible(false);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                nuez.setVisible(false);
+
+            }
+        });
     }
 
     @Override
     public void deletPlantita() {
-        nuez.setVisible(false);
-        nuez = null;
-        RPlantaHitbox = null;
-        vida = 0;
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                nuez.setVisible(false);
+                nuez = null;
+                RPlantaHitbox = null;
+                vida = 0;
+            }
+        });
+
     }
 }

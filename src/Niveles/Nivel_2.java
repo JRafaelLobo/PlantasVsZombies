@@ -93,12 +93,13 @@ public class Nivel_2 extends Partida {
                 int R = random.nextInt(5) + 1;
                 int porcentaje = random.nextInt(100);
                 if (porcentaje > 60) {
-                    getfilaZombis(R).add(new ZombiNormal(A, this, 640, ZombiCordenadas(R), R));
+                    getfilaZombis(R).add(new ZombiNormal(A, this, 640, ZombiCordenadasY(R), R));
                     getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
                 } else {
-                    getfilaZombis(R).add(new ZombiCono(A, this, 640, ZombiCordenadas(R), R));
+                    getfilaZombis(R).add(new ZombiCono(A, this, 640, ZombiCordenadasY(R), R));
                     getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
                 }
+
                 try {
                     Thread.sleep(0);
                 } catch (InterruptedException ex) {
@@ -332,7 +333,7 @@ public class Nivel_2 extends Partida {
         return -1;
     }
 
-    public int ZombiCordenadas(int d) {
+    public int ZombiCordenadasY(int d) {
 
         switch (d) {
             case 1 -> {
@@ -352,6 +353,36 @@ public class Nivel_2 extends Partida {
             }
         }
         return -1;
+    }
+
+    public int[] zombiesCoordenadasY() {
+        int[] temp = new int[13];
+        temp[0] = 640;
+        temp[1] = 740;
+        temp[2] = 800;
+        temp[3] = 820;
+        temp[4] = 830;
+        temp[5] = 1000;
+        temp[6] = 1020;
+        temp[7] = 1030;
+        temp[8] = 1040;
+        temp[9] = 1050;
+        temp[10] = 1060;
+        temp[11] = 1100;
+        temp[12] = 1120;
+        temp[13] = 1400;
+        temp[14] = 1410;
+        temp[15] = 1420;
+        temp[16] = 1450;
+        temp[17] = 1455;
+        temp[18] = 1460;
+        temp[19] = 1465;
+        temp[20] = 1470;
+        temp[21] = 1475;
+        temp[22] = 1480;
+        temp[23] = 1500;
+
+        return temp;
     }
 
 }

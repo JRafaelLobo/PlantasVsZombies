@@ -27,13 +27,14 @@ public class Partida extends Thread {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 50;
+    public int Cantsoles = 9999;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
     public double multiplicador = 1;
     public int control = 0;
     public boolean pause = false;
+    public int puntos = 0;
 
     public Partida(Main main) {
         this.main = main;
@@ -76,11 +77,11 @@ public class Partida extends Thread {
     }
 
     public void Generar() {
-        SwingUtilities.invokeLater(new Runnable(){
-            public void run(){
-                
+        /*SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+
             }
-        });
+        });*/
         PFila2[0] = new CoordenadasPlanta(A, 25, 145, 2, this);
         PFila2[1] = new CoordenadasPlanta(A, 90, 145, 2, this);
         PFila2[2] = new CoordenadasPlanta(A, 155, 145, 2, this);

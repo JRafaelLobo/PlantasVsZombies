@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
@@ -46,8 +47,13 @@ public class PetaCereza extends Planta {
     @Override
     public void Parpadear() {
         if (vida > 0) {
-            ParpadeoDeLabels a = new ParpadeoDeLabels(petacereza, 1, 1, 50);
-            a.start();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    ParpadeoDeLabels a = new ParpadeoDeLabels(petacereza, 1, 1, 50);
+                    a.start();
+                }
+            });
+
         } else {
             /*RPlantaHitbox = null;
             nuez.setVisible(false);
@@ -63,7 +69,11 @@ public class PetaCereza extends Planta {
                 File archivo = new File("./GameImage\\PetaCereza.png");
                 Image img = Toolkit.getDefaultToolkit().createImage(
                         archivo.getPath()).getScaledInstance(n, n, 0);
-                petacereza.setIcon(new javax.swing.ImageIcon(img));
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        petacereza.setIcon(new javax.swing.ImageIcon(img));
+                    }
+                });
             } catch (Exception e) {
                 System.out.println("No encontro Imagen Nuez");
             }
@@ -75,28 +85,27 @@ public class PetaCereza extends Planta {
             }
         }
         for (int i = fila - 1; i <= fila + 1; i++) {
-            ArrayList<Zombi> T = null;
             boolean flag = true;
             if (i <= 0 || i > 5) {
                 flag = false;
             }
             if (flag) {
-                T = partida.getfilaZombis(i);
-                for (int j = 0; j < T.size(); j++) {
-                    if (T.get(j).getX() < x + 150 && T.get(j).getX() > x - 150) {
+                for (Zombi zombi : partida.getfilaZombis(i)) {
+                    if (zombi.getX() < x + 150 && zombi.getX() > x - 150) {
                         try {
-                            T.get(j).recucirVida(500);
+                            zombi.recucirVida(500);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
-                    try {
-                        Thread.sleep(0);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                }
+                try {
+                    Thread.sleep(0);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+
             try {
                 Thread.sleep(0);
             } catch (InterruptedException ex) {
@@ -109,16 +118,26 @@ public class PetaCereza extends Planta {
 
     @Override
     public void setInvisible() {
+        /*
         if (petacereza != null) {
-            petacereza.setVisible(false);
-        }
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    petacereza.setVisible(false);
+                }
+            });
+        }*/
     }
 
     @Override
     public void deletPlantita() {
-        petacereza.setVisible(false);
-        petacereza = null;
-        RPlantaHitbox = null;
-        vida = 0;
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                petacereza.setVisible(false);
+                petacereza = null;
+                RPlantaHitbox = null;
+                vida = 0;
+            }
+        });
+
     }
 }
