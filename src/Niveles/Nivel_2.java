@@ -4,13 +4,14 @@ import Hilos.GeneraSoles;
 import Plantas_Pack.CoordenadasPlanta;
 import Plantas_Pack.ZombiCono;
 import Plantas_Pack.ZombiNormal;
+import java.io.Serializable;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Nivel_2 extends Partida {
+public class Nivel_2 extends Partida implements Serializable{
 
     protected Random random = new Random();
 

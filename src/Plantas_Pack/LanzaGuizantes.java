@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,7 @@ import plantasvszombie_joselobo.Partida;
  *
  * @author rinal
  */
-public class LanzaGuizantes extends Planta {
+public class LanzaGuizantes extends Planta implements Serializable {
 
     javax.swing.JLabel lanzaguisante;
 
@@ -148,5 +149,12 @@ public class LanzaGuizantes extends Planta {
             guisante.resume();
         }
         this.resume();
+    }
+
+    public void reload() {
+        main.PanelControl_Plantas.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        for (Guizante guisante : guisantes) {
+            guisante.reload();
+        }
     }
 }

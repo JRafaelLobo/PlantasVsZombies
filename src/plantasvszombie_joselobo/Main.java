@@ -1,5 +1,6 @@
 package plantasvszombie_joselobo;
 
+import Binario.GuardadoDePartida;
 import Binario.TxTEscaner;
 import Niveles.*;
 import Hilos.*;
@@ -37,7 +38,7 @@ public class Main extends javax.swing.JFrame {
         JP_PatioFrontal.setOpaque(false);
         FondoNormal.setOpaque(false);
         FondoTuto.setOpaque(false);
-        escanerTxT = new TxTEscaner("./GameData\\DatosUsuarios");
+        escanerTxT = new TxTEscaner("./GameData\\DatosUsuarios.txt");
     }
 
     @SuppressWarnings("unchecked")
@@ -338,7 +339,6 @@ public class Main extends javax.swing.JFrame {
         Rapidez.setBackground(new java.awt.Color(55, 0, 0));
         Rapidez.setForeground(new java.awt.Color(255, 255, 255));
         Rapidez.setText("►►");
-        Rapidez.setActionCommand("►►");
         Rapidez.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RapidezActionPerformed(evt);
@@ -858,13 +858,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_P_TopBar2MousePressed
 
     private void B_AdventureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_AdventureMouseClicked
+
         // TODO add your handling code here:
         /*
-        --module-path "C:\Users\rinal\Desktop\rafa tareas\Nuevos\Progra 2\PlantasVsZombie_JoseLobo\LibreriasPersonalizadas\javafx-sdk-19.0.2.1\lib" --add-modules javafx.controls,javafx.fxml
-        --add-modules javafx.web,javafx.media,javafx.swing
+            --module-path "C:\Users\rinal\Desktop\rafa tareas\Nuevos\Progra 2\PlantasVsZombie_JoseLobo\LibreriasPersonalizadas\javafx-sdk-19.0.2.1\lib" --add-modules javafx.controls,javafx.fxml
+            --add-modules javafx.web,javafx.media,javafx.swing
          */
         escanerTxT.cargarArchivo();
         boolean nuevo = true;
+        if (tb_Nombre.getText().isEmpty()) {
+            tb_Nombre.setText("Default");
+        }
         for (Usuario usuario : escanerTxT.getUsuarios()) {
             if (usuario.getNombre().equals(tb_Nombre.getText())) {
                 this.UserActual = usuario;
@@ -874,7 +878,15 @@ public class Main extends javax.swing.JFrame {
         }
         if (nuevo) {
             escanerTxT.getUsuarios().add(new Usuario(tb_Nombre.getText(), 0));
-            this.UserActual = escanerTxT.getUsuarios().get(escanerTxT.getUsuarios().size() - 1);
+            UserActual = escanerTxT.getUsuarios().get(escanerTxT.getUsuarios().size() - 1);
+            try {
+                escanerTxT.escribirArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            guardarPartida = new GuardadoDePartida("./GameData\\Guardado de Partidas\\" + UserActual.getNombre() + ".lvl");
+            guardarPartida.cargarArchivo();
         }
         try {
             Music.stop();
@@ -1196,6 +1208,8 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         //aqui pasa el guardar partida
+        guardarPartida = new GuardadoDePartida("./GameData\\Guardado de Partidas\\" + UserActual.getNombre() + ".lvl");
+        guardarPartida.escribirArchivo(partida);
         try {
             escanerTxT.escribirArchivo();
         } catch (IOException ex) {
@@ -1213,7 +1227,7 @@ public class Main extends javax.swing.JFrame {
     private void RapidezActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RapidezActionPerformed
         // TODO add your handling code here:
         if (Rapidez.isSelected()) {
-            partida.multiplicador = 0.667;
+            partida.multiplicador = 0.3;//0.667
         } else {
             partida.multiplicador = 1;
         }
@@ -1236,10 +1250,11 @@ public class Main extends javax.swing.JFrame {
         JF_PatioFrontal.setVisible(false);
         Jf_MenuPrincipal.setLocationRelativeTo(JDialog_Ganaste);
         Jf_MenuPrincipal.setVisible(true);
+        UserActual.aumentarlvl();
         try {
             escanerTxT.escribirArchivo();
         } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         Music = playMusic("./GameMusic\\Main.wav");
         Music.start();
@@ -1365,6 +1380,7 @@ public class Main extends javax.swing.JFrame {
     public Partida partida;
     public double VolumenMusica;
     public double VolumenEffectos;
+    GuardadoDePartida guardarPartida;
 
     /*
     plantaSelecionada

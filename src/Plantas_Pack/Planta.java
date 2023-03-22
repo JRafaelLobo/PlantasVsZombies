@@ -2,13 +2,14 @@ package Plantas_Pack;
 
 import Hilos.ParpadeoDeLabels;
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Planta extends Thread {
+public class Planta extends Thread implements Serializable {
 
     protected int vida = 100, tiempoRecarga = 3000, dano = 20, tiempoDeAtaque = 1500, x, y, costo = 100, fila;
     protected AdministracionDeRecursos main;
@@ -144,5 +145,9 @@ public class Planta extends Thread {
 
     public void Continua() {
         this.resume();
+    }
+
+    public void reload() {
+
     }
 }

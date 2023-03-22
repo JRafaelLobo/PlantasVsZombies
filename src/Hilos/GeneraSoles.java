@@ -1,6 +1,7 @@
 package Hilos;
 
 import Plantas_Pack.Sol;
+import java.io.Serializable;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +9,7 @@ import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class GeneraSoles extends Thread {
+public class GeneraSoles extends Thread implements Serializable{
 
     private int x, y = -10;
     private int TiempoPorCaida;

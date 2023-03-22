@@ -4,13 +4,14 @@ import Hilos.GeneraSoles;
 import Plantas_Pack.CoordenadasPlanta;
 import Plantas_Pack.ZombiCono;
 import Plantas_Pack.ZombiNormal;
+import java.io.Serializable;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Nivel_3 extends Partida {
+public class Nivel_3 extends Partida implements Serializable{
 
     protected Random random = new Random();
 
@@ -189,7 +190,7 @@ public class Nivel_3 extends Partida {
     }
 
     public int[] zombiesCoordenadasY() {
-        int[] temp = new int[24];
+        int[] temp = new int[48];
         temp[0] = 640;
         temp[1] = 740;
         temp[2] = 800;
@@ -214,7 +215,9 @@ public class Nivel_3 extends Partida {
         temp[21] = 1475;
         temp[22] = 1480;
         temp[23] = 1500;
-
+        for (int i = 0; i < 24; i++) {
+            temp[i + 24] = temp[i] + 600;
+        }
         return temp;
     }
 

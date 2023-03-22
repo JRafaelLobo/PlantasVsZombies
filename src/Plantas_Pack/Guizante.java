@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import static java.nio.file.Files.delete;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,7 +17,7 @@ import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Guizante extends Thread {
+public class Guizante extends Thread implements Serializable {
 
     AdministracionDeRecursos main;
     JLabel guisante;
@@ -83,6 +84,7 @@ public class Guizante extends Thread {
 
             RguisanteHitbox.setLocation(x, y);
             for (int i = 0; i < refFilaZombi.size(); i++) {
+
                 try {
                     if (RguisanteHitbox.intersects(refFilaZombi.get(i).Rzombihitbox)) {
                         this.guisante.setVisible(false);
@@ -105,15 +107,14 @@ public class Guizante extends Thread {
                         // boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = false;
                     }
                 }
-                if (x > 640) {
-                    isAlive = false;
-                    try {
-                        Thread.sleep(0);
-                    } catch (InterruptedException ex) {
-                    }
+            }
+            if (x > 640) {
+                isAlive = false;
+                try {
+                    Thread.sleep(0);
+                } catch (InterruptedException ex) {
                 }
             }
-
         }
         if (guisante != null) {
             try {
@@ -134,4 +135,7 @@ public class Guizante extends Thread {
         }
     }
 
+    public void reload() {
+        main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+    }
 }

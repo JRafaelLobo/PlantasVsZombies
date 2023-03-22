@@ -5,13 +5,14 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Zombi extends Thread {
+public class Zombi extends Thread implements Serializable {
 
     protected AdministracionDeRecursos main;
     protected Partida partida;
@@ -102,4 +103,7 @@ public class Zombi extends Thread {
         this.y = y;
     }
 
+    public void reload() {
+        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+    }
 }

@@ -27,6 +27,10 @@ public class Usuario {
         this.lvl = lvl;
     }
 
+    public void aumentarlvl() {
+        this.lvl++;
+    }
+
     public Partida getPartida() {
         return partida;
     }
@@ -34,5 +38,10 @@ public class Usuario {
     public void setPartida(Partida partida) {
         this.partida = partida;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nombre=" + nombre + ", lvl=" + lvl + '}';
+    }
+
 }

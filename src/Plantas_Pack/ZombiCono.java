@@ -8,6 +8,7 @@ import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
@@ -23,7 +24,7 @@ import plantasvszombie_joselobo.Partida;
  *
  * @author Rafael Jr
  */
-public class ZombiCono extends Zombi {
+public class ZombiCono extends Zombi implements Serializable {
 
     public ZombiCono(AdministracionDeRecursos main, Partida partida, int x, int y, int fila) {
         super(main, partida, x, y, fila);
@@ -42,7 +43,7 @@ public class ZombiCono extends Zombi {
         label.setOpaque(false);
         label.setLocation(x, y);
 
-                main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         label.setText(" ");
     }
 
@@ -71,9 +72,9 @@ public class ZombiCono extends Zombi {
                     try {
                         x--;
                         label.setLocation(x, y);
-                      
-                                main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-           
+
+                        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+
                         try {
                             Rzombihitbox.setLocation(x, y);
 
@@ -184,9 +185,12 @@ public class ZombiCono extends Zombi {
             ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
             a.start();
 
-           
         }
 
+    }
+
+    public void reload() {
+        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 
     public static Clip playMusic(String filepath) {

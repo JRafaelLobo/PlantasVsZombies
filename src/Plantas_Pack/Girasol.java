@@ -4,6 +4,7 @@ import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,7 @@ import plantasvszombie_joselobo.Partida;
  *
  * @author rinal
  */
-public class Girasol extends Planta {
+public class Girasol extends Planta implements Serializable {
 
     protected javax.swing.JLabel girasol;
 
@@ -117,4 +118,7 @@ public class Girasol extends Planta {
 
     }
 
+    public void reload() {
+        main.PanelControl_Plantas.add(girasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+    }
 }

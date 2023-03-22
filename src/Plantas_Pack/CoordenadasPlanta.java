@@ -1,12 +1,13 @@
 package Plantas_Pack;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class CoordenadasPlanta {
+public class CoordenadasPlanta implements Serializable {
 
     private transient AdministracionDeRecursos main;
     private int x, y, fila;
@@ -110,4 +111,9 @@ public class CoordenadasPlanta {
         this.planta = null;
     }
 
+    public void reload() {
+        if (this.planta != null) {
+            planta.reload();
+        }
+    }
 }

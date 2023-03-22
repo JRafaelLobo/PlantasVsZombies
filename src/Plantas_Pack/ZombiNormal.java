@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.*;
 
-public class ZombiNormal extends Zombi {
+public class ZombiNormal extends Zombi implements Serializable {
 
     public ZombiNormal(AdministracionDeRecursos main, Partida partida, int x, int y, int fila) {
         super(main, partida, x, y, fila);
@@ -197,5 +198,9 @@ public class ZombiNormal extends Zombi {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void reload() {
+        main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 }

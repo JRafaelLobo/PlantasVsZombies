@@ -1,13 +1,16 @@
 package plantasvszombie_joselobo;
 
-public class AdministracionDeRecursos {
+import java.io.Serializable;
+
+public class AdministracionDeRecursos implements Serializable{
     // javax.swing.JPanel() PanelControl_Soles;
 
+    //transient
     public transient javax.swing.JPanel PanelControl_Soles;
     public transient javax.swing.JPanel PanelControl_Proyectiles;
     public transient javax.swing.JPanel PanelControl_Zombi;
     public transient javax.swing.JPanel PanelControl_Plantas;
-    public Usuario UsuarioActual;
+    public Usuario UsuarioActual ;
 
     private Main main;
 

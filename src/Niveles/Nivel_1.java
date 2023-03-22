@@ -6,6 +6,7 @@ import Plantas_Pack.Girasol;
 import Plantas_Pack.LanzaGuizantes;
 import Plantas_Pack.Zombi;
 import Plantas_Pack.ZombiNormal;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -15,7 +16,7 @@ import javax.swing.JPanel;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Nivel_1 extends Partida {
+public class Nivel_1 extends Partida implements Serializable {
 
     protected Random random = new Random();
 

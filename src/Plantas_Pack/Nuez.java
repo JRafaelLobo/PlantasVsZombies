@@ -4,6 +4,7 @@ import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import javax.swing.SwingUtilities;
 import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
@@ -13,7 +14,7 @@ import plantasvszombie_joselobo.Partida;
  *
  * @author rinal
  */
-public class Nuez extends Planta {
+public class Nuez extends Planta implements Serializable {
 
     javax.swing.JLabel nuez;
 
@@ -92,5 +93,10 @@ public class Nuez extends Planta {
             }
         });
 
+    }
+
+    @Override
+    public void reload() {
+        main.PanelControl_Plantas.add(nuez, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 }

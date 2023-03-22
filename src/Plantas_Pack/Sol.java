@@ -6,6 +6,7 @@ import com.sun.source.tree.CatchTree;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
@@ -17,7 +18,7 @@ import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Sol extends Thread {
+public class Sol extends Thread implements Serializable {
 
     protected javax.swing.JLabel sol;
     protected int x, y;
@@ -163,5 +164,9 @@ public class Sol extends Thread {
         if (RemoveDelArrayList) {
             partida.soles.remove(this);
         }
+    }
+
+    public void reload() {
+        main.PanelControl_Soles.add(sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
     }
 }

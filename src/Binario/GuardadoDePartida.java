@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import plantasvszombie_joselobo.Partida;
 
-public class GuardadoDePartida{
+public class GuardadoDePartida {
 
     Partida P;
     File archivo;
@@ -49,7 +49,8 @@ public class GuardadoDePartida{
         }
     }
 
-    public void escribirArchivo() {
+    public void escribirArchivo(Partida P) {
+        this.P = P;
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
         try {

@@ -20,7 +20,6 @@ public class TxTEscaner {
 
     File archivo;
     ArrayList<Usuario> usuarios = new ArrayList();
-    
 
     public TxTEscaner(String ruta) {
         this.archivo = new File(ruta);
@@ -66,7 +65,6 @@ public class TxTEscaner {
                             usuarios.add(new Usuario(nombre, nivel));
                         }
                     }
-
                 }
             } catch (Exception ex) {
             }
@@ -88,6 +86,11 @@ public class TxTEscaner {
 
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    @Override
+    public String toString() {
+        return "TxTEscaner{" + "archivo=" + archivo + ", usuarios=" + usuarios + '}';
     }
 
 }

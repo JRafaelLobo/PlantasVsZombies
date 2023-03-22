@@ -5,6 +5,7 @@ import Plantas_Pack.CoordenadasPlanta;
 import Plantas_Pack.Sol;
 import Plantas_Pack.Zombi;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-public class Partida extends Thread {
+public class Partida extends Thread implements Serializable {
 
     public Main main;
     public AdministracionDeRecursos A;
@@ -28,7 +29,7 @@ public class Partida extends Thread {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 9999;
+    public int Cantsoles = 50;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
@@ -227,6 +228,29 @@ public class Partida extends Thread {
         if (main.UserActual.getLvl() != 4) {
             main.UserActual.setLvl(main.UserActual.getLvl() + 1);
         }
+    }
+
+    public void Reload(Main main) {
+        A = new AdministracionDeRecursos(main);
+        for (int i = 1; i <= 5; i++) {
+            try {
+                for (int j = 0; j < 9; j++) {
+                    getfilaPlanta(i)[j].reload();
+                }
+            } catch (Exception e) {
+                System.out.println("fila selecionada dio error: " + i);
+            }
+        }
+        for (int i = 1; i <= 5; i++) {
+            for (Zombi z : getfilaZombis(i)) {
+                z.reload();
+            }
+        }
+        GeneSol.resume();
+        for (Sol sole : soles) {
+            sole.reload();
+        }
+        main.Music.start();
     }
 
     public static Clip playMusic(String filepath) {

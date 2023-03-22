@@ -4,6 +4,7 @@ import Hilos.ParpadeoDeLabels;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +17,7 @@ import plantasvszombie_joselobo.Partida;
  *
  * @author rinal
  */
-public class PetaCereza extends Planta {
+public class PetaCereza extends Planta implements Serializable{
     
     javax.swing.JLabel petacereza;
     
