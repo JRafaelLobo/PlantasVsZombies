@@ -7,6 +7,7 @@ public class AdministracionDeRecursos {
     public transient javax.swing.JPanel PanelControl_Proyectiles;
     public transient javax.swing.JPanel PanelControl_Zombi;
     public transient javax.swing.JPanel PanelControl_Plantas;
+    public Usuario UsuarioActual;
 
     private Main main;
 
@@ -28,6 +29,7 @@ public class AdministracionDeRecursos {
         PanelControl_Plantas.setOpaque(false);
         PanelControl_Plantas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         this.main.JP_PatioFrontal.add(PanelControl_Plantas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
+        UsuarioActual = this.main.UserActual;
     }
 
     public Main getMain() {
@@ -44,4 +46,5 @@ public class AdministracionDeRecursos {
         this.main.JP_Proyectiles.remove(PanelControl_Proyectiles);
         this.main.JP_Soles.remove(PanelControl_Soles);
     }
+
 }

@@ -31,22 +31,26 @@ public class TxTEscaner {
         try {
             fw = new FileWriter(archivo, false);
             bw = new BufferedWriter(fw);
+            bw.write("Datos de Usuario Guardado\n");
             for (Usuario t : usuarios) {
-                bw.write("#####################################");
+                bw.write("\n#####################################");
+                bw.write("\n\n");
                 bw.write("Nombre: '" + t.getNombre() + "'");
                 bw.write("\n");
                 bw.write("Nivel: '" + t.getLvl() + "'");
-                bw.write("\n");
+                bw.write("\n\n");
                 bw.write("#####################################");
             }
             bw.flush();
         } catch (Exception ex) {
+            System.out.println("No es encontro lugar para guardar");
         }
         bw.close();
         fw.close();
     }
 
     public void cargarArchivo() {
+        usuarios.clear();
         Scanner sc = null;
         if (archivo.exists()) {
             try {

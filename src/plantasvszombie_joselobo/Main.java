@@ -37,7 +37,7 @@ public class Main extends javax.swing.JFrame {
         JP_PatioFrontal.setOpaque(false);
         FondoNormal.setOpaque(false);
         FondoTuto.setOpaque(false);
-        escanerTxT = new TxTEscaner("./GameData");
+        escanerTxT = new TxTEscaner("./GameData\\DatosUsuarios");
     }
 
     @SuppressWarnings("unchecked")
@@ -89,7 +89,9 @@ public class Main extends javax.swing.JFrame {
         B_Reanudar = new javax.swing.JButton();
         B_Reiniciar = new javax.swing.JButton();
         JDialog_Ganaste = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
+        lb_TituloHasGanado = new javax.swing.JLabel();
+        B_MainMenu = new javax.swing.JButton();
+        B_Continuar = new javax.swing.JButton();
         JPB_CargaInicio = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
@@ -653,10 +655,18 @@ public class Main extends javax.swing.JFrame {
         });
         JDialog_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
+        JDialog_Ganaste.setBackground(new java.awt.Color(51, 153, 0));
         JDialog_Ganaste.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Ganaste yippe!");
-        JDialog_Ganaste.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        lb_TituloHasGanado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lb_TituloHasGanado.setText("Has Ganado");
+        JDialog_Ganaste.getContentPane().add(lb_TituloHasGanado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+
+        B_MainMenu.setText("Menu Principal");
+        JDialog_Ganaste.getContentPane().add(B_MainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+
+        B_Continuar.setText("Continuar siguiente lvl");
+        JDialog_Ganaste.getContentPane().add(B_Continuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantas VS Zombies");
@@ -814,6 +824,7 @@ public class Main extends javax.swing.JFrame {
         --module-path "C:\Users\rinal\Desktop\rafa tareas\Nuevos\Progra 2\PlantasVsZombie_JoseLobo\LibreriasPersonalizadas\javafx-sdk-19.0.2.1\lib" --add-modules javafx.controls,javafx.fxml
         --add-modules javafx.web,javafx.media,javafx.swing
          */
+        escanerTxT.cargarArchivo();
         boolean nuevo = true;
         for (Usuario usuario : escanerTxT.getUsuarios()) {
             if (usuario.getNombre().equals(tb_Nombre.getText())) {
@@ -826,15 +837,18 @@ public class Main extends javax.swing.JFrame {
             escanerTxT.getUsuarios().add(new Usuario(tb_Nombre.getText(), 0));
             this.UserActual = escanerTxT.getUsuarios().get(escanerTxT.getUsuarios().size() - 1);
         }
-
-        if (UserActual.getLvl() == 0) {
-            //PatioFondoTuto.setVisible(true);
-            //PatioFondo.setVisible(false);
+        try {
             Music.stop();
-            //prueba
+        } catch (Exception e) {
+        }
+        switch (UserActual.getLvl()) {
+            case 0 -> {
 
-            try {
-                Integer.parseInt("a");/*
+                //PatioFondoTuto.setVisible(true);
+                //PatioFondo.setVisible(false);
+                //prueba
+                try {
+                    Integer.parseInt("a");/*
                 video = new Reproductor();
                 this.video.setJpanel(P_VideoIntro);
                 this.video.setRuta("GameVideo\\VideoIntro.mp4");
@@ -842,8 +856,8 @@ public class Main extends javax.swing.JFrame {
                 this.video.reproducir();
                 Jf_VideoIntro.pack();
                 Jf_MenuPrincipal.setVisible(false);
-                 */ //fin
-                /*
+                     */ //fin
+                    /*
                 Jf_VideoIntro.setLocationRelativeTo(Jf_MenuPrincipal);
                 Jf_VideoIntro.setVisible(true);
                 
@@ -864,11 +878,36 @@ public class Main extends javax.swing.JFrame {
                 });
                 Thread CambiarMain = new Thread(CPT);
                 CambiarMain.start();
-                 */
-            } catch (Exception e) {
+                     */
+                } catch (Exception e) {
+
+                    Music = playMusic("./GameMusic\\Day_Stage.wav");
+                    Music.start();
+                    Music.loop(Clip.LOOP_CONTINUOUSLY);
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
+                    JF_PatioFrontal.pack();
+                    JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                    Jf_MenuPrincipal.setVisible(false);
+                    JF_PatioFrontal.setVisible(true);
+                    JP_PatioFrontal.setOpaque(false);
+                    FondoNormal.setVisible(false);
+                    FondoTuto.setVisible(true);
+                    partida = new Nivel_1(Main.this);
+                    partida.start();
+                    UserActual.setLvl(1);
+                    JF_PatioFrontal.setVisible(true);
+                }
+            }
+            case 1 -> {
                 Music = playMusic("./GameMusic\\Day_Stage.wav");
                 Music.start();
                 Music.loop(Clip.LOOP_CONTINUOUSLY);
+                if (partida != null) {
+                    partida.Reiniciar();
+                }
+
                 JF_PatioFrontal.pack();
                 JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
                 Jf_MenuPrincipal.setVisible(false);
@@ -879,21 +918,55 @@ public class Main extends javax.swing.JFrame {
                 partida = new Nivel_1(Main.this);
                 partida.start();
                 JF_PatioFrontal.setVisible(true);
-                //JP_DetectorMouse.setVisible(true);
-                //JP_DetectorMouse.setEnabled(true);
+
+            }
+            case 2 -> {
+                Music = playMusic("./GameMusic\\Day_Stage.wav");
+                Music.start();
+                Music.loop(Clip.LOOP_CONTINUOUSLY);
+                if (partida != null) {
+                    partida.Reiniciar();
+                }
+
+                JF_PatioFrontal.pack();
+                JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                Jf_MenuPrincipal.setVisible(false);
+                JF_PatioFrontal.setVisible(true);
+                JP_PatioFrontal.setOpaque(false);
+                FondoNormal.setVisible(true);
+                FondoTuto.setVisible(false);
+                partida = new Nivel_2(Main.this);
+                partida.start();
+                JF_PatioFrontal.setVisible(true);
+            }
+            case 3 -> {
+                Music = playMusic("./GameMusic\\Day_Stage.wav");
+                Music.start();
+                Music.loop(Clip.LOOP_CONTINUOUSLY);
+                if (partida != null) {
+                    partida.Reiniciar();
+                }
+
+                JF_PatioFrontal.pack();
+                JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+                Jf_MenuPrincipal.setVisible(false);
+                JF_PatioFrontal.setVisible(true);
+                JP_PatioFrontal.setOpaque(false);
+                FondoNormal.setVisible(true);
+                FondoTuto.setVisible(false);
+                partida = new Nivel_3(Main.this);
+                partida.start();
+                JF_PatioFrontal.setVisible(true);
+
+            }
+            case 4 -> {
+                if (partida != null) {
+                    partida.Reiniciar();
+                }
             }
 
-        } else {
-            //PatioFondoTuto.setVisible(true);
-            //PatioFondo.setVisible(false);
-            Music.stop();
-            JF_PatioFrontal.pack();
-            Jf_MenuPrincipal.setVisible(false);
-            JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
-            Music.stop();
-            JF_PatioFrontal.setVisible(true);
-
         }
+
     }//GEN-LAST:event_B_AdventureMouseClicked
 
     private void P_X4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X4MouseClicked
@@ -1073,13 +1146,20 @@ public class Main extends javax.swing.JFrame {
 
     private void B_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_CancelarMouseClicked
         Music.stop();
+        try {
+            JDialog_Pause.setModal(false);
+            JDialog_Pause.dispose();
+        } catch (Exception e) {
+        }
         //aqui pasa el guardar partida
-
         try {
             escanerTxT.escribirArchivo();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JF_PatioFrontal.setVisible(false);
+        Jf_MenuPrincipal.setLocationRelativeTo(JF_PatioFrontal);
+        Jf_MenuPrincipal.setVisible(true);
         Music = playMusic("./GameMusic\\Main.wav");
         Music.start();
         Music.loop(Clip.LOOP_CONTINUOUSLY);
@@ -1141,6 +1221,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel AbsoluteLayout_MenuPrincipal;
     private javax.swing.JButton B_Adventure;
     private javax.swing.JButton B_Cancelar;
+    private javax.swing.JButton B_Continuar;
+    private javax.swing.JButton B_MainMenu;
     private javax.swing.JButton B_QUIT;
     private javax.swing.JButton B_Reanudar;
     private javax.swing.JButton B_Reiniciar;
@@ -1182,18 +1264,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lb_CantSoles;
     private javax.swing.JLabel lb_Palita;
     private javax.swing.JLabel lb_Pause;
     private javax.swing.JLabel lb_PauseButton;
+    private javax.swing.JLabel lb_TituloHasGanado;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
 //mis variables
     private int xMouse, yMouse;
-    private Usuario UserActual;
+    public Usuario UserActual;
     public Clip Music;
     public boolean eliminarPlanta;
     private TxTEscaner escanerTxT;

@@ -185,7 +185,7 @@ public class Nivel_2 extends Partida {
     }
 
     public int[] zombiesCoordenadasY() {
-        int[] temp = new int[13];
+        int[] temp = new int[24];
         temp[0] = 640;
         temp[1] = 740;
         temp[2] = 800;
