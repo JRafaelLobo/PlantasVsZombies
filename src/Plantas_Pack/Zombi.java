@@ -49,6 +49,7 @@ public class Zombi extends Thread implements Serializable {
             label.setVisible(false);
             Rzombihitbox = null;
             partida.puntos++;
+            System.out.println("PartidaPuntos: " + partida.puntos);
         }
     }
 

@@ -68,7 +68,7 @@ public class Girasol extends Planta implements Serializable {
         //aqui ultima modificacion haciendo una referencia
         while (vida > 0) {
             try {
-                Thread.sleep((long) (20000 * partida.multiplicador));
+                Thread.sleep((long) (10000 * partida.multiplicador));
             } catch (InterruptedException ex) {
                 girasol.setVisible(false);
                 RPlantaHitbox = null;

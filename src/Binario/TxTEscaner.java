@@ -33,13 +33,13 @@ public class TxTEscaner {
             bw = new BufferedWriter(fw);
             bw.write("Datos de Usuario Guardado\n");
             for (Usuario t : usuarios) {
-                bw.write("\n#####################################");
+                bw.write("\n------------------------------------------");
                 bw.write("\n\n");
                 bw.write("Nombre: '" + t.getNombre() + "'");
                 bw.write("\n");
                 bw.write("Nivel: '" + t.getLvl() + "'");
                 bw.write("\n\n");
-                bw.write("#####################################");
+                bw.write("------------------------------------------");
             }
             bw.flush();
         } catch (Exception ex) {

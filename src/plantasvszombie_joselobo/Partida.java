@@ -29,7 +29,7 @@ public class Partida extends Thread implements Serializable {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 9000;
+    public int Cantsoles = 50;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
