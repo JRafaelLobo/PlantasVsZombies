@@ -218,7 +218,10 @@ public class Partida extends Thread implements Serializable {
     }
 
     public void Perdiste() {
-        JOptionPane.showMessageDialog(main.JP_PatioFrontal, "Esta sin decorar pero Perdiste");
+        main.JDialog_Perdiste.pack();
+        main.JDialog_Perdiste.setLocationRelativeTo(main.JP_PatioFrontal);
+        main.JDialog_Perdiste.setVisible(true);
+        main.JDialog_Perdiste.setModal(true);
     }
 
     public void Ganaste() {
@@ -226,9 +229,6 @@ public class Partida extends Thread implements Serializable {
         main.JDialog_Ganaste.setLocationRelativeTo(main.JP_PatioFrontal);
         main.JDialog_Ganaste.setVisible(true);
         main.JDialog_Ganaste.setModal(true);
-        if (main.UserActual.getLvl() != 4) {
-            main.UserActual.setLvl(main.UserActual.getLvl() + 1);
-        }
     }
 
     public void Reload(Main main) {

@@ -23,6 +23,13 @@ public class Main extends javax.swing.JFrame {
 
     public Main() {
         initComponents();
+        //set iconos
+        this.setIconImage(new ImageIcon("./GameImage\\Plants_vs_Zombies_logo.png").getImage());
+        JF_PatioFrontal.setIconImage(new ImageIcon("./GameImage\\Plants_vs_Zombies_logo.png").getImage());
+        Jf_MenuPrincipal.setIconImage(new ImageIcon("./GameImage\\Plants_vs_Zombies_logo.png").getImage());
+        Jf_VideoIntro.setIconImage(new ImageIcon("./GameImage\\Plants_vs_Zombies_logo.png").getImage());
+
+        //a
         this.setLocationRelativeTo(null);
         Music = playMusic("./GameMusic\\Main.wav");
         Music.start();
@@ -81,10 +88,6 @@ public class Main extends javax.swing.JFrame {
         FondoTuto = new Fondo("./GameImage\\backlvl2reajustada.jpeg");
         FondoNormal = new Fondo("./GameImage\\FondoPatioRecortada.png");
         JP_DetectorMouse = new javax.swing.JPanel();
-        jFrame1 = new javax.swing.JFrame();
-        JP_PanelPlantastest = new Fondo("/.GameImage\\PanelPlantas.png");
-        P_Carta3 = new javax.swing.JPanel();
-        lb_Pause = new javax.swing.JLabel();
         JDialog_Pause = new javax.swing.JDialog();
         Icon_Pause = new javax.swing.JLabel();
         B_Cancelar = new javax.swing.JButton();
@@ -94,6 +97,10 @@ public class Main extends javax.swing.JFrame {
         lb_TituloHasGanado = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         B_MainMenu = new javax.swing.JButton();
+        JDialog_Perdiste = new javax.swing.JDialog();
+        lb_TituloHasGanado1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        B_MainMenu1 = new javax.swing.JButton();
         JPB_CargaInicio = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
@@ -604,39 +611,6 @@ public class Main extends javax.swing.JFrame {
         JP_DetectorMouse.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         JF_PatioFrontal.getContentPane().add(JP_DetectorMouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 430));
 
-        JP_PanelPlantastest.setMaximumSize(new java.awt.Dimension(544, 100));
-        JP_PanelPlantastest.setMinimumSize(new java.awt.Dimension(544, 100));
-        JP_PanelPlantastest.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        P_Carta3.setBackground(new java.awt.Color(255, 255, 255));
-        P_Carta3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        JP_PanelPlantastest.add(P_Carta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, 50));
-
-        lb_Pause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/Pause.png"))); // NOI18N
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_PanelPlantastest, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jFrame1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lb_Pause)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addComponent(JP_PanelPlantastest, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 204, Short.MAX_VALUE))
-            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jFrame1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lb_Pause)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
         JDialog_Pause.setUndecorated(true);
         JDialog_Pause.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -668,11 +642,9 @@ public class Main extends javax.swing.JFrame {
         JDialog_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         JDialog_Ganaste.setBackground(new java.awt.Color(51, 153, 0));
-        JDialog_Ganaste.setMaximumSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.setMinimumSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.setModal(true);
         JDialog_Ganaste.setUndecorated(true);
-        JDialog_Ganaste.setPreferredSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_TituloHasGanado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -706,6 +678,46 @@ public class Main extends javax.swing.JFrame {
         );
 
         JDialog_Ganaste.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 250));
+
+        JDialog_Perdiste.setBackground(new java.awt.Color(51, 153, 0));
+        JDialog_Perdiste.setMaximumSize(new java.awt.Dimension(481, 250));
+        JDialog_Perdiste.setMinimumSize(new java.awt.Dimension(481, 250));
+        JDialog_Perdiste.setModal(true);
+        JDialog_Perdiste.setUndecorated(true);
+        JDialog_Perdiste.setPreferredSize(new java.awt.Dimension(481, 250));
+        JDialog_Perdiste.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lb_TituloHasGanado1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lb_TituloHasGanado1.setText("Has Perdido");
+        JDialog_Perdiste.getContentPane().add(lb_TituloHasGanado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(51, 0, 0));
+
+        B_MainMenu1.setText("Menu Principal");
+        B_MainMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_MainMenu1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(B_MainMenu1)
+                .addContainerGap(199, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(139, Short.MAX_VALUE)
+                .addComponent(B_MainMenu1)
+                .addGap(86, 86, 86))
+        );
+
+        JDialog_Perdiste.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 250));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantas VS Zombies");
@@ -950,6 +962,9 @@ public class Main extends javax.swing.JFrame {
                     } catch (IOException ex) {
                         Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
                     partida = new Nivel_1(Main.this);
                     partida.start();
                 }
@@ -966,6 +981,9 @@ public class Main extends javax.swing.JFrame {
                     JP_PatioFrontal.setOpaque(false);
                     FondoNormal.setVisible(false);
                     FondoTuto.setVisible(true);
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
                     partida = guardarPartida.getP();
                     partida.Reload(this);
                 } else {
@@ -1034,6 +1052,9 @@ public class Main extends javax.swing.JFrame {
                     JP_PatioFrontal.setOpaque(false);
                     FondoNormal.setVisible(true);
                     FondoTuto.setVisible(false);
+                    if (partida != null) {
+                        partida.Reiniciar();
+                    }
                     partida = guardarPartida.getP();
                     partida.Reload(this);
                 } else {
@@ -1285,6 +1306,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         //aqui pasa el eliminar partida
+        guardarPartida.DelFile();
         try {
             escanerTxT.escribirArchivo();
         } catch (IOException ex) {
@@ -1303,6 +1325,34 @@ public class Main extends javax.swing.JFrame {
         Music.start();
         Music.loop(Clip.LOOP_CONTINUOUSLY);
     }//GEN-LAST:event_B_MainMenuMouseClicked
+
+    private void B_MainMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_MainMenu1MouseClicked
+        // TODO add your handling code here:
+        Music.stop();
+        try {
+            JDialog_Perdiste.setModal(false);
+            JDialog_Perdiste.dispose();
+        } catch (Exception e) {
+        }
+        //aqui pasa el eliminar partida
+        guardarPartida.DelFile();
+        try {
+            escanerTxT.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JF_PatioFrontal.setVisible(false);
+        Jf_MenuPrincipal.setLocationRelativeTo(JDialog_Perdiste);
+        Jf_MenuPrincipal.setVisible(true);
+        try {
+            escanerTxT.escribirArchivo();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Music = playMusic("./GameMusic\\Main.wav");
+        Music.start();
+        Music.loop(Clip.LOOP_CONTINUOUSLY);
+    }//GEN-LAST:event_B_MainMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1360,6 +1410,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton B_Adventure;
     private javax.swing.JButton B_Cancelar;
     private javax.swing.JButton B_MainMenu;
+    private javax.swing.JButton B_MainMenu1;
     private javax.swing.JButton B_QUIT;
     private javax.swing.JButton B_Reanudar;
     private javax.swing.JButton B_Reiniciar;
@@ -1369,19 +1420,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel Icon_Pause;
     public javax.swing.JDialog JDialog_Ganaste;
     public javax.swing.JDialog JDialog_Pause;
+    public javax.swing.JDialog JDialog_Perdiste;
     private javax.swing.JFrame JF_PatioFrontal;
     private javax.swing.JProgressBar JPB_CargaInicio;
     public javax.swing.JPanel JP_DetectorMouse;
     private javax.swing.JPanel JP_ImagenCartas;
     public javax.swing.JPanel JP_PanelBlancoSeleccionPlantas;
     public javax.swing.JPanel JP_PanelPlantas;
-    private javax.swing.JPanel JP_PanelPlantastest;
     public javax.swing.JPanel JP_PatioFrontal;
     public javax.swing.JPanel JP_Proyectiles;
     public javax.swing.JPanel JP_Soles;
     private javax.swing.JFrame Jf_MenuPrincipal;
     private javax.swing.JFrame Jf_VideoIntro;
-    private javax.swing.JPanel P_Carta3;
     private javax.swing.JPanel P_CartaGirasol;
     private javax.swing.JPanel P_CartaLanzaguisantes;
     private javax.swing.JPanel P_CartaNuez;
@@ -1401,15 +1451,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel X2;
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lb_CantSoles;
     private javax.swing.JLabel lb_Palita;
-    private javax.swing.JLabel lb_Pause;
     private javax.swing.JLabel lb_PauseButton;
     private javax.swing.JLabel lb_TituloHasGanado;
+    private javax.swing.JLabel lb_TituloHasGanado1;
     private javax.swing.JTextField tb_Nombre;
     // End of variables declaration//GEN-END:variables
 //mis variables

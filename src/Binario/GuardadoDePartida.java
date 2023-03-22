@@ -72,6 +72,10 @@ public class GuardadoDePartida {
         return archivo.exists();
     }
 
+    public void DelFile() {
+        archivo.delete();
+    }
+
     @Override
     public String toString() {
 
