@@ -47,6 +47,7 @@ public class Zombi extends Thread {
         } else {
             label.setVisible(false);
             Rzombihitbox = null;
+            partida.puntos++;
             //partida.getfilaZombis(fila).remove(this);
         }
         // if (partida.getfilaZombis(fila).get(0) != null) {

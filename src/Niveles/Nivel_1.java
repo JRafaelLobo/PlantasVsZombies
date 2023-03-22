@@ -74,13 +74,8 @@ public class Nivel_1 extends Partida {
             getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
         }
 
-        while (ganada
-                == false) {
-            if (ZFilas1.isEmpty()
-                    && ZFilas2.isEmpty()
-                    && ZFilas3.isEmpty()
-                    && ZFilas4.isEmpty()
-                    && ZFilas5.isEmpty()) {
+        while (ganada == false) {
+            if (puntos >= 13) {
                 Ganaste();
                 ganada = true;
             }

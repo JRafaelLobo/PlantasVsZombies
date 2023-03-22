@@ -76,201 +76,28 @@ public class Nivel_2 extends Partida {
     //filas 70
     //fila 2=130,3=210,3=280/lanzaguisantes
     public void run() {
-        try {
-            Thread.sleep((long) (200 * multiplicador));//35000
-        } catch (InterruptedException ex) {
-        }
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
         GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_2.this);
         GeneSol.start();
         try {
-            Thread.sleep((long) (22000 * multiplicador));
+            Thread.sleep((long) (100 * multiplicador));//22000
         } catch (InterruptedException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
         }
-        while (control < 20) {
-            if (!pause) {
-                int R = random.nextInt(5) + 1;
-                int porcentaje = random.nextInt(100);
-                if (porcentaje > 60) {
-                    getfilaZombis(R).add(new ZombiNormal(A, this, 640, ZombiCordenadasY(R), R));
-                    getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
-                } else {
-                    getfilaZombis(R).add(new ZombiCono(A, this, 640, ZombiCordenadasY(R), R));
-                    getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
-                }
-
-                try {
-                    Thread.sleep(0);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Nivel_2.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                switch (control) {
-                    case 1 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                    case 2 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 3 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 4 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 5 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 6 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 7 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 8 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 9 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                        }
-                    }
-                    case 10 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 11 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                        }
-                    }
-                    case 12 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 13 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 14 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 15 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 16 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 17 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 18 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 19 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                    case 20 -> {
-                        try {
-                            Thread.sleep((long) (5000 * multiplicador));
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-
-                        }
-                    }
-                }
-                control++;
+        int[] ZobiX = zombiesCoordenadasY();
+        for (int i = 0; i < 24; i++) {
+            int R = random.nextInt(5) + 1;
+            int porcentaje = random.nextInt(100);
+            if (porcentaje > 60) {
+                getfilaZombis(R).add(new ZombiNormal(A, this, ZobiX[i], ZombiCordenadasY(R), R));
+                getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
+            } else {
+                getfilaZombis(R).add(new ZombiCono(A, this, ZobiX[i], ZombiCordenadasY(R), R));
+                getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
             }
-        }//while control
+        }
         while (ganada == false) {
-            if (ZFilas1.isEmpty()
-                    && ZFilas2.isEmpty()
-                    && ZFilas3.isEmpty()
-                    && ZFilas4.isEmpty()
-                    && ZFilas5.isEmpty()) {
+            if (puntos >= 13) {
                 Ganaste();
                 ganada = true;
             }
@@ -282,7 +109,8 @@ public class Nivel_2 extends Partida {
     }
 
     @Override
-    public int GetFilasAnalisis(int y) {
+    public int GetFilasAnalisis(int y
+    ) {
         if (y > 42 && y < 120) {
             return 1;
         }
@@ -302,7 +130,8 @@ public class Nivel_2 extends Partida {
     }
 
     @Override
-    public int GetColumnaAnalisis(int x) {
+    public int GetColumnaAnalisis(int x
+    ) {
         if (x > 73 && x < 135) {
             return 0;
         }
