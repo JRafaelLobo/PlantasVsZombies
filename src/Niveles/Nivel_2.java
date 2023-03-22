@@ -91,7 +91,7 @@ public class Nivel_2 extends Partida implements Serializable {
             for (int i = 0; i < 24; i++) {
                 int R = random.nextInt(5) + 1;
                 int porcentaje = random.nextInt(100);
-                if (porcentaje > 60) {
+                if (porcentaje > 40) {
                     getfilaZombis(R).add(new ZombiNormal(A, this, ZobiX[i], ZombiCordenadasY(R), R));
                     getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
                 } else {
