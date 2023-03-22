@@ -157,4 +157,11 @@ public class Sol extends Thread {
         return null;
     }
 
+    public void SolDisapear(boolean RemoveDelArrayList) {
+        sol.setVisible(false);
+        sol = null;
+        if (RemoveDelArrayList) {
+            partida.soles.remove(this);
+        }
+    }
 }

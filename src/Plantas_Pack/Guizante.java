@@ -80,7 +80,10 @@ public class Guizante extends Thread {
             guisante.setLocation(x, y);
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                    try {
+                        main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+                    } catch (Exception e) {
+                    }
                 }
             });
             RguisanteHitbox.setLocation(x, y);
@@ -117,12 +120,16 @@ public class Guizante extends Thread {
                 }
             }
         }
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                guisante.setVisible(false);
-
-            }
-        });
+        if (guisante != null) {
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    try {
+                        guisante.setVisible(false);
+                    } catch (Exception e) {
+                    }
+                }
+            });
+        }
         try {
             Thread.sleep(0);
         } catch (InterruptedException ex) {

@@ -1,5 +1,6 @@
 package plantasvszombie_joselobo;
 
+import Binario.TxTEscaner;
 import Niveles.*;
 import Hilos.*;
 import Plantas_Pack.*;
@@ -11,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.*;
 import javax.swing.*;
 //import javafx.event.*;
@@ -34,6 +37,7 @@ public class Main extends javax.swing.JFrame {
         JP_PatioFrontal.setOpaque(false);
         FondoNormal.setOpaque(false);
         FondoTuto.setOpaque(false);
+        escanerTxT = new TxTEscaner("./GameData");
     }
 
     @SuppressWarnings("unchecked")
@@ -82,7 +86,7 @@ public class Main extends javax.swing.JFrame {
         JDialog_Pause = new javax.swing.JDialog();
         Icon_Pause = new javax.swing.JLabel();
         B_Cancelar = new javax.swing.JButton();
-        B_Reanudar1 = new javax.swing.JButton();
+        B_Reanudar = new javax.swing.JButton();
         B_Reiniciar = new javax.swing.JButton();
         JDialog_Ganaste = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
@@ -626,17 +630,27 @@ public class Main extends javax.swing.JFrame {
         JDialog_Pause.getContentPane().add(Icon_Pause, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         B_Cancelar.setText("r");
-        JDialog_Pause.getContentPane().add(B_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
-
-        B_Reanudar1.setText("r");
-        B_Reanudar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        B_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                B_Reanudar1MouseClicked(evt);
+                B_CancelarMouseClicked(evt);
             }
         });
-        JDialog_Pause.getContentPane().add(B_Reanudar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, -1));
+        JDialog_Pause.getContentPane().add(B_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
+
+        B_Reanudar.setText("r");
+        B_Reanudar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_ReanudarMouseClicked(evt);
+            }
+        });
+        JDialog_Pause.getContentPane().add(B_Reanudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, -1));
 
         B_Reiniciar.setText("r");
+        B_Reiniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_ReiniciarMouseClicked(evt);
+            }
+        });
         JDialog_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         JDialog_Ganaste.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -800,8 +814,20 @@ public class Main extends javax.swing.JFrame {
         --module-path "C:\Users\rinal\Desktop\rafa tareas\Nuevos\Progra 2\PlantasVsZombie_JoseLobo\LibreriasPersonalizadas\javafx-sdk-19.0.2.1\lib" --add-modules javafx.controls,javafx.fxml
         --add-modules javafx.web,javafx.media,javafx.swing
          */
-        usuario.setPrimeraVez(true);
-        if (usuario.isPrimeraVez()) {
+        boolean nuevo = true;
+        for (Usuario usuario : escanerTxT.getUsuarios()) {
+            if (usuario.getNombre().equals(tb_Nombre.getText())) {
+                this.UserActual = usuario;
+                nuevo = false;
+                break;
+            }
+        }
+        if (nuevo) {
+            escanerTxT.getUsuarios().add(new Usuario(tb_Nombre.getText(), 0));
+            this.UserActual = escanerTxT.getUsuarios().get(escanerTxT.getUsuarios().size() - 1);
+        }
+
+        if (UserActual.getLvl() == 0) {
             //PatioFondoTuto.setVisible(true);
             //PatioFondo.setVisible(false);
             Music.stop();
@@ -998,18 +1024,67 @@ public class Main extends javax.swing.JFrame {
 
     private void lb_PauseButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_PauseButtonMouseClicked
         // TODO add your handling code here:ç
-        JDialog_Pause.pack();
-        JDialog_Pause.setLocationRelativeTo(JF_PatioFrontal);
-        JDialog_Pause.setVisible(true);
+        Clip effecto = playMusic("./GameMusic\\SoundEffects\\PauseSound.wav");
+        effecto.start();
         partida.pause();
-        JDialog_Pause.setModal(true);
+        try {
+            JDialog_Pause.pack();
+            JDialog_Pause.setLocationRelativeTo(JF_PatioFrontal);
+            JDialog_Pause.setVisible(true);
+            JDialog_Pause.setModal(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_lb_PauseButtonMouseClicked
 
-    private void B_Reanudar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Reanudar1MouseClicked
+    private void B_ReanudarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_ReanudarMouseClicked
         // TODO add your handling code here:
-        JDialog_Pause.setVisible(false);
+        Clip effecto = playMusic("./GameMusic\\SoundEffects\\PauseSound.wav");
+        effecto.start();
         partida.Continue();
-    }//GEN-LAST:event_B_Reanudar1MouseClicked
+        try {
+            JDialog_Pause.setModal(false);
+            JDialog_Pause.dispose();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_B_ReanudarMouseClicked
+
+    private void B_ReiniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_ReiniciarMouseClicked
+        // TODO add your handling code here:
+        partida.Reiniciar();
+        try {
+            JDialog_Pause.setModal(false);
+            JDialog_Pause.dispose();
+        } catch (Exception e) {
+        }
+        switch (UserActual.getLvl()) {
+            case 1:
+                partida = new Nivel_1(this);
+                break;
+            case 2:
+                partida = new Nivel_2(this);
+                break;
+            case 3:
+                partida = new Nivel_3(this);
+                break;
+        }
+        partida.start();
+        Music.start();
+    }//GEN-LAST:event_B_ReiniciarMouseClicked
+
+    private void B_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_CancelarMouseClicked
+        Music.stop();
+        //aqui pasa el guardar partida
+
+        try {
+            escanerTxT.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Music = playMusic("./GameMusic\\Main.wav");
+        Music.start();
+        Music.loop(Clip.LOOP_CONTINUOUSLY);
+
+    }//GEN-LAST:event_B_CancelarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1067,7 +1142,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton B_Adventure;
     private javax.swing.JButton B_Cancelar;
     private javax.swing.JButton B_QUIT;
-    private javax.swing.JButton B_Reanudar1;
+    private javax.swing.JButton B_Reanudar;
     private javax.swing.JButton B_Reiniciar;
     private javax.swing.JLabel FondoMenuPrincipal;
     private javax.swing.JPanel FondoNormal;
@@ -1118,10 +1193,10 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 //mis variables
     private int xMouse, yMouse;
-
+    private Usuario UserActual;
     public Clip Music;
     public boolean eliminarPlanta;
-    private Usuario usuario = new Usuario();
+    private TxTEscaner escanerTxT;
     //private Reproductor video = new Reproductor();
     int plantaSelecionada = -1;
     public Partida partida;

@@ -168,43 +168,35 @@ public class Partida extends Thread {
     }
 
     public void pause() {
-        pause = true;
-        if (main.JDialog_Pause.isVisible()) {
-            for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 5; i++) {
+            try {
                 for (int j = 0; j < 9; j++) {
-                    try {
-                        getfilaPlanta(i)[j].stop();
-
-                    } catch (Exception e) {
-                    }
+                    getfilaPlanta(i)[j].stop();
                 }
+            } catch (Exception e) {
+                System.out.println("fila selecionada dio error: " + i);
             }
-            for (int i = 1; i <= 5; i++) {
-                for (Zombi z : getfilaZombis(i)) {
-                    z.suspend();
-                }
-            }
-            GeneSol.suspend();
-            for (Sol sole : soles) {
-                sole.suspend();
-            }
-            main.Music.stop();
         }
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Partida.class.getName()).log(Level.SEVERE, null, ex);
+        for (int i = 1; i <= 5; i++) {
+            for (Zombi z : getfilaZombis(i)) {
+                z.suspend();
+            }
         }
+        GeneSol.suspend();
+        for (Sol sole : soles) {
+            sole.suspend();
+        }
+        main.Music.stop();
     }
 
     public void Continue() {
-
         for (int i = 1; i <= 5; i++) {
-            for (int j = 0; j < 9; j++) {
-                try {
+            try {
+                for (int j = 0; j < 9; j++) {
                     getfilaPlanta(i)[j].resume();
-                } catch (Exception e) {
                 }
+            } catch (Exception e) {
+                System.out.println("fila selecionada dio error: " + i);
             }
         }
         for (int i = 1; i <= 5; i++) {
@@ -217,6 +209,12 @@ public class Partida extends Thread {
             sole.resume();
         }
         main.Music.start();
+    }
+
+    public void Reiniciar() {
+        A.EliminarTodo();
+        A = null;
+        A = new AdministracionDeRecursos(main);
     }
 
     public void Perdiste() {

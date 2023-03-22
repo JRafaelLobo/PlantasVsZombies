@@ -1,4 +1,4 @@
- package plantasvszombie_joselobo;
+package plantasvszombie_joselobo;
 
 public class AdministracionDeRecursos {
     // javax.swing.JPanel() PanelControl_Soles;
@@ -38,4 +38,10 @@ public class AdministracionDeRecursos {
         this.main = main;
     }
 
+    public void EliminarTodo() {
+        this.main.JP_PatioFrontal.remove(PanelControl_Plantas);
+        this.main.JP_PatioFrontal.remove(PanelControl_Zombi);
+        this.main.JP_Proyectiles.remove(PanelControl_Proyectiles);
+        this.main.JP_Soles.remove(PanelControl_Soles);
+    }
 }
