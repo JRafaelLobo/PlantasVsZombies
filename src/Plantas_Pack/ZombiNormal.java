@@ -202,6 +202,16 @@ public class ZombiNormal extends Zombi implements Serializable {
 
     public void reload(AdministracionDeRecursos administracionDeRecursos) {
         this.main = administracionDeRecursos;
+        File archivo = null;
+        Image img = null;
+        try {
+            archivo = new File("./GameImage\\ZombiNormal.gif");
+            img = Toolkit.getDefaultToolkit().createImage(
+                    archivo.getPath()).getScaledInstance(70, 70, 0);
+            label.setIcon(new javax.swing.ImageIcon(img));
+        } catch (Exception e) {
+            System.out.println("No se Encuentra Imagen de Zombi");
+        }
         main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         this.start();
 

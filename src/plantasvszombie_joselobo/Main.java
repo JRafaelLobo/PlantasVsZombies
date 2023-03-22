@@ -101,6 +101,18 @@ public class Main extends javax.swing.JFrame {
         lb_TituloHasGanado1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         B_MainMenu1 = new javax.swing.JButton();
+        Jf_SeleccionLvls = new javax.swing.JFrame();
+        jPanel4 = new javax.swing.JPanel();
+        Lvl3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        P_Lvl2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        P_Lvl1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        P_TopBar1 = new javax.swing.JPanel();
+        P_X1 = new javax.swing.JPanel();
+        X1 = new javax.swing.JLabel();
+        lb_FondoSelecionLvls = new javax.swing.JLabel();
         JPB_CargaInicio = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         P_TopBar = new javax.swing.JPanel();
@@ -642,11 +654,9 @@ public class Main extends javax.swing.JFrame {
         JDialog_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         JDialog_Ganaste.setBackground(new java.awt.Color(51, 153, 0));
-        JDialog_Ganaste.setMaximumSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.setMinimumSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.setModal(true);
         JDialog_Ganaste.setUndecorated(true);
-        JDialog_Ganaste.setPreferredSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_TituloHasGanado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -720,6 +730,175 @@ public class Main extends javax.swing.JFrame {
         );
 
         JDialog_Perdiste.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 250));
+
+        Jf_SeleccionLvls.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Jf_SeleccionLvls.setTitle("Plantas VS Zombies");
+        Jf_SeleccionLvls.setLocationByPlatform(true);
+        Jf_SeleccionLvls.setName("MainFrame"); // NOI18N
+        Jf_SeleccionLvls.setUndecorated(true);
+        Jf_SeleccionLvls.setResizable(false);
+        Jf_SeleccionLvls.setSize(new java.awt.Dimension(640, 430));
+        Jf_SeleccionLvls.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setMaximumSize(new java.awt.Dimension(640, 430));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Lvl3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Lvl3MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setText("Lvl3");
+
+        javax.swing.GroupLayout Lvl3Layout = new javax.swing.GroupLayout(Lvl3);
+        Lvl3.setLayout(Lvl3Layout);
+        Lvl3Layout.setHorizontalGroup(
+            Lvl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Lvl3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel3)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        Lvl3Layout.setVerticalGroup(
+            Lvl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Lvl3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(Lvl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 110, 60));
+
+        P_Lvl2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                P_Lvl2MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("Lvl2");
+
+        javax.swing.GroupLayout P_Lvl2Layout = new javax.swing.GroupLayout(P_Lvl2);
+        P_Lvl2.setLayout(P_Lvl2Layout);
+        P_Lvl2Layout.setHorizontalGroup(
+            P_Lvl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Lvl2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        P_Lvl2Layout.setVerticalGroup(
+            P_Lvl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Lvl2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel2)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(P_Lvl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 110, 60));
+
+        P_Lvl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                P_Lvl1MouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Lvl1");
+
+        javax.swing.GroupLayout P_Lvl1Layout = new javax.swing.GroupLayout(P_Lvl1);
+        P_Lvl1.setLayout(P_Lvl1Layout);
+        P_Lvl1Layout.setHorizontalGroup(
+            P_Lvl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Lvl1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        P_Lvl1Layout.setVerticalGroup(
+            P_Lvl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Lvl1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(P_Lvl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 110, 60));
+
+        P_TopBar1.setBackground(new java.awt.Color(0, 0, 0));
+        P_TopBar1.setForeground(new java.awt.Color(153, 255, 153));
+        P_TopBar1.setPreferredSize(new java.awt.Dimension(640, 0));
+        P_TopBar1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                P_TopBar1MouseDragged(evt);
+            }
+        });
+        P_TopBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                P_TopBar1MousePressed(evt);
+            }
+        });
+
+        P_X1.setBackground(new java.awt.Color(0, 0, 0));
+        P_X1.setName(""); // NOI18N
+        P_X1.setPreferredSize(new java.awt.Dimension(58, 30));
+        P_X1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                P_X1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                P_X1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                P_X1MouseExited(evt);
+            }
+        });
+
+        X1.setBackground(new java.awt.Color(0, 0, 0));
+        X1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        X1.setForeground(new java.awt.Color(255, 255, 255));
+        X1.setText("X");
+        X1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        X1.setMaximumSize(new java.awt.Dimension(46, 22));
+        X1.setMinimumSize(new java.awt.Dimension(46, 22));
+        X1.setName(""); // NOI18N
+        X1.setPreferredSize(new java.awt.Dimension(58, 30));
+
+        javax.swing.GroupLayout P_X1Layout = new javax.swing.GroupLayout(P_X1);
+        P_X1.setLayout(P_X1Layout);
+        P_X1Layout.setHorizontalGroup(
+            P_X1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_X1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(X1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        P_X1Layout.setVerticalGroup(
+            P_X1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(X1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout P_TopBar1Layout = new javax.swing.GroupLayout(P_TopBar1);
+        P_TopBar1.setLayout(P_TopBar1Layout);
+        P_TopBar1Layout.setHorizontalGroup(
+            P_TopBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_TopBar1Layout.createSequentialGroup()
+                .addGap(0, 582, Short.MAX_VALUE)
+                .addComponent(P_X1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        P_TopBar1Layout.setVerticalGroup(
+            P_TopBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(P_X1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel4.add(P_TopBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
+
+        lb_FondoSelecionLvls.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/SeleciondeLvls.png"))); // NOI18N
+        jPanel4.add(lb_FondoSelecionLvls, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+
+        Jf_SeleccionLvls.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plantas VS Zombies");
@@ -1083,7 +1262,10 @@ public class Main extends javax.swing.JFrame {
                 if (partida != null) {
                     partida.Reiniciar();
                 }
-                JOptionPane.showMessageDialog(JF_PatioFrontal, "Proximamente en cines", "Proximamente", -1);
+                Jf_SeleccionLvls.pack();
+                Jf_SeleccionLvls.setLocationRelativeTo(Jf_MenuPrincipal);
+                Jf_MenuPrincipal.setVisible(false);
+                Jf_SeleccionLvls.setVisible(true);
             }
 
         }
@@ -1357,6 +1539,100 @@ public class Main extends javax.swing.JFrame {
         Music.loop(Clip.LOOP_CONTINUOUSLY);
     }//GEN-LAST:event_B_MainMenu1MouseClicked
 
+    private void P_X1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X1MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_P_X1MouseClicked
+
+    private void P_X1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X1MouseEntered
+        // TODO add your handling code here:
+        P_X1.setBackground(Color.RED);
+
+    }//GEN-LAST:event_P_X1MouseEntered
+
+    private void P_X1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_X1MouseExited
+        // TODO add your handling code here:
+        P_X1.setBackground(Color.BLACK);
+
+    }//GEN-LAST:event_P_X1MouseExited
+
+    private void P_TopBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBar1MouseDragged
+        // TODO add your handling code here:
+
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        Jf_SeleccionLvls.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_P_TopBar1MouseDragged
+
+    private void P_TopBar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_TopBar1MousePressed
+        // TODO add your handling code here:
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_P_TopBar1MousePressed
+
+    private void P_Lvl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_Lvl1MouseClicked
+        // TODO add your handling code here:
+        try {
+            Music.stop();
+        } catch (Exception e) {
+        }
+        Music = playMusic("./GameMusic\\Day_Stage.wav");
+        Music.start();
+        Music.loop(Clip.LOOP_CONTINUOUSLY);
+        JF_PatioFrontal.pack();
+        JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+        Jf_SeleccionLvls.setVisible(false);
+        JF_PatioFrontal.setVisible(true);
+        JP_PatioFrontal.setOpaque(false);
+        FondoNormal.setVisible(false);
+        FondoTuto.setVisible(true);
+        partida = new Nivel_1(Main.this);
+        partida.start();
+        JF_PatioFrontal.setVisible(true);
+    }//GEN-LAST:event_P_Lvl1MouseClicked
+
+    private void P_Lvl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P_Lvl2MouseClicked
+        // TODO add your handling code here:
+        try {
+            Music.stop();
+        } catch (Exception e) {
+        }
+        Music = playMusic("./GameMusic\\Day_Stage.wav");
+        Music.start();
+        Music.loop(Clip.LOOP_CONTINUOUSLY);
+        JF_PatioFrontal.pack();
+        JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+        Jf_SeleccionLvls.setVisible(false);
+        JF_PatioFrontal.setVisible(true);
+        JP_PatioFrontal.setOpaque(false);
+        FondoNormal.setVisible(true);
+        FondoTuto.setVisible(false);
+        partida = new Nivel_2(Main.this);
+        partida.start();
+        JF_PatioFrontal.setVisible(true);
+    }//GEN-LAST:event_P_Lvl2MouseClicked
+
+    private void Lvl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lvl3MouseClicked
+        // TODO add your handling code here:
+        try {
+            Music.stop();
+        } catch (Exception e) {
+        }
+        Music = playMusic("./GameMusic\\Day_Stage.wav");
+        Music.start();
+        Music.loop(Clip.LOOP_CONTINUOUSLY);
+        JF_PatioFrontal.pack();
+        JF_PatioFrontal.setLocationRelativeTo(Jf_MenuPrincipal);
+        Jf_SeleccionLvls.setVisible(false);
+        JF_PatioFrontal.setVisible(true);
+        JP_PatioFrontal.setOpaque(false);
+        FondoNormal.setVisible(true);
+        FondoTuto.setVisible(false);
+        partida = new Nivel_3(Main.this);
+        partida.start();
+        JF_PatioFrontal.setVisible(true);
+    }//GEN-LAST:event_Lvl3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1434,31 +1710,43 @@ public class Main extends javax.swing.JFrame {
     public javax.swing.JPanel JP_Proyectiles;
     public javax.swing.JPanel JP_Soles;
     private javax.swing.JFrame Jf_MenuPrincipal;
+    private javax.swing.JFrame Jf_SeleccionLvls;
     private javax.swing.JFrame Jf_VideoIntro;
+    private javax.swing.JPanel Lvl3;
     private javax.swing.JPanel P_CartaGirasol;
     private javax.swing.JPanel P_CartaLanzaguisantes;
     private javax.swing.JPanel P_CartaNuez;
     private javax.swing.JPanel P_CartaPetacereza;
+    private javax.swing.JPanel P_Lvl1;
+    private javax.swing.JPanel P_Lvl2;
     private javax.swing.JPanel P_TopBar;
+    private javax.swing.JPanel P_TopBar1;
     private javax.swing.JPanel P_TopBar2;
     private javax.swing.JPanel P_TopBar3;
     private javax.swing.JPanel P_TopBar4;
     private javax.swing.JPanel P_VideoIntro;
     private javax.swing.JPanel P_X;
+    private javax.swing.JPanel P_X1;
     private javax.swing.JPanel P_X2;
     private javax.swing.JPanel P_X3;
     private javax.swing.JPanel P_X4;
     private javax.swing.JLabel Portada;
     private javax.swing.JToggleButton Rapidez;
     private javax.swing.JLabel X;
+    private javax.swing.JLabel X1;
     private javax.swing.JLabel X2;
     private javax.swing.JLabel X3;
     private javax.swing.JLabel X4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lb_CantSoles;
+    private javax.swing.JLabel lb_FondoSelecionLvls;
     private javax.swing.JLabel lb_Palita;
     private javax.swing.JLabel lb_PauseButton;
     private javax.swing.JLabel lb_TituloHasGanado;

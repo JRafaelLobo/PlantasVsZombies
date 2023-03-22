@@ -120,6 +120,14 @@ public class Girasol extends Planta implements Serializable {
 
     public void reload(AdministracionDeRecursos administracionDeRecursos) {
         this.main = administracionDeRecursos;
+        try {
+            File archivo = new File("./GameImage\\sunflower.gif");
+            Image img = Toolkit.getDefaultToolkit().createImage(
+                    archivo.getPath()).getScaledInstance(55, 55, 0);
+            girasol.setIcon(new javax.swing.ImageIcon(img));
+        } catch (Exception e) {
+            System.out.println("No encontro Imagen girasol");
+        }
         main.PanelControl_Plantas.add(girasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         this.start();
 

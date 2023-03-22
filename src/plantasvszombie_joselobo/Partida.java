@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class Partida extends Thread implements Serializable {
-    
+
     public transient Main main;
     public transient AdministracionDeRecursos A;
     public ArrayList<Zombi> ZFilas1 = new ArrayList();
@@ -39,13 +39,13 @@ public class Partida extends Thread implements Serializable {
     public int puntos = 0;
     public GeneraSoles GeneSol;
     public boolean reloaded = false;
-    
+
     public Partida(Main main) {
         this.main = main;
         A = new AdministracionDeRecursos(main);
         Generar();
     }
-    
+
     public ArrayList<Zombi> getfilaZombis(int fila) {
         switch (fila) {
             case 1:
@@ -62,7 +62,7 @@ public class Partida extends Thread implements Serializable {
                 return null;
         }
     }
-    
+
     public CoordenadasPlanta[] getfilaPlanta(int fila) {
         switch (fila) {
             case 1:
@@ -79,7 +79,7 @@ public class Partida extends Thread implements Serializable {
                 return null;
         }
     }
-    
+
     public void Generar() {
         /*SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -96,15 +96,15 @@ public class Partida extends Thread implements Serializable {
         PFila2[7] = new CoordenadasPlanta(A, 480, 145, 2, this);
         PFila2[8] = new CoordenadasPlanta(A, 545, 145, 2, this);
     }
-    
+
     public int GetFilasAnalisis(int y) {
         return -1;
     }
-    
+
     public int GetColumnaAnalisis(int x) {
         return -1;
     }
-    
+
     public void Plantar(int filas, int columnas, int tipoDePlanta) {
         try {
             if (getfilaPlanta(filas)[columnas].getPlanta() == null && tipoDePlanta != -1) {
@@ -132,7 +132,7 @@ public class Partida extends Thread implements Serializable {
                             Clip effect = playMusic("./GameMusic\\SoundEffects\\BeingPlanted2.wav");
                             effect.start();
                         }
-                        
+
                     }
                     case 3 -> {
                         //falta la petacereza
@@ -144,7 +144,7 @@ public class Partida extends Thread implements Serializable {
                         }
                     }
                 }
-                
+
             }
         } catch (Exception e) {
         }
@@ -152,21 +152,21 @@ public class Partida extends Thread implements Serializable {
         main.plantaSelecionada = -1;
         main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
     }
-    
+
     public void EliminarPlanta(int filas, int columnas) {
         try {
             getfilaPlanta(filas)[columnas].DeletePlant();
         } catch (Exception e) {
         }
     }
-    
+
     public void pala(int filas, int columnas) {
         try {
             getfilaPlanta(filas)[columnas].remover();
         } catch (Exception e) {
         }
     }
-    
+
     public void pause() {
         for (int i = 1; i <= 5; i++) {
             try {
@@ -188,7 +188,7 @@ public class Partida extends Thread implements Serializable {
         }
         main.Music.stop();
     }
-    
+
     public void Continue() {
         for (int i = 1; i <= 5; i++) {
             try {
@@ -210,38 +210,39 @@ public class Partida extends Thread implements Serializable {
         }
         main.Music.start();
     }
-    
+
     public void Reiniciar() {
         A.EliminarTodo();
         A = null;
         A = new AdministracionDeRecursos(main);
     }
-    
+
     public void Perdiste() {
         main.JDialog_Perdiste.pack();
         main.JDialog_Perdiste.setLocationRelativeTo(main.JP_PatioFrontal);
         main.JDialog_Perdiste.setVisible(true);
         main.JDialog_Perdiste.setModal(true);
     }
-    
+
     public void Ganaste() {
         main.JDialog_Ganaste.pack();
         main.JDialog_Ganaste.setLocationRelativeTo(main.JP_PatioFrontal);
         main.JDialog_Ganaste.setVisible(true);
         main.JDialog_Ganaste.setModal(true);
     }
-    
+
     public void Reload(Main main) {
         reloaded = true;
         A = new AdministracionDeRecursos(main);
         this.main = main;
+        int j = -1;
         for (int i = 1; i <= 5; i++) {
             try {
-                for (int j = 0; j < 9; j++) {
+                for (j = 0; j < 9; j++) {
                     getfilaPlanta(i)[j].reload(A);
                 }
             } catch (Exception e) {
-                System.out.println("fila selecionada dio error: " + i);
+                System.out.println("fila selecionada dio error: " + i + "," + j);
             }
         }
         try {
@@ -257,7 +258,7 @@ public class Partida extends Thread implements Serializable {
         GeneSol.reload(A);
         this.start();
     }
-    
+
     public static Clip playMusic(String filepath) {
         try {
             File music = new File(filepath);

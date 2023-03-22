@@ -153,11 +153,23 @@ public class LanzaGuizantes extends Planta implements Serializable {
 
     public void reload(AdministracionDeRecursos administracionDeRecursos) {
         this.main = administracionDeRecursos;
-        main.PanelControl_Plantas.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-        for (Guizante guisante : guisantes) {
-            guisante.reload(main);
-            guisante.start();
+        try {
+            File archivo = new File("./GameImage\\lanzaguisantes.gif");
+            Image img = Toolkit.getDefaultToolkit().createImage(
+                    archivo.getPath()).getScaledInstance(55, 55, 0);
+            lanzaguisante.setIcon(new javax.swing.ImageIcon(img));
+        } catch (Exception e) {
+            System.out.println("No encontro Imagen Lanzaguisantes");
         }
+        main.PanelControl_Plantas.add(lanzaguisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        try {
+            for (Guizante guisante : guisantes) {
+                guisante.reload(main);
+                guisante.start();
+            }
+        } catch (Exception e) {
+        }
+
         this.start();
     }
 
