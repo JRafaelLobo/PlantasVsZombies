@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class Nivel_2 extends Partida implements Serializable{
+public class Nivel_2 extends Partida implements Serializable {
 
     protected Random random = new Random();
 
@@ -78,23 +78,26 @@ public class Nivel_2 extends Partida implements Serializable{
     //fila 2=130,3=210,3=280/lanzaguisantes
     public void run() {
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-        GeneSol = new GeneraSoles(4000, A, Nivel_2.this);
-        GeneSol.start();
-        try {
-            Thread.sleep((long) (100 * multiplicador));//22000
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int[] ZobiX = zombiesCoordenadasY();
-        for (int i = 0; i < 24; i++) {
-            int R = random.nextInt(5) + 1;
-            int porcentaje = random.nextInt(100);
-            if (porcentaje > 60) {
-                getfilaZombis(R).add(new ZombiNormal(A, this, ZobiX[i], ZombiCordenadasY(R), R));
-                getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
-            } else {
-                getfilaZombis(R).add(new ZombiCono(A, this, ZobiX[i], ZombiCordenadasY(R), R));
-                getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
+        if (!reloaded) {
+
+            GeneSol = new GeneraSoles(4000, A, Nivel_2.this);
+            GeneSol.start();
+            try {
+                Thread.sleep((long) (100 * multiplicador));//22000
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int[] ZobiX = zombiesCoordenadasY();
+            for (int i = 0; i < 24; i++) {
+                int R = random.nextInt(5) + 1;
+                int porcentaje = random.nextInt(100);
+                if (porcentaje > 60) {
+                    getfilaZombis(R).add(new ZombiNormal(A, this, ZobiX[i], ZombiCordenadasY(R), R));
+                    getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
+                } else {
+                    getfilaZombis(R).add(new ZombiCono(A, this, ZobiX[i], ZombiCordenadasY(R), R));
+                    getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
+                }
             }
         }
         while (ganada == false) {

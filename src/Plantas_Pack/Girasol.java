@@ -121,5 +121,7 @@ public class Girasol extends Planta implements Serializable {
     public void reload(AdministracionDeRecursos administracionDeRecursos) {
         this.main = administracionDeRecursos;
         main.PanelControl_Plantas.add(girasol, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+        this.start();
+
     }
 }

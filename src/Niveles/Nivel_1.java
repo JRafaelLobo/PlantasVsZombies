@@ -61,20 +61,22 @@ public class Nivel_1 extends Partida implements Serializable {
 //base zombi 640
     public void run() {
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-        GeneSol = new GeneraSoles(4000, A, Nivel_1.this);
-        GeneSol.start();
-        try {
-            Thread.sleep((long) (100 * multiplicador));//22000
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int[] ZobiX = zombiesCoordenadasY();
-        for (int i = 0; i < 13; i++) {
-            int R = random.nextInt(3) + 2;
-            getfilaZombis(R).add(new ZombiNormal(A, this, ZobiX[i], ZombiCordenadasY(R), R));
-            getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
-        }
+        if (!reloaded) {
 
+            GeneSol = new GeneraSoles(4000, A, Nivel_1.this);
+            GeneSol.start();
+            try {
+                Thread.sleep((long) (100 * multiplicador));//22000
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Nivel_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int[] ZobiX = zombiesCoordenadasY();
+            for (int i = 0; i < 13; i++) {
+                int R = random.nextInt(3) + 2;
+                getfilaZombis(R).add(new ZombiNormal(A, this, ZobiX[i], ZombiCordenadasY(R), R));
+                getfilaZombis(R).get(getfilaZombis(R).size() - 1).start();
+            }
+        }
         while (ganada == false) {
             if (puntos >= 13) {
                 Ganaste();

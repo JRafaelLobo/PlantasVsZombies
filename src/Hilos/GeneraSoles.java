@@ -9,7 +9,7 @@ import plantasvszombie_joselobo.AdministracionDeRecursos;
 import plantasvszombie_joselobo.Main;
 import plantasvszombie_joselobo.Partida;
 
-public class GeneraSoles extends Thread implements Serializable{
+public class GeneraSoles extends Thread implements Serializable {
 
     private int x, y = -10;
     private int TiempoPorCaida;
@@ -58,6 +58,11 @@ public class GeneraSoles extends Thread implements Serializable{
                 Logger.getLogger(GeneraSoles.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    public void reload(AdministracionDeRecursos administracionDeRecursos) {
+        this.main = administracionDeRecursos;
+        this.start();
     }
 
 }

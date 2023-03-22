@@ -29,7 +29,7 @@ public class Partida extends Thread implements Serializable {
     public CoordenadasPlanta[] PFila3 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila4 = new CoordenadasPlanta[9];
     public CoordenadasPlanta[] PFila5 = new CoordenadasPlanta[9];
-    public int Cantsoles = 50;
+    public int Cantsoles = 9000;
     public ArrayList<Sol> soles = new ArrayList();
     public boolean ganada = false;
     public boolean perdida = false;
@@ -38,6 +38,7 @@ public class Partida extends Thread implements Serializable {
     public boolean pause = false;
     public int puntos = 0;
     public GeneraSoles GeneSol;
+    public boolean reloaded = false;
 
     public Partida(Main main) {
         this.main = main;
@@ -231,6 +232,7 @@ public class Partida extends Thread implements Serializable {
     }
 
     public void Reload(Main main) {
+        reloaded = true;
         A = new AdministracionDeRecursos(main);
         this.main = main;
         for (int i = 1; i <= 5; i++) {
@@ -247,11 +249,8 @@ public class Partida extends Thread implements Serializable {
                 z.reload(A);
             }
         }
-        GeneSol.resume();
-        for (Sol sole : soles) {
-            sole.reload(A);
-        }
-        Continue();
+        GeneSol.reload(A);
+        this.start();
     }
 
     public static Clip playMusic(String filepath) {
