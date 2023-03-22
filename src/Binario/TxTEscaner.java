@@ -20,6 +20,7 @@ public class TxTEscaner {
 
     File archivo;
     ArrayList<Usuario> usuarios = new ArrayList();
+    
 
     public TxTEscaner(String ruta) {
         this.archivo = new File(ruta);

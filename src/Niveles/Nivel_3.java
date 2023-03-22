@@ -101,6 +101,10 @@ public class Nivel_3 extends Partida {
                 Ganaste();
                 ganada = true;
             }
+            if (perdida) {
+                Perdiste();
+                break;
+            }
             try {
                 Thread.sleep((long) (5000 * multiplicador));
             } catch (InterruptedException ex) {

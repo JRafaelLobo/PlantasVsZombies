@@ -98,7 +98,7 @@ public class Planta extends Thread {
         if (this.vida > 0) {
             Parpadear();
         } else {
-            setInvisible();
+            //<   setInvisible();
             int columna = partida.GetColumnaAnalisis(this.x);
             try {
                 Thread.sleep(100);

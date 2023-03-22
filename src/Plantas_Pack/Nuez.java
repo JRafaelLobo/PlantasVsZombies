@@ -73,12 +73,12 @@ public class Nuez extends Planta {
 
     @Override
     public void setInvisible() {
-        SwingUtilities.invokeLater(new Runnable() {
+        nuez.setVisible(false);
+        /*SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                nuez.setVisible(false);
 
             }
-        });
+        });*/
     }
 
     @Override

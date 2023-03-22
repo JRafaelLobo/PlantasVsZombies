@@ -1,6 +1,7 @@
 package Hilos;
 
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 public class ParpadeoDeLabels extends Thread {
 
@@ -34,6 +35,7 @@ public class ParpadeoDeLabels extends Thread {
 
     @Override
     public void run() {
+
         for (int i = 0; i < cantidad; i++) {
             CambiarVisible(false, Tiempoapagado);
             CambiarVisible(true, Tiempoprendido);
@@ -48,6 +50,7 @@ public class ParpadeoDeLabels extends Thread {
                 label = null;
             }
         }
+
     }
 
     private void CambiarVisible(boolean visible, int tiempo) {

@@ -78,17 +78,11 @@ public class Guizante extends Thread {
             }
             x++;
             guisante.setLocation(x, y);
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    try {
-                        main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-                    } catch (Exception e) {
-                    }
-                }
-            });
+
+            main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+
             RguisanteHitbox.setLocation(x, y);
             for (int i = 0; i < refFilaZombi.size(); i++) {
-
                 try {
                     if (RguisanteHitbox.intersects(refFilaZombi.get(i).Rzombihitbox)) {
                         this.guisante.setVisible(false);
@@ -111,24 +105,21 @@ public class Guizante extends Thread {
                         // boleaninutilquesirveparaquenoaparezcavariasvecesumensaje = false;
                     }
                 }
-            }
-            if (x > 640) {
-                isAlive = false;
-                try {
-                    Thread.sleep(0);
-                } catch (InterruptedException ex) {
-                }
-            }
-        }
-        if (guisante != null) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
+                if (x > 640) {
+                    isAlive = false;
                     try {
-                        guisante.setVisible(false);
-                    } catch (Exception e) {
+                        Thread.sleep(0);
+                    } catch (InterruptedException ex) {
                     }
                 }
-            });
+            }
+
+        }
+        if (guisante != null) {
+            try {
+                guisante.setVisible(false);
+            } catch (Exception e) {
+            }
         }
         try {
             Thread.sleep(0);

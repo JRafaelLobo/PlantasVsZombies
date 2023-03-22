@@ -156,8 +156,6 @@ public class Partida extends Thread {
             getfilaPlanta(filas)[columnas].DeletePlant();
         } catch (Exception e) {
         }
-        //main.JP_PanelBlancoSeleccionPlantas.setVisible(false);
-        //main.eliminarPlanta = false;
     }
 
     public void pala(int filas, int columnas) {
@@ -226,6 +224,9 @@ public class Partida extends Thread {
         main.JDialog_Ganaste.setLocationRelativeTo(main.JP_PatioFrontal);
         main.JDialog_Ganaste.setVisible(true);
         main.JDialog_Ganaste.setModal(true);
+        if (main.UserActual.getLvl() != 4) {
+            main.UserActual.setLvl(main.UserActual.getLvl() + 1);
+        }
     }
 
     public static Clip playMusic(String filepath) {

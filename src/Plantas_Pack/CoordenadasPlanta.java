@@ -89,7 +89,6 @@ public class CoordenadasPlanta {
     public void DeletePlant() {
         //;
         try {
-            this.planta.deletPlantita();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,7 +98,7 @@ public class CoordenadasPlanta {
             e.printStackTrace();
         }
         try {
-            // this.planta.stop();
+            this.planta.deletPlantita();
         } catch (Exception e) {
             e.printStackTrace();
         }

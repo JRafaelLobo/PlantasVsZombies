@@ -174,20 +174,13 @@ public class ZombiNormal extends Zombi {
 
     public void Parpadear() {
         if (vida > 0) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
-                    a.start();
-                }
-            });
-
+            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
+            a.start();
         } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
-                    a.start();
-                }
-            });
+
+            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
+            a.start();
+
         }
 
     }

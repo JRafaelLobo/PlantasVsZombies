@@ -17,15 +17,16 @@ import plantasvszombie_joselobo.Partida;
  * @author rinal
  */
 public class PetaCereza extends Planta {
-
+    
     javax.swing.JLabel petacereza;
-
+    
     public PetaCereza(int x, int y, int fila, AdministracionDeRecursos main, Partida partida) {
         super(x, y, fila, main, partida);
         vida = 4000;
+        RPlantaHitbox = null;
         build();
     }
-
+    
     @Override
     public void build() {
         tiempoRecarga = 35000;
@@ -43,24 +44,11 @@ public class PetaCereza extends Planta {
         main.PanelControl_Plantas.add(petacereza, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
         petacereza.setText(" ");
     }
-
+    
     @Override
     public void Parpadear() {
-        if (vida > 0) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    ParpadeoDeLabels a = new ParpadeoDeLabels(petacereza, 1, 1, 50);
-                    a.start();
-                }
-            });
-
-        } else {
-            /*RPlantaHitbox = null;
-            nuez.setVisible(false);
-            partida.EliminarPlanta(fila, partida.GetColumnaAnalisis(x));*/
-        }
     }
-
+    
     @Override
     public void run() {
         int n = 50;
@@ -102,22 +90,26 @@ public class PetaCereza extends Planta {
                 try {
                     Thread.sleep(0);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
+            
             try {
                 Thread.sleep(0);
             } catch (InterruptedException ex) {
-                Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
-        int Columna = partida.GetColumnaAnalisis(x);
-        partida.pala(fila, Columna);
+        this.reducirVida(9999);
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PetaCereza.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//run
 
     @Override
     public void setInvisible() {
+        petacereza.setVisible(false);
         /*
         if (petacereza != null) {
             SwingUtilities.invokeLater(new Runnable() {
@@ -127,17 +119,14 @@ public class PetaCereza extends Planta {
             });
         }*/
     }
-
+    
     @Override
     public void deletPlantita() {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                petacereza.setVisible(false);
-                petacereza = null;
-                RPlantaHitbox = null;
-                vida = 0;
-            }
-        });
-
+        
+        petacereza.setVisible(false);
+        petacereza = null;
+        RPlantaHitbox = null;
+        vida = 0;
+        
     }
 }

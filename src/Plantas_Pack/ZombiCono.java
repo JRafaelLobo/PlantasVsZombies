@@ -41,11 +41,8 @@ public class ZombiCono extends Zombi {
         }
         label.setOpaque(false);
         label.setLocation(x, y);
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+
                 main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-            }
-        });
         label.setText(" ");
     }
 
@@ -74,11 +71,9 @@ public class ZombiCono extends Zombi {
                     try {
                         x--;
                         label.setLocation(x, y);
-                        SwingUtilities.invokeLater(new Runnable() {
-                            public void run() {
+                      
                                 main.PanelControl_Zombi.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-                            }
-                        });
+           
                         try {
                             Rzombihitbox.setLocation(x, y);
 
@@ -180,22 +175,16 @@ public class ZombiCono extends Zombi {
 
     public void Parpadear() {
         if (vida > 0) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
-                    a.start();
-                }
-            });
+
+            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 1, 4000, 50);
+            a.start();
 
         } else {
 
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
-                    a.start();
-                }
-            });
+            ParpadeoDeLabels a = new ParpadeoDeLabels(label, 0, 0, 0, true, true);
+            a.start();
 
+           
         }
 
     }

@@ -101,6 +101,10 @@ public class Nivel_2 extends Partida {
                 Ganaste();
                 ganada = true;
             }
+            if (perdida) {
+                Perdiste();
+                break;
+            }
             try {
                 Thread.sleep((long) (5000 * multiplicador));
             } catch (InterruptedException ex) {
@@ -186,7 +190,7 @@ public class Nivel_2 extends Partida {
 
     public int[] zombiesCoordenadasY() {
         int[] temp = new int[24];
-        temp[0] = 640;
+        temp[0] = 660;
         temp[1] = 740;
         temp[2] = 800;
         temp[3] = 820;

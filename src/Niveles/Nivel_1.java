@@ -79,6 +79,10 @@ public class Nivel_1 extends Partida {
                 Ganaste();
                 ganada = true;
             }
+            if (perdida) {
+                Perdiste();
+                break;
+            }
             try {
                 Thread.sleep((long) (5000 * multiplicador));
             } catch (InterruptedException ex) {
@@ -121,7 +125,7 @@ public class Nivel_1 extends Partida {
         if (x > 347 && x < 415) {
             return 5;
         }
-        if (x > 415 && x < 469) {
+        if (x >= 415 && x < 469) {
             return 6;
         }
         if (x > 469 && x < 537) {
