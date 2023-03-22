@@ -101,7 +101,7 @@ public class Nivel_3 extends Partida implements Serializable {
             }
         }
         while (ganada == false) {
-            if (puntos >= 48) {
+            if (puntos >= 47) {
                 Ganaste();
                 ganada = true;
             }

@@ -642,9 +642,11 @@ public class Main extends javax.swing.JFrame {
         JDialog_Pause.getContentPane().add(B_Reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, -1));
 
         JDialog_Ganaste.setBackground(new java.awt.Color(51, 153, 0));
+        JDialog_Ganaste.setMaximumSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.setMinimumSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.setModal(true);
         JDialog_Ganaste.setUndecorated(true);
+        JDialog_Ganaste.setPreferredSize(new java.awt.Dimension(481, 250));
         JDialog_Ganaste.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_TituloHasGanado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -1081,6 +1083,7 @@ public class Main extends javax.swing.JFrame {
                 if (partida != null) {
                     partida.Reiniciar();
                 }
+                JOptionPane.showMessageDialog(JF_PatioFrontal, "Proximamente en cines", "Proximamente", -1);
             }
 
         }

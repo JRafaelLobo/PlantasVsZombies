@@ -73,7 +73,9 @@ public class GuardadoDePartida {
     }
 
     public void DelFile() {
-        archivo.delete();
+        if (archivo.exists()) {
+            archivo.delete();
+        }
     }
 
     @Override
