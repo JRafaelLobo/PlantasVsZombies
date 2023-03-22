@@ -60,7 +60,7 @@ public class Nivel_1 extends Partida {
 //base zombi 640
     public void run() {
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-        GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_1.this);
+        GeneSol = new GeneraSoles(4000, A, Nivel_1.this);
         GeneSol.start();
         try {
             Thread.sleep((long) (100 * multiplicador));//22000

@@ -66,16 +66,14 @@ public class Girasol extends Planta {
     public void run() {
         //aqui ultima modificacion haciendo una referencia
         while (vida > 0) {
-            if (!pause) {
-                try {
-                    Thread.sleep((long) (20000 * partida.multiplicador));
-                } catch (InterruptedException ex) {
-                    girasol.setVisible(false);
-                    RPlantaHitbox = null;
-                    girasol = null;
-                }
-                Producir();
+            try {
+                Thread.sleep((long) (20000 * partida.multiplicador));
+            } catch (InterruptedException ex) {
+                girasol.setVisible(false);
+                RPlantaHitbox = null;
+                girasol = null;
             }
+            Producir();
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {

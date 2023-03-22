@@ -14,7 +14,6 @@ public class Planta extends Thread {
     protected AdministracionDeRecursos main;
     protected Rectangle RPlantaHitbox;
     protected Partida partida;
-    boolean pause = false;
 
     public Planta(int x, int y, int fila, AdministracionDeRecursos main, Partida partida) {
         this.x = x;
@@ -56,14 +55,6 @@ public class Planta extends Thread {
 
     public void setTiempoDeAtaque(int tiempoDeAtaque) {
         this.tiempoDeAtaque = tiempoDeAtaque;
-    }
-
-    public boolean isPause() {
-        return pause;
-    }
-
-    public void setPause(boolean pause) {
-        this.pause = pause;
     }
 
     public int getX() {
@@ -148,10 +139,10 @@ public class Planta extends Thread {
     }
 
     public void Para() {
-        this.pause = true;
+        this.suspend();
     }
 
     public void Continua() {
-        this.pause = false;
+        this.resume();
     }
 }

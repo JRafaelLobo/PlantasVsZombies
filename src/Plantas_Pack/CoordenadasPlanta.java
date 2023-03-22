@@ -75,14 +75,14 @@ public class CoordenadasPlanta {
     public void stop() {
         if (planta != null) {
             if (planta.isAlive()) {
-                this.planta.suspend();
+                this.planta.Para();
             }
         }
     }
 
     public void resume() {
         if (planta != null) {
-            this.planta.setPause(false);
+            this.planta.Continua();
         }
     }
 

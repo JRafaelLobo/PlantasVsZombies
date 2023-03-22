@@ -72,7 +72,7 @@ public class LanzaGuizantes extends Planta {
         while (vida > 0) {
             boolean tirar = false;
             for (Zombi Z : refFilaZombi) {
-                if (Z.getX() < 640) {
+                if (Z.Rzombihitbox != null && Z.getX() < 640) {
                     tirar = true;
                     break;
                 }

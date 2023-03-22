@@ -1,5 +1,6 @@
 package plantasvszombie_joselobo;
 
+import Hilos.GeneraSoles;
 import Plantas_Pack.CoordenadasPlanta;
 import Plantas_Pack.Sol;
 import Plantas_Pack.Zombi;
@@ -35,6 +36,7 @@ public class Partida extends Thread {
     public int control = 0;
     public boolean pause = false;
     public int puntos = 0;
+    public GeneraSoles GeneSol;
 
     public Partida(Main main) {
         this.main = main;
@@ -170,25 +172,21 @@ public class Partida extends Thread {
         if (main.JDialog_Pause.isVisible()) {
             for (int i = 1; i <= 5; i++) {
                 for (int j = 0; j < 9; j++) {
-                    getfilaPlanta(i)[j].stop();
-                }
-            }
-            for (int i = 1; i <= 5; i++) {
-                ArrayList<Zombi> f = getfilaZombis(i);
-                for (int j = 0; j < f.size(); j++) {
                     try {
-                        f.get(i).suspend();
+                        getfilaPlanta(i)[j].stop();
+
                     } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 }
             }
-            for (int i = 0; i < soles.size(); i++) {
-                try {
-                    soles.get(i).suspend();
-                } catch (Exception e) {
-                    System.out.println("Ups Soles");
+            for (int i = 1; i <= 5; i++) {
+                for (Zombi z : getfilaZombis(i)) {
+                    z.suspend();
                 }
+            }
+            GeneSol.suspend();
+            for (Sol sole : soles) {
+                sole.suspend();
             }
             main.Music.stop();
         }
@@ -203,26 +201,22 @@ public class Partida extends Thread {
 
         for (int i = 1; i <= 5; i++) {
             for (int j = 0; j < 9; j++) {
-                getfilaPlanta(i)[j].resume();
-            }
-        }
-        for (int i = 1; i <= 5; i++) {
-            ArrayList<Zombi> f = getfilaZombis(i);
-            for (int j = 0; j < f.size(); j++) {
                 try {
-                    f.get(i).start();
+                    getfilaPlanta(i)[j].resume();
                 } catch (Exception e) {
                 }
             }
         }
-        for (int i = 0; i < soles.size(); i++) {
-            try {
-                soles.get(i).start();
-            } catch (Exception e) {
+        for (int i = 1; i <= 5; i++) {
+            for (Zombi z : getfilaZombis(i)) {
+                z.resume();
             }
         }
+        GeneSol.resume();
+        for (Sol sole : soles) {
+            sole.resume();
+        }
         main.Music.start();
-        this.start();
     }
 
     public void Perdiste() {

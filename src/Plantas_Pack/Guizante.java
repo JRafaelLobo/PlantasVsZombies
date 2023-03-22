@@ -46,11 +46,8 @@ public class Guizante extends Thread {
         }
         guisante.setOpaque(false);
         guisante.setLocation(x, y);
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
-            }
-        });
+        main.PanelControl_Proyectiles.add(guisante, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, -1, -1));
+
         guisante.setText(" ");
     }
 

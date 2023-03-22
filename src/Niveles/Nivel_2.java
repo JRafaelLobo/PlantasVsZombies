@@ -77,7 +77,7 @@ public class Nivel_2 extends Partida {
     //fila 2=130,3=210,3=280/lanzaguisantes
     public void run() {
         main.lb_CantSoles.setText(Integer.toString(Cantsoles));
-        GeneraSoles GeneSol = new GeneraSoles(4000, A, Nivel_2.this);
+        GeneSol = new GeneraSoles(4000, A, Nivel_2.this);
         GeneSol.start();
         try {
             Thread.sleep((long) (100 * multiplicador));//22000
@@ -97,7 +97,7 @@ public class Nivel_2 extends Partida {
             }
         }
         while (ganada == false) {
-            if (puntos >= 13) {
+            if (puntos >= 24) {
                 Ganaste();
                 ganada = true;
             }

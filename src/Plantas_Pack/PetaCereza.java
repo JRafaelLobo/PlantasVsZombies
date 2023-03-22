@@ -91,7 +91,7 @@ public class PetaCereza extends Planta {
             }
             if (flag) {
                 for (Zombi zombi : partida.getfilaZombis(i)) {
-                    if (zombi.getX() < x + 150 && zombi.getX() > x - 150) {
+                    if (zombi.getX() < x + 150 && zombi.getX() > x - 150 && zombi.Rzombihitbox != null) {
                         try {
                             zombi.recucirVida(500);
                         } catch (Exception e) {
